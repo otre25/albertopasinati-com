@@ -1,6 +1,8 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
+import ErrorBoundary from './components/ErrorBoundary';
+import { reportWebVitals } from './utils/reportWebVitals';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -10,6 +12,11 @@ if (!rootElement) {
 const root = createRoot(rootElement);
 root.render(
   <React.StrictMode>
-    <App />
+    <ErrorBoundary>
+      <App />
+    </ErrorBoundary>
   </React.StrictMode>
 );
+
+// Inizializza il tracking dei Web Vitals (LCP, INP, CLS, FCP, TTFB)
+reportWebVitals();
