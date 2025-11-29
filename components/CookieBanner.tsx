@@ -69,6 +69,11 @@ const CookieBanner: React.FC = () => {
     localStorage.setItem('cookieConsentDate', new Date().toISOString());
     localStorage.setItem('cookiePreferences', JSON.stringify(prefs));
     closeBanner();
+
+    // Ricarica la pagina per inizializzare Analytics con le nuove preferenze
+    setTimeout(() => {
+      window.location.reload();
+    }, 300);
   };
 
   const closeBanner = () => {
