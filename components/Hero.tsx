@@ -148,6 +148,8 @@ const Hero: React.FC = () => {
                 <img
                   src="/alberto-hero.jpg"
                   alt="Alberto Pasinati"
+                  loading="eager"
+                  fetchPriority="high"
                   className="w-full h-full object-cover hover:scale-105 transition-all duration-700"
                 />
               </div>
