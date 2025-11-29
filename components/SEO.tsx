@@ -14,7 +14,7 @@ const SEO: React.FC<SEOProps> = ({
   title = 'Alberto Pasinati | Full Stack Marketer',
   description = 'Marketing Manager specializzato in strategie digital e offline per brand del lusso e PMI innovative. Oltre 10 anni di esperienza in performance marketing, marketing automation e crescita del fatturato.',
   keywords = 'marketing manager, full stack marketer, digital marketing, performance marketing, marketing automation, brand strategy, SEO, e-commerce, Venice, Venezia',
-  ogImage = '/alberto-portrait.png',
+  ogImage = '/alberto-portrait-og.webp', // Ottimizzata: 47KB invece di 4.7MB
   ogType = 'website',
   canonicalUrl,
   noindex = false,

@@ -24,7 +24,7 @@ const Manifesto: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-center text-sm font-medium">
           <p>© {currentYear} Alberto Pasinati</p>
           <div className="flex gap-8 mt-4 md:mt-0">
-             <a href="/#/privacy-policy" className="hover:text-brand-yellow transition-colors uppercase tracking-wider">Privacy Policy</a>
+             <a href="/privacy-policy" className="hover:text-brand-yellow transition-colors uppercase tracking-wider">Privacy Policy</a>
           </div>
         </div>
         <div className="text-center mt-4 text-xs text-gray-500 font-normal">

@@ -29,8 +29,27 @@ const images = [
     input: 'atelier-alessandra.png',
     output: 'atelier-alessandra.webp',
     width: 1200,
-    crop: true, // Crop to 4:3 aspect ratio
+    crop: true,
     aspectRatio: 4/3
+  },
+  {
+    input: 'alberto-portrait.png',
+    output: 'alberto-portrait.webp',
+    width: 800, // Riduciamo per il portrait
+    crop: false
+  },
+  {
+    input: 'alberto-portrait.png',
+    output: 'alberto-portrait-og.webp',
+    width: 1200, // Per Open Graph social sharing
+    crop: true,
+    aspectRatio: 1.91/1 // OG image ratio ottimale
+  },
+  {
+    input: 'lucez-creative.png',
+    output: 'lucez-creative.webp',
+    width: 1200,
+    crop: false
   }
 ];
 

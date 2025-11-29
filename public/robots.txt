@@ -1,0 +1,27 @@
+# robots.txt per albertopasinati.com
+# Indica ai motori di ricerca come indicizzare il sito
+
+# Consenti tutti i bot
+User-agent: *
+Allow: /
+
+# Blocca pagine private/admin (se ce ne fossero)
+# Disallow: /admin/
+
+# Blocca file sensibili
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /scripts/
+
+# Sitemap (aggiorna quando crei sitemap.xml)
+Sitemap: https://albertopasinati.com/sitemap.xml
+
+# Crawl-delay per evitare sovraccarichi
+# Crawl-delay: 10
+
+# Bot specifici (opzionale)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /

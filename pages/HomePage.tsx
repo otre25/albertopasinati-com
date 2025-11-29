@@ -15,7 +15,7 @@ const HomePage: React.FC = () => {
         title="Alberto Pasinati | Full Stack Marketer"
         description="Marketing Manager specializzato in strategie digital e offline per brand del lusso e PMI innovative. Oltre 10 anni di esperienza in performance marketing, marketing automation e crescita del fatturato."
         keywords="marketing manager, full stack marketer, digital marketing, performance marketing, marketing automation, brand strategy, SEO, e-commerce, Venice, Venezia, Store Cucine, Wave Murano Glass, Il Fanale"
-        ogImage="/alberto-portrait.png"
+        ogImage="/alberto-portrait-og.webp"
       />
       <StructuredData />
       <div className="flex flex-col w-full">
