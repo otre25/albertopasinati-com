@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 // Google Analytics configuration
-const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // Replace with your actual GA4 Measurement ID
+const GA_MEASUREMENT_ID = 'G-DHBV49RMDY'; // Alberto Pasinati - Google Analytics 4
 
 // Declare gtag function for TypeScript
 declare global {
