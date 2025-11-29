@@ -32,7 +32,7 @@ const About: React.FC = () => {
 
           {/* Right Column - Content */}
           <div className="lg:col-span-8">
-            <div className="space-y-6 text-lg text-stone-600 leading-relaxed">
+            <div className="space-y-6 text-lg text-stone-700 leading-relaxed">
               <p className="text-deep-black text-xl border-l-4 border-brand-yellow pl-6">
                 Ho gestito budget marketing superiori a 1M€ generando oltre 15.000 lead qualificati per aziende come Wave Murano Glass, Store Cucine e Il Fanale Group.
               </p>

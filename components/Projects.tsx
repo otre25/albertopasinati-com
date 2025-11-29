@@ -95,7 +95,7 @@ const Projects: React.FC = () => {
                 <div className="h-2 w-20 bg-brand-yellow mt-4 md:mt-6"></div>
               </div>
               <div className="lg:col-span-8 flex items-center">
-                <p className="text-lg text-stone-600 leading-relaxed border-l-4 border-brand-yellow pl-6">
+                <p className="text-lg text-stone-700 leading-relaxed border-l-4 border-brand-yellow pl-6">
                   Ho collaborato con aziende leader nei loro settori, gestendo strategie di marketing integrate
                   e progetti di comunicazione a 360°.
                 </p>
@@ -146,8 +146,17 @@ const Projects: React.FC = () => {
             {projectsData.map((project) => (
               <div
                 key={project.id}
-                className="group cursor-pointer"
+                role="button"
+                tabIndex={0}
+                className="group cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:ring-offset-4 rounded-sm"
                 onClick={() => setSelectedProject(project)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setSelectedProject(project);
+                  }
+                }}
+                aria-label={`Apri dettagli progetto ${project.title}`}
               >
                 <div className="relative overflow-hidden bg-gray-100 aspect-[4/3] mb-4 rounded-sm">
                   <ImageWithSkeleton

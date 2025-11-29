@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, Shield, Settings, Check, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useToast } from '../contexts/ToastContext';
 
 interface CookiePreferences {
   necessary: boolean;
@@ -10,6 +11,7 @@ interface CookiePreferences {
 }
 
 const CookieBanner: React.FC = () => {
+  const { showToast } = useToast();
   const [showBanner, setShowBanner] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [showPreferences, setShowPreferences] = useState(false);
@@ -70,10 +72,13 @@ const CookieBanner: React.FC = () => {
     localStorage.setItem('cookiePreferences', JSON.stringify(prefs));
     closeBanner();
 
+    // Mostra feedback prima del reload
+    showToast('Preferenze cookie salvate con successo', 'success');
+
     // Ricarica la pagina per inizializzare Analytics con le nuove preferenze
     setTimeout(() => {
       window.location.reload();
-    }, 300);
+    }, 800);
   };
 
   const closeBanner = () => {
@@ -167,7 +172,7 @@ const CookieBanner: React.FC = () => {
                 </button>
                 <button
                   onClick={closeBanner}
-                  className="ml-2 text-stone-400 hover:text-stone-600 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-yellow/50 rounded-full p-1"
+                  className="ml-2 text-stone-700 hover:text-stone-900 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-yellow/50 rounded-full p-3 min-w-[44px] min-h-[44px] flex items-center justify-center"
                   aria-label="Chiudi banner"
                 >
                   <X size={20} />
@@ -199,7 +204,7 @@ const CookieBanner: React.FC = () => {
           </div>
           <button
             onClick={closePreferences}
-            className="text-white/80 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white/50 rounded-full p-1"
+            className="text-white/80 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white/50 rounded-full p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center"
             aria-label="Chiudi pannello"
           >
             <X size={24} />
@@ -310,7 +315,7 @@ const CookieToggle: React.FC<CookieToggleProps> = ({ title, description, enabled
         <button
           onClick={onToggle}
           disabled={locked}
-          className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-4 focus:ring-brand-yellow/50 flex-shrink-0 ${
+          className={`relative inline-flex h-7 w-12 items-center rounded-full transition-colors focus:outline-none focus:ring-4 focus:ring-brand-yellow/50 flex-shrink-0 p-0.5 min-h-[44px] ${
             enabled ? 'bg-brand-yellow' : 'bg-gray-300'
           } ${locked ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:opacity-90'}`}
           role="switch"

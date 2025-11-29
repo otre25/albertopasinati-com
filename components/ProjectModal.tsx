@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { X, ExternalLink } from 'lucide-react';
 import { Project } from '../types';
 
@@ -9,21 +9,88 @@ interface ProjectModalProps {
 }
 
 const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose }) => {
+  const modalRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const previousActiveElement = useRef<HTMLElement | null>(null);
+
+  // Focus trap e gestione keyboard
+  useEffect(() => {
+    if (!isOpen) return;
+
+    // Salva l'elemento attivo prima di aprire il modal
+    previousActiveElement.current = document.activeElement as HTMLElement;
+
+    // Focus sul pulsante chiudi quando il modal si apre
+    closeButtonRef.current?.focus();
+
+    // Gestione ESC key
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    // Focus trap: cicla tra elementi focusabili
+    const handleTabKey = (e: KeyboardEvent) => {
+      if (!modalRef.current) return;
+
+      const focusableElements = modalRef.current.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (e.key === 'Tab') {
+        if (e.shiftKey && document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement.focus();
+        } else if (!e.shiftKey && document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    document.addEventListener('keydown', handleTabKey);
+
+    // Previene scroll del body quando il modal è aperto
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.removeEventListener('keydown', handleTabKey);
+      document.body.style.overflow = '';
+
+      // Ripristina il focus all'elemento precedente
+      if (previousActiveElement.current) {
+        previousActiveElement.current.focus();
+      }
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
     >
       <div
+        ref={modalRef}
         className="relative w-full max-w-6xl max-h-[90vh] overflow-auto bg-white rounded-sm shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
         <button
+          ref={closeButtonRef}
           onClick={onClose}
-          className="absolute top-6 right-6 z-10 w-10 h-10 flex items-center justify-center bg-black text-white rounded-full hover:bg-brand-yellow hover:text-black transition-colors"
+          className="absolute top-6 right-6 z-10 min-w-[44px] min-h-[44px] w-11 h-11 flex items-center justify-center bg-black text-white rounded-full hover:bg-brand-yellow hover:text-black transition-colors focus:outline-none focus:ring-2 focus:ring-brand-yellow"
+          aria-label="Chiudi modal"
         >
           <X size={24} />
         </button>
@@ -40,7 +107,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
               </div>
 
               {/* Title */}
-              <h2 className="text-5xl md:text-6xl font-display font-black uppercase leading-[0.9] mb-6">
+              <h2 id="modal-title" className="text-5xl md:text-6xl font-display font-black uppercase leading-[0.9] mb-6">
                 {project.title}
               </h2>
 

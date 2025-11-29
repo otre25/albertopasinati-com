@@ -29,13 +29,13 @@ const PrivacyPolicyPage: React.FC = () => {
 
         {/* Content */}
         <div className="prose prose-lg max-w-none">
-          <p className="text-stone-600 mb-6">
+          <p className="text-stone-700 mb-6">
             <strong>Data di ultimo aggiornamento:</strong> {new Date().toLocaleDateString('it-IT')}
           </p>
 
           <section className="mb-8">
             <h2 className="text-3xl font-display font-bold mb-4 text-brand-dark">1. Introduzione</h2>
-            <p className="text-stone-600 leading-relaxed">
+            <p className="text-stone-700 leading-relaxed">
               La presente Privacy Policy descrive le modalità di raccolta, utilizzo e protezione dei dati personali
               degli utenti che visitano il sito web albertopasinati.com (di seguito "Sito").
               Il Titolare del trattamento è Alberto Pasinati, con sede in Italia.
@@ -44,10 +44,10 @@ const PrivacyPolicyPage: React.FC = () => {
 
           <section className="mb-8">
             <h2 className="text-3xl font-display font-bold mb-4 text-brand-dark">2. Dati Raccolti</h2>
-            <p className="text-stone-600 leading-relaxed mb-4">
+            <p className="text-stone-700 leading-relaxed mb-4">
               Il Sito può raccogliere le seguenti tipologie di dati:
             </p>
-            <ul className="list-disc pl-6 text-stone-600 space-y-2">
+            <ul className="list-disc pl-6 text-stone-700 space-y-2">
               <li>Dati di navigazione: indirizzo IP, tipo di browser, sistema operativo, pagine visitate, tempo di permanenza</li>
               <li>Dati forniti volontariamente: nome, email, e altre informazioni fornite tramite form di contatto</li>
               <li>Cookie tecnici e analytics per migliorare l'esperienza utente</li>
@@ -56,10 +56,10 @@ const PrivacyPolicyPage: React.FC = () => {
 
           <section className="mb-8">
             <h2 className="text-3xl font-display font-bold mb-4 text-brand-dark">3. Finalità del Trattamento</h2>
-            <p className="text-stone-600 leading-relaxed mb-4">
+            <p className="text-stone-700 leading-relaxed mb-4">
               I dati personali raccolti sono trattati per le seguenti finalità:
             </p>
-            <ul className="list-disc pl-6 text-stone-600 space-y-2">
+            <ul className="list-disc pl-6 text-stone-700 space-y-2">
               <li>Rispondere a richieste di contatto e fornire informazioni sui servizi offerti</li>
               <li>Migliorare la navigazione e l'esperienza utente sul Sito</li>
               <li>Analizzare statistiche di utilizzo del Sito in forma anonima e aggregata</li>
@@ -69,7 +69,7 @@ const PrivacyPolicyPage: React.FC = () => {
 
           <section className="mb-8">
             <h2 className="text-3xl font-display font-bold mb-4 text-brand-dark">4. Base Giuridica del Trattamento</h2>
-            <p className="text-stone-600 leading-relaxed">
+            <p className="text-stone-700 leading-relaxed">
               Il trattamento dei dati personali si basa sul consenso dell'utente, sull'esecuzione di un contratto
               o su un legittimo interesse del Titolare, in conformità al Regolamento (UE) 2016/679 (GDPR).
             </p>
@@ -77,7 +77,7 @@ const PrivacyPolicyPage: React.FC = () => {
 
           <section className="mb-8">
             <h2 className="text-3xl font-display font-bold mb-4 text-brand-dark">5. Conservazione dei Dati</h2>
-            <p className="text-stone-600 leading-relaxed">
+            <p className="text-stone-700 leading-relaxed">
               I dati personali saranno conservati per il tempo strettamente necessario al raggiungimento delle finalità
               per cui sono stati raccolti. I dati forniti tramite form di contatto saranno conservati fino alla gestione
               della richiesta e per eventuali follow-up, salvo diversa richiesta dell'interessato.
@@ -86,10 +86,10 @@ const PrivacyPolicyPage: React.FC = () => {
 
           <section className="mb-8">
             <h2 className="text-3xl font-display font-bold mb-4 text-brand-dark">6. Diritti dell'Utente</h2>
-            <p className="text-stone-600 leading-relaxed mb-4">
+            <p className="text-stone-700 leading-relaxed mb-4">
               In conformità al GDPR, l'utente ha diritto di:
             </p>
-            <ul className="list-disc pl-6 text-stone-600 space-y-2">
+            <ul className="list-disc pl-6 text-stone-700 space-y-2">
               <li>Accedere ai propri dati personali</li>
               <li>Richiedere la rettifica o la cancellazione dei dati</li>
               <li>Opporsi al trattamento dei dati</li>
@@ -102,7 +102,7 @@ const PrivacyPolicyPage: React.FC = () => {
 
           <section className="mb-8">
             <h2 className="text-3xl font-display font-bold mb-4 text-brand-dark">7. Cookie</h2>
-            <p className="text-stone-600 leading-relaxed">
+            <p className="text-stone-700 leading-relaxed">
               Il Sito utilizza cookie tecnici necessari al funzionamento e cookie analytics per monitorare le statistiche
               di utilizzo. L'utente può gestire le preferenze sui cookie tramite le impostazioni del proprio browser.
             </p>
@@ -110,7 +110,7 @@ const PrivacyPolicyPage: React.FC = () => {
 
           <section className="mb-8">
             <h2 className="text-3xl font-display font-bold mb-4 text-brand-dark">8. Sicurezza dei Dati</h2>
-            <p className="text-stone-600 leading-relaxed">
+            <p className="text-stone-700 leading-relaxed">
               Il Titolare adotta misure di sicurezza tecniche e organizzative adeguate per proteggere i dati personali
               da accessi non autorizzati, perdita, distruzione o divulgazione.
             </p>
@@ -118,7 +118,7 @@ const PrivacyPolicyPage: React.FC = () => {
 
           <section className="mb-8">
             <h2 className="text-3xl font-display font-bold mb-4 text-brand-dark">9. Modifiche alla Privacy Policy</h2>
-            <p className="text-stone-600 leading-relaxed">
+            <p className="text-stone-700 leading-relaxed">
               La presente Privacy Policy può essere aggiornata periodicamente. Le modifiche saranno pubblicate su questa
               pagina con indicazione della data di ultimo aggiornamento.
             </p>
@@ -126,7 +126,7 @@ const PrivacyPolicyPage: React.FC = () => {
 
           <section className="mb-8">
             <h2 className="text-3xl font-display font-bold mb-4 text-brand-dark">10. Contatti</h2>
-            <p className="text-stone-600 leading-relaxed">
+            <p className="text-stone-700 leading-relaxed">
               Per esercitare i propri diritti o per qualsiasi informazione relativa al trattamento dei dati personali,
               è possibile contattare il Titolare del trattamento all'indirizzo email:{' '}
               <span className="text-brand-yellow font-bold">

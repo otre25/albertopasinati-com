@@ -84,7 +84,7 @@ const Services: React.FC = () => {
             <div className="h-2 w-24 bg-brand-yellow mt-6"></div>
           </div>
           <div className="lg:col-span-7 flex items-center">
-            <p className="text-xl text-stone-600 leading-relaxed border-l-4 border-brand-yellow pl-6">
+            <p className="text-xl text-stone-700 leading-relaxed border-l-4 border-brand-yellow pl-6">
               Competenze end-to-end che spaziano dalla definizione strategica all'esecuzione operativa di campagne marketing integrate. Approccio data-driven con focus costante su performance, ROI e crescita sostenibile del business.
             </p>
           </div>
@@ -95,13 +95,18 @@ const Services: React.FC = () => {
           {servicesData.map((service, index) => (
             <div
               key={index}
+              role="article"
+              tabIndex={0}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
-              className="bg-white p-8 rounded-sm transition-all duration-500 border-b-4 border-transparent hover:border-brand-yellow group relative overflow-hidden cursor-pointer"
+              onFocus={() => setHoveredIndex(index)}
+              onBlur={() => setHoveredIndex(null)}
+              className="bg-white p-8 rounded-sm transition-all duration-500 border-b-4 border-transparent hover:border-brand-yellow focus:border-brand-yellow group relative overflow-hidden cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:ring-offset-2"
               style={{
                 transform: hoveredIndex === index ? 'translateY(-8px) scale(1.02)' : 'translateY(0) scale(1)',
                 boxShadow: hoveredIndex === index ? '0 20px 40px rgba(0,0,0,0.1)' : '0 4px 6px rgba(0,0,0,0.05)',
               }}
+              aria-label={service.title}
             >
               {/* Animated background on hover */}
               <div
@@ -121,13 +126,13 @@ const Services: React.FC = () => {
                 <h3 className="text-xl font-display font-bold mb-3 text-brand-dark uppercase tracking-wide group-hover:text-brand-yellow transition-colors duration-300">
                   {service.title}
                 </h3>
-                <p className="text-stone-600 leading-relaxed text-sm">
+                <p className="text-stone-700 leading-relaxed text-sm">
                   {service.description}
                 </p>
               </div>
 
               {/* Number badge */}
-              <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-stone-100 text-stone-400 flex items-center justify-center text-xs font-bold group-hover:bg-brand-yellow group-hover:text-white transition-all duration-300">
+              <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-stone-100 text-stone-600 flex items-center justify-center text-xs font-bold group-hover:bg-brand-yellow group-hover:text-white transition-all duration-300">
                 {String(index + 1).padStart(2, '0')}
               </div>
             </div>

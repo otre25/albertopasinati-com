@@ -36,7 +36,7 @@ const PersonalProjects: React.FC = () => {
                <BookOpen size={16} /> Podcast
              </div>
              <h3 className="text-3xl font-display font-bold mb-4">Liberamente: Letture in libertà</h3>
-             <p className="text-stone-600 mb-6 leading-relaxed">
+             <p className="text-stone-700 mb-6 leading-relaxed">
                Un progetto in cui ho riversato tutto il mio percorso educativo e professionale.
                Dal nome, frutto dei miei studi classici, alla lettura mia grande passione.
                Per finire con l'execution figlia del mio percorso professionale.
