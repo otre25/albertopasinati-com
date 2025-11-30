@@ -10,7 +10,7 @@ Allow: /
 
 # Blocca file sensibili
 Disallow: /*.json$
-Disallow: /*.xml$
+Disallow: /manifest.json
 Disallow: /scripts/
 
 # Sitemap (aggiorna quando crei sitemap.xml)

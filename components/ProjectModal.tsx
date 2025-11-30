@@ -171,14 +171,16 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
             {project.mockupUrl ? (
               <img
                 src={project.mockupUrl}
-                alt={`${project.title} preview`}
+                alt={`Anteprima del progetto ${project.title} - ${project.category}`}
                 className="w-full h-auto object-contain max-h-[600px] drop-shadow-2xl"
+                loading="lazy"
               />
             ) : (
               <img
                 src={project.imageUrl}
-                alt={project.title}
+                alt={`Immagine progetto ${project.title}`}
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             )}
           </div>

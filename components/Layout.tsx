@@ -6,11 +6,13 @@ import ScrollToTop from './ScrollToTop';
 import SkipLink from './SkipLink';
 import CookieBanner from './CookieBanner';
 import Analytics from './Analytics';
+import MicrosoftClarity from './MicrosoftClarity';
 
 const Layout: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Analytics />
+      <MicrosoftClarity />
       <SkipLink />
       <ScrollToTop />
       <Header />

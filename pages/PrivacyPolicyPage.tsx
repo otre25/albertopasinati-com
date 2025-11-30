@@ -101,11 +101,50 @@ const PrivacyPolicyPage: React.FC = () => {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-3xl font-display font-bold mb-4 text-brand-dark">7. Cookie</h2>
-            <p className="text-stone-700 leading-relaxed">
+            <h2 className="text-3xl font-display font-bold mb-4 text-brand-dark">7. Cookie e Strumenti di Analytics</h2>
+            <p className="text-stone-700 leading-relaxed mb-4">
               Il Sito utilizza cookie tecnici necessari al funzionamento e cookie analytics per monitorare le statistiche
-              di utilizzo. L'utente può gestire le preferenze sui cookie tramite le impostazioni del proprio browser.
+              di utilizzo. L'utente può gestire le preferenze sui cookie tramite il banner presente sul Sito o le impostazioni del proprio browser.
             </p>
+
+            <div className="ml-4 mt-6 space-y-6">
+              <div>
+                <h3 className="text-xl font-display font-bold mb-3 text-brand-dark">7.1 Google Analytics</h3>
+                <p className="text-stone-700 leading-relaxed">
+                  Il Sito utilizza Google Analytics, un servizio di analisi web fornito da Google LLC. Google Analytics utilizza
+                  cookie per raccogliere informazioni anonime sull'utilizzo del Sito (pagine visitate, tempo di permanenza,
+                  sorgente di traffico) al fine di generare report statistici aggregati. I dati raccolti sono anonimi e non
+                  permettono l'identificazione personale degli utenti. Per maggiori informazioni sulla privacy di Google Analytics:
+                  <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-brand-yellow hover:underline ml-1">
+                    https://policies.google.com/privacy
+                  </a>
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-display font-bold mb-3 text-brand-dark">7.2 Microsoft Clarity</h3>
+                <p className="text-stone-700 leading-relaxed">
+                  Il Sito utilizza Microsoft Clarity, un servizio di analisi comportamentale fornito da Microsoft Corporation.
+                  Clarity raccoglie informazioni anonime su come gli utenti interagiscono con il Sito attraverso registrazioni
+                  delle sessioni (heatmap, click, scroll) e metriche di performance. I dati raccolti sono completamente anonimi
+                  e non contengono informazioni personalmente identificabili. Microsoft Clarity aiuta a comprendere come
+                  migliorare l'esperienza utente del Sito. Per maggiori informazioni sulla privacy di Microsoft:
+                  <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer" className="text-brand-yellow hover:underline ml-1">
+                    https://privacy.microsoft.com/privacystatement
+                  </a>
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-display font-bold mb-3 text-brand-dark">7.3 Gestione dei Cookie</h3>
+                <p className="text-stone-700 leading-relaxed">
+                  L'utente può accettare o rifiutare i cookie analytics tramite il banner che appare alla prima visita del Sito.
+                  È inoltre possibile modificare le preferenze sui cookie in qualsiasi momento eliminando i dati di navigazione
+                  dal proprio browser. La disabilitazione dei cookie analytics non compromette la navigazione del Sito ma potrebbe
+                  limitare alcune funzionalità statistiche anonime.
+                </p>
+              </div>
+            </div>
           </section>
 
           <section className="mb-8">
