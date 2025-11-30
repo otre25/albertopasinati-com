@@ -46,3 +46,54 @@
     scroll-behavior: smooth;
   }
 }
+
+/* ===== MOBILE OPTIMIZATIONS ===== */
+
+/* Safe Area Insets for iPhone X+ (notch/dynamic island) */
+body {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* Custom tap highlight color for iOS/Android */
+* {
+  -webkit-tap-highlight-color: rgba(253, 186, 60, 0.3);
+  -webkit-touch-callout: none;
+}
+
+/* Prevent text selection on touch devices for buttons/links */
+button, a {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Ensure minimum touch target size (44x44px per iOS/Android guidelines) */
+@media (max-width: 768px) {
+  button, a, input[type="button"], input[type="submit"] {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Specific fixes for common interactive elements */
+  .touch-target {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Improve scrolling performance on iOS */
+body {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent zoom on input focus (iOS Safari) */
+@media (max-width: 768px) {
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+}
