@@ -96,7 +96,7 @@ const Projects: React.FC = () => {
               </div>
               <div className="lg:col-span-8 flex items-center">
                 <p className="text-lg text-stone-700 leading-relaxed border-l-4 border-brand-yellow pl-6">
-                  Ho collaborato con aziende leader nei loro settori, gestendo strategie di marketing integrate
+                  Ho lavorato con aziende del lusso, retail e artigianato veneziano, gestendo strategie di marketing integrate
                   e progetti di comunicazione a 360°.
                 </p>
               </div>
