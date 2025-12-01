@@ -1,5 +1,5 @@
 import React from 'react';
-import { Quote } from 'lucide-react';
+import { Quote, Linkedin, Github } from 'lucide-react';
 
 const Manifesto: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -21,13 +21,36 @@ const Manifesto: React.FC = () => {
 
       {/* Bottom Bar */}
       <div className="max-w-7xl mx-auto px-6 pt-8 border-t border-white/10">
-        <div className="flex flex-col md:flex-row justify-between items-center text-sm font-medium">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-sm font-medium">
           <p>© {currentYear} Alberto Pasinati</p>
-          <div className="flex gap-8 mt-4 md:mt-0">
+
+          {/* Social Icons */}
+          <div className="flex items-center gap-6">
+            <a
+              href="https://www.linkedin.com/in/albertopasinati/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-brand-yellow hover:text-black transition-all duration-300 active:scale-95 focus:outline-none focus:ring-2 focus:ring-brand-yellow"
+              aria-label="LinkedIn Profile"
+            >
+              <Linkedin size={20} />
+            </a>
+            <a
+              href="https://github.com/otre25"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-brand-yellow hover:text-black transition-all duration-300 active:scale-95 focus:outline-none focus:ring-2 focus:ring-brand-yellow"
+              aria-label="GitHub Profile"
+            >
+              <Github size={20} />
+            </a>
+          </div>
+
+          <div className="flex gap-8">
              <a href="/privacy-policy" className="hover:text-brand-yellow transition-colors uppercase tracking-wider">Privacy Policy</a>
           </div>
         </div>
-        <div className="text-center mt-4 text-xs text-gray-500 font-normal">
+        <div className="text-center mt-6 text-xs text-gray-500 font-normal">
           Realizzato da AP+AI
         </div>
       </div>

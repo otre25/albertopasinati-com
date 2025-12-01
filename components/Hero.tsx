@@ -147,7 +147,7 @@ const Hero: React.FC = () => {
               {/* Main Image Container */}
               <div className="relative z-10 bg-gray-200 w-full h-full overflow-hidden rounded-full border-8 border-white shadow-2xl">
                 <ImageWithSkeleton
-                  src="/alberto-hero.jpg"
+                  src="/alberto-hero.webp"
                   alt="Alberto Pasinati - Marketing Manager e Full Stack Marketer"
                   className="w-full h-full object-cover hover:scale-105 transition-all duration-700"
                   priority
