@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { useRipple } from '../hooks/useRipple';
 import { trackCTAClick } from './Analytics';
+import ImageWithSkeleton from './ImageWithSkeleton';
 
 const FlipLetter: React.FC<{ char: string; delay: number }> = ({ char, delay }) => {
   const [isFlipping, setIsFlipping] = useState(false);
@@ -79,7 +80,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-[calc(100vh-80px)] py-12 px-6 max-w-7xl mx-auto flex flex-col justify-center overflow-hidden">
+    <section className="relative min-h-[600px] md:min-h-[calc(100vh-80px)] py-12 px-6 max-w-7xl mx-auto flex flex-col justify-center overflow-hidden">
 
       {/* Abstract Background Element */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-b from-gray-100 to-transparent -z-10 skew-x-12 opacity-50"></div>
@@ -145,12 +146,11 @@ const Hero: React.FC = () => {
               
               {/* Main Image Container */}
               <div className="relative z-10 bg-gray-200 w-full h-full overflow-hidden rounded-full border-8 border-white shadow-2xl">
-                <img
+                <ImageWithSkeleton
                   src="/alberto-hero.jpg"
                   alt="Alberto Pasinati - Marketing Manager e Full Stack Marketer"
-                  loading="eager"
-                  fetchPriority="high"
                   className="w-full h-full object-cover hover:scale-105 transition-all duration-700"
+                  priority
                 />
               </div>
 

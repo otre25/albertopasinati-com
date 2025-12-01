@@ -1,14 +1,18 @@
 import React, { useEffect, useRef } from 'react';
-import { X, ExternalLink } from 'lucide-react';
+import { X, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Project } from '../types';
 
 interface ProjectModalProps {
   project: Project;
   isOpen: boolean;
   onClose: () => void;
+  onNext?: () => void;
+  onPrev?: () => void;
+  hasNext?: boolean;
+  hasPrev?: boolean;
 }
 
-const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose }) => {
+const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose, onNext, onPrev, hasNext = false, hasPrev = false }) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const previousActiveElement = useRef<HTMLElement | null>(null);
@@ -23,10 +27,14 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
     // Focus sul pulsante chiudi quando il modal si apre
     closeButtonRef.current?.focus();
 
-    // Gestione ESC key
-    const handleEscape = (e: KeyboardEvent) => {
+    // Gestione ESC key e frecce prev/next
+    const handleKeyboard = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         onClose();
+      } else if (e.key === 'ArrowLeft' && hasPrev && onPrev) {
+        onPrev();
+      } else if (e.key === 'ArrowRight' && hasNext && onNext) {
+        onNext();
       }
     };
 
@@ -52,14 +60,14 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
       }
     };
 
-    document.addEventListener('keydown', handleEscape);
+    document.addEventListener('keydown', handleKeyboard);
     document.addEventListener('keydown', handleTabKey);
 
     // Previene scroll del body quando il modal è aperto
     document.body.style.overflow = 'hidden';
 
     return () => {
-      document.removeEventListener('keydown', handleEscape);
+      document.removeEventListener('keydown', handleKeyboard);
       document.removeEventListener('keydown', handleTabKey);
       document.body.style.overflow = '';
 
@@ -68,7 +76,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
         previousActiveElement.current.focus();
       }
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose, onNext, onPrev, hasNext, hasPrev]);
 
   if (!isOpen) return null;
 
@@ -89,11 +97,33 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
         <button
           ref={closeButtonRef}
           onClick={onClose}
-          className="absolute top-6 right-6 z-10 min-w-[44px] min-h-[44px] w-11 h-11 flex items-center justify-center bg-black text-white rounded-full hover:bg-brand-yellow hover:text-black transition-colors focus:outline-none focus:ring-2 focus:ring-brand-yellow"
+          className="absolute top-6 right-6 z-10 min-w-[44px] min-h-[44px] w-11 h-11 flex items-center justify-center bg-black text-white rounded-full hover:bg-brand-yellow hover:text-black transition-all duration-300 active:scale-95 focus:outline-none focus:ring-2 focus:ring-brand-yellow"
           aria-label="Chiudi modal"
         >
           <X size={24} />
         </button>
+
+        {/* Previous Project Button */}
+        {hasPrev && onPrev && (
+          <button
+            onClick={onPrev}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 min-w-[48px] min-h-[48px] w-12 h-12 flex items-center justify-center bg-black/80 text-white rounded-full hover:bg-brand-yellow hover:text-black hover:scale-110 active:scale-95 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-yellow shadow-lg"
+            aria-label="Progetto precedente"
+          >
+            <ChevronLeft size={28} />
+          </button>
+        )}
+
+        {/* Next Project Button */}
+        {hasNext && onNext && (
+          <button
+            onClick={onNext}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 min-w-[48px] min-h-[48px] w-12 h-12 flex items-center justify-center bg-black/80 text-white rounded-full hover:bg-brand-yellow hover:text-black hover:scale-110 active:scale-95 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-yellow shadow-lg"
+            aria-label="Progetto successivo"
+          >
+            <ChevronRight size={28} />
+          </button>
+        )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 min-h-[600px]">
 

@@ -72,6 +72,22 @@ const Projects: React.FC = () => {
   const experienceView = useInView({ threshold: 0.15 });
   const portfolioView = useInView({ threshold: 0.1 });
 
+  const currentProjectIndex = selectedProject
+    ? projectsData.findIndex(p => p.id === selectedProject.id)
+    : -1;
+
+  const handleNext = () => {
+    if (currentProjectIndex < projectsData.length - 1) {
+      setSelectedProject(projectsData[currentProjectIndex + 1]);
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentProjectIndex > 0) {
+      setSelectedProject(projectsData[currentProjectIndex - 1]);
+    }
+  };
+
   return (
     <>
       {/* La Mia Esperienza Section - White Background */}
@@ -193,6 +209,10 @@ const Projects: React.FC = () => {
           project={selectedProject}
           isOpen={selectedProject !== null}
           onClose={() => setSelectedProject(null)}
+          onNext={handleNext}
+          onPrev={handlePrev}
+          hasNext={currentProjectIndex < projectsData.length - 1}
+          hasPrev={currentProjectIndex > 0}
         />
       )}
     </>

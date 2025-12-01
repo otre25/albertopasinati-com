@@ -51,7 +51,7 @@ const About: React.FC = () => {
             </div>
 
             <div className="pt-8 pl-6 flex gap-4">
-              <a href="https://www.linkedin.com/in/albertopasinati/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#0077b5] text-white rounded-sm font-bold hover:opacity-90 transition-opacity">
+              <a href="https://www.linkedin.com/in/albertopasinati/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#0077b5] text-white rounded-sm font-bold hover:bg-[#006399] hover:shadow-lg active:scale-95 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#0077b5]/50">
                 <Linkedin size={20} /> LinkedIn Profile
               </a>
             </div>

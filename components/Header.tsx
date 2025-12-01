@@ -74,7 +74,7 @@ const Header: React.FC = () => {
           ))}
           <a
             href="mailto:alberto.pasinati@gmail.com"
-            className="bg-brand-yellow text-deep-black px-6 py-2 rounded-sm text-sm font-bold flex items-center gap-2 hover:bg-black hover:text-brand-yellow transition-colors shadow-sm focus:outline-none focus:ring-4 focus:ring-brand-yellow/50"
+            className="bg-brand-yellow text-deep-black px-6 py-2 rounded-sm text-sm font-bold flex items-center gap-2 hover:bg-black hover:text-brand-yellow hover:shadow-lg active:scale-95 transition-all duration-300 shadow-sm focus:outline-none focus:ring-4 focus:ring-brand-yellow/50"
             aria-label="Contattami via email"
           >
             Contattami <ArrowUpRight size={16} aria-hidden="true" />
@@ -129,7 +129,7 @@ const Header: React.FC = () => {
         ))}
         <a
           href="mailto:alberto.pasinati@gmail.com"
-          className="bg-deep-black text-brand-yellow px-8 py-5 rounded-sm text-lg font-bold w-full text-center mt-8 block hover:bg-brand-yellow hover:text-deep-black transition-all duration-300 shadow-lg focus:outline-none focus:ring-4 focus:ring-brand-yellow/50"
+          className="bg-deep-black text-brand-yellow px-8 py-5 rounded-sm text-lg font-bold w-full text-center mt-8 block hover:bg-brand-yellow hover:text-deep-black active:scale-95 transition-all duration-300 shadow-lg focus:outline-none focus:ring-4 focus:ring-brand-yellow/50"
           style={{
             opacity: isOpen ? 1 : 0,
             transform: isOpen ? 'translateY(0)' : 'translateY(20px)',

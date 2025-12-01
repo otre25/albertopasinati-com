@@ -7,6 +7,7 @@ import SkipLink from './SkipLink';
 import CookieBanner from './CookieBanner';
 import Analytics from './Analytics';
 import MicrosoftClarity from './MicrosoftClarity';
+import ScrollProgressBar from './ScrollProgressBar';
 
 const Layout: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ const Layout: React.FC = () => {
       <MicrosoftClarity />
       <SkipLink />
       <ScrollToTop />
+      <ScrollProgressBar />
       <Header />
       <main id="main-content" className="flex-grow pt-20" tabIndex={-1}>
         <Outlet />
