@@ -57,14 +57,13 @@ const PersonalProjects: React.FC = () => {
              key={index}
              className="bg-white shadow-xl rounded-sm overflow-hidden flex flex-col md:flex-row"
              style={{
-               maxHeight: '400px',
                opacity: isInView ? 1 : 0,
                transform: isInView ? 'translateY(0)' : 'translateY(20px)',
                transition: `opacity 0.6s ease-out ${index * 0.2}s, transform 0.6s ease-out ${index * 0.2}s`
              }}
            >
               {/* Visual Side */}
-              <div className="md:w-1/2 bg-brand-yellow flex items-center justify-center relative overflow-hidden" style={{ maxHeight: '400px' }}>
+              <div className="w-full md:w-1/2 bg-brand-yellow flex items-center justify-center relative overflow-hidden aspect-video md:aspect-auto md:min-h-[400px]">
                  <img
                    src={project.imageUrl}
                    alt={project.title}
@@ -74,19 +73,19 @@ const PersonalProjects: React.FC = () => {
               </div>
 
               {/* Text Side */}
-              <div className="md:w-1/2 p-8 flex flex-col justify-center">
-                 <div className="flex items-center gap-2 text-brand-light font-bold uppercase tracking-wider text-sm mb-4">
+              <div className="w-full md:w-1/2 p-6 md:p-8 flex flex-col justify-center">
+                 <div className="flex items-center gap-2 text-brand-light font-bold uppercase tracking-wider text-xs md:text-sm mb-3 md:mb-4">
                    <project.icon size={16} /> {project.category}
                  </div>
-                 <h3 className="text-3xl font-display font-bold mb-4">{project.title}</h3>
-                 <p className="text-stone-700 mb-6 leading-relaxed">
+                 <h3 className="text-2xl md:text-3xl font-display font-bold mb-3 md:mb-4">{project.title}</h3>
+                 <p className="text-stone-700 mb-4 md:mb-6 leading-relaxed text-sm md:text-base">
                    {project.description}
                  </p>
                  <a
                    href={project.linkUrl}
                    target="_blank"
                    rel="noopener noreferrer"
-                   className="bg-brand-dark text-white px-8 py-3 font-bold uppercase text-sm self-start hover:bg-brand-yellow hover:text-black active:scale-95 transition-all duration-300 inline-block text-center focus:outline-none focus:ring-2 focus:ring-brand-yellow"
+                   className="bg-brand-dark text-white px-6 md:px-8 py-3 font-bold uppercase text-xs md:text-sm w-full md:w-auto text-center hover:bg-brand-yellow hover:text-black active:scale-95 transition-all duration-300 inline-block focus:outline-none focus:ring-2 focus:ring-brand-yellow"
                  >
                    {project.linkText}
                  </a>
