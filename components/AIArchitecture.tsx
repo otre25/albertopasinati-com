@@ -10,6 +10,7 @@ interface PersonalProject {
   imageUrl: string;
   linkUrl: string;
   linkText: string;
+  imagefit?: 'cover' | 'contain';
 }
 
 const personalProjectsData: PersonalProject[] = [
@@ -20,7 +21,8 @@ const personalProjectsData: PersonalProject[] = [
     icon: BookOpen,
     imageUrl: '/liberamente-podcast.webp',
     linkUrl: 'https://open.spotify.com/show/41HmxcogbVPNuUh5p3kKSA?si=06cf5de8692e4054',
-    linkText: 'Ascolta il podcast'
+    linkText: 'Ascolta il podcast',
+    imagefit: 'contain'
   },
   {
     title: 'BI Dashboard Retail',
@@ -29,7 +31,8 @@ const personalProjectsData: PersonalProject[] = [
     icon: BarChart3,
     imageUrl: '/dashboard-bi-retail.webp',
     linkUrl: 'https://otre25.github.io/BI-dashboard-retail/',
-    linkText: 'Vedi Demo Live'
+    linkText: 'Vedi Demo Live',
+    imagefit: 'cover'
   }
 ];
 
@@ -67,7 +70,7 @@ const PersonalProjects: React.FC = () => {
                  <img
                    src={project.imageUrl}
                    alt={project.title}
-                   className="w-full h-full object-cover"
+                   className={`w-full h-full ${project.imagefit === 'contain' ? 'object-contain' : 'object-cover'}`}
                    loading="lazy"
                  />
               </div>
