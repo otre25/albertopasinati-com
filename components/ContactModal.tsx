@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { X, Send, Loader2 } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { useToast } from '../contexts/ToastContext';
+import { EMAILJS_CONFIG } from '../config/emailjs';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -148,31 +149,18 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
 
     setIsSubmitting(true);
 
-    // Debug: verifica che le variabili siano definite
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-    console.log('EmailJS Config:', { serviceId, templateId, publicKey });
-
-    if (!serviceId || !templateId || !publicKey) {
-      showToast('Configurazione email mancante. Contatta l\'amministratore.', 'error');
-      setIsSubmitting(false);
-      return;
-    }
-
     try {
       // Invia email tramite EmailJS
       await emailjs.send(
-        serviceId,
-        templateId,
+        EMAILJS_CONFIG.serviceId,
+        EMAILJS_CONFIG.templateId,
         {
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
           to_email: 'alberto.pasinati@gmail.com',
         },
-        publicKey
+        EMAILJS_CONFIG.publicKey
       );
 
       showToast('Messaggio inviato con successo!', 'success');
