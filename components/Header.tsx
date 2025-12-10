@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
+import ContactModal from './ContactModal';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -72,13 +74,13 @@ const Header: React.FC = () => {
               {item.label}
             </a>
           ))}
-          <a
-            href="mailto:alberto.pasinati@gmail.com"
+          <button
+            onClick={() => setIsContactModalOpen(true)}
             className="bg-brand-yellow text-deep-black px-6 py-2 rounded-sm text-sm font-bold flex items-center gap-2 hover:bg-black hover:text-brand-yellow hover:shadow-lg active:scale-95 transition-all duration-300 shadow-sm focus:outline-none focus:ring-4 focus:ring-brand-yellow/50"
-            aria-label="Contattami via email"
+            aria-label="Apri form di contatto"
           >
             Contattami <ArrowUpRight size={16} aria-hidden="true" />
-          </a>
+          </button>
         </div>
 
         {/* Mobile Toggle */}
@@ -127,19 +129,28 @@ const Header: React.FC = () => {
             </span>
           </a>
         ))}
-        <a
-          href="mailto:alberto.pasinati@gmail.com"
-          className="bg-deep-black text-brand-yellow px-8 py-5 rounded-sm text-lg font-bold w-full text-center mt-8 block hover:bg-brand-yellow hover:text-deep-black active:scale-95 transition-all duration-300 shadow-lg focus:outline-none focus:ring-4 focus:ring-brand-yellow/50"
+        <button
+          onClick={() => {
+            setIsContactModalOpen(true);
+            setIsOpen(false);
+          }}
+          className="bg-deep-black text-brand-yellow px-8 py-5 rounded-sm text-lg font-bold w-full text-center mt-8 hover:bg-brand-yellow hover:text-deep-black active:scale-95 transition-all duration-300 shadow-lg focus:outline-none focus:ring-4 focus:ring-brand-yellow/50"
           style={{
             opacity: isOpen ? 1 : 0,
             transform: isOpen ? 'translateY(0)' : 'translateY(20px)',
             transition: `opacity 0.5s ease-out ${navItems.length * 0.1 + 0.2}s, transform 0.5s ease-out ${navItems.length * 0.1 + 0.2}s`
           }}
-          aria-label="Contattami via email"
+          aria-label="Apri form di contatto"
         >
           Contattami <ArrowUpRight size={18} className="inline-block ml-2" aria-hidden="true" />
-        </a>
+        </button>
       </div>
+
+      {/* Contact Modal */}
+      <ContactModal
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+      />
     </nav>
   );
 };
