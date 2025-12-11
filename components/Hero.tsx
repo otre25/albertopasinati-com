@@ -90,12 +90,12 @@ const Hero: React.FC = () => {
         {/* Text Content */}
         <div className="relative z-10 order-2 lg:order-1">
           <h1 className="text-6xl md:text-8xl font-display font-black leading-[0.9] uppercase mb-8 min-h-[180px] md:min-h-[240px]">
-            <span className="block" key={key}>
+            <span className="block whitespace-nowrap" key={key}>
               {displayedTitle[0].split('').map((char, index) => (
                 <FlipLetter key={`${key}-line1-${index}`} char={char} delay={index * 50} />
               ))}
             </span>
-            <span className="text-brand-yellow block" key={`${key}-line2`}>
+            <span className="text-brand-yellow block whitespace-nowrap" key={`${key}-line2`}>
               {displayedTitle[1].split('').map((char, index) => (
                 <FlipLetter key={`${key}-line2-${index}`} char={char} delay={(displayedTitle[0].length + index) * 50} />
               ))}
