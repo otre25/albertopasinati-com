@@ -35,7 +35,7 @@ const StructuredData: React.FC = () => {
       ],
       "sameAs": [
         "https://www.linkedin.com/in/albertopasinati/",
-        // Add other social profiles here
+        "https://github.com/otre25"
       ]
     };
 

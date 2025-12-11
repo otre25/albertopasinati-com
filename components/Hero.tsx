@@ -89,7 +89,11 @@ const Hero: React.FC = () => {
         
         {/* Text Content */}
         <div className="relative z-10 order-2 lg:order-1">
-          <h1 className="text-6xl md:text-8xl font-display font-black leading-[0.9] uppercase mb-8 min-h-[180px] md:min-h-[240px]">
+          {/* Hidden H1 for SEO */}
+          <h1 className="sr-only">Alberto Pasinati - Full Stack Marketer e Marketing Manager</h1>
+
+          {/* Visual animated title */}
+          <div className="text-6xl md:text-8xl font-display font-black leading-[0.9] uppercase mb-8 min-h-[180px] md:min-h-[240px]" aria-hidden="true">
             <span className="block whitespace-nowrap" key={key}>
               {displayedTitle[0].split('').map((char, index) => (
                 <FlipLetter key={`${key}-line1-${index}`} char={char} delay={index * 50} />
@@ -100,7 +104,7 @@ const Hero: React.FC = () => {
                 <FlipLetter key={`${key}-line2-${index}`} char={char} delay={(displayedTitle[0].length + index) * 50} />
               ))}
             </span>
-          </h1>
+          </div>
 
           <div className="pl-6 border-l-4 border-brand-dark max-w-md">
             <p className="text-lg text-stone-700 leading-relaxed font-medium">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import ContactModal from './ContactModal';
+import MobileStickyCTA from './MobileStickyCTA';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -151,6 +152,9 @@ const Header: React.FC = () => {
         isOpen={isContactModalOpen}
         onClose={() => setIsContactModalOpen(false)}
       />
+
+      {/* Mobile Sticky CTA */}
+      <MobileStickyCTA onOpenContact={() => setIsContactModalOpen(true)} />
     </nav>
   );
 };
