@@ -144,24 +144,40 @@ const Hero: React.FC = () => {
 
         {/* Hero Image / Graphic */}
         <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end">
-           <div className="relative w-full max-w-md aspect-square">
-              {/* Decorative circle */}
-              <div className="absolute top-10 right-10 w-full h-full bg-brand-yellow rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-              
+           <div className="relative w-full max-w-md aspect-square flex items-center justify-center">
+              {/* Concentric Yellow Semi-Circles with Movement */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                {/* Inner semi-circle - bottom right */}
+                <div
+                  className="absolute w-[85%] h-[85%] rounded-full border-[10px] border-transparent border-r-brand-yellow border-b-brand-yellow opacity-60"
+                  style={{ transform: 'rotate(45deg)' }}
+                ></div>
+                {/* Middle semi-circle - top left */}
+                <div
+                  className="absolute w-[95%] h-[95%] rounded-full border-[10px] border-transparent border-l-brand-yellow border-t-brand-yellow opacity-45"
+                  style={{ transform: 'rotate(-30deg)' }}
+                ></div>
+                {/* Outer semi-circle - right */}
+                <div
+                  className="absolute w-[105%] h-[105%] rounded-full border-[10px] border-transparent border-r-brand-yellow opacity-35"
+                  style={{ transform: 'rotate(120deg)' }}
+                ></div>
+              </div>
+
+              {/* Badge Outside Circle - Top Left */}
+              <div className="absolute top-8 left-0 bg-white p-4 shadow-lg z-20 max-w-[120px]">
+                <p className="font-display font-bold text-3xl md:text-4xl text-deep-black leading-none">10+</p>
+                <p className="text-[9px] md:text-[10px] text-deep-black uppercase tracking-wider font-bold mt-1">Anni di esperienza</p>
+              </div>
+
               {/* Main Image Container */}
-              <div className="relative z-10 bg-gray-200 w-full h-full overflow-hidden rounded-full border-8 border-white shadow-2xl">
+              <div className="relative z-10 bg-gray-200 w-[75%] h-[75%] overflow-hidden rounded-full border-8 border-white shadow-2xl">
                 <ImageWithSkeleton
-                  src="/alberto-hero.webp"
+                  src="/alberto-hero.png"
                   alt="Alberto Pasinati - Marketing Manager e Full Stack Marketer"
                   className="w-full h-full object-cover hover:scale-105 transition-all duration-700"
                   priority
                 />
-              </div>
-
-              {/* Floating Badge */}
-              <div className="absolute -bottom-6 -left-16 bg-white p-6 shadow-xl border-l-4 border-brand-yellow max-w-xs hidden md:block">
-                <p className="font-display font-bold text-2xl">10+</p>
-                <p className="text-sm text-gray-500 uppercase tracking-widest">Anni di esperienza</p>
               </div>
            </div>
         </div>
