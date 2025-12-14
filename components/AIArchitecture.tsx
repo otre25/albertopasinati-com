@@ -69,7 +69,7 @@ const PersonalProjects: React.FC = () => {
               <div className="w-full md:w-1/2 bg-brand-yellow flex items-center justify-center relative overflow-hidden aspect-video md:aspect-auto md:min-h-[400px]">
                  <img
                    src={project.imageUrl}
-                   alt={project.title}
+                   alt={`${project.title} - Progetto di marketing automation e intelligenza artificiale realizzato da Alberto Pasinati`}
                    className={`w-full h-full ${project.imagefit === 'contain' ? 'object-contain' : 'object-cover'}`}
                    loading="lazy"
                  />

@@ -12,8 +12,8 @@ interface SEOProps {
 
 const SEO: React.FC<SEOProps> = ({
   title = 'Alberto Pasinati | Full Stack Marketer',
-  description = 'Marketing Manager specializzato in strategie digital e offline per brand del lusso e PMI innovative. Oltre 10 anni di esperienza in performance marketing, marketing automation e crescita del fatturato.',
-  keywords = 'marketing manager, full stack marketer, digital marketing, performance marketing, marketing automation, brand strategy, SEO, e-commerce, Venice, Venezia',
+  description = 'Full Stack Marketer e Marketing Manager a Venezia. Oltre 10 anni di esperienza in digital marketing, Google Ads, Meta Ads e marketing automation per luxury brands e PMI. Consulenza strategica per crescita fatturato ed e-commerce.',
+  keywords = 'marketing manager venezia, full stack marketer, consulente marketing digitale, digital marketing venice, performance marketing, google ads specialist, meta ads, marketing automation, luxury brand marketing, e-commerce strategy, SEO specialist, lead generation, marketing strategist italy',
   ogImage = '/alberto-portrait-og.webp', // Ottimizzata: 47KB invece di 4.7MB
   ogType = 'website',
   canonicalUrl,
