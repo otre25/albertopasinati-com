@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import ContactModal from './ContactModal';
 import MobileStickyCTA from './MobileStickyCTA';
+import EnhancedButton from './EnhancedButton';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -75,13 +76,16 @@ const Header: React.FC = () => {
               {item.label}
             </a>
           ))}
-          <button
+          <EnhancedButton
             onClick={() => setIsContactModalOpen(true)}
-            className="bg-brand-yellow text-deep-black px-6 py-2 rounded-sm text-sm font-bold flex items-center gap-2 hover:bg-black hover:text-brand-yellow hover:shadow-lg active:scale-95 transition-all duration-300 shadow-sm focus:outline-none focus:ring-4 focus:ring-brand-yellow/50"
-            aria-label="Apri form di contatto"
+            icon={ArrowUpRight}
+            iconPosition="right"
+            variant="primary"
+            size="sm"
+            ariaLabel="Apri form di contatto"
           >
-            Contattami <ArrowUpRight size={16} aria-hidden="true" />
-          </button>
+            Contattami
+          </EnhancedButton>
         </div>
 
         {/* Mobile Toggle */}
@@ -130,21 +134,28 @@ const Header: React.FC = () => {
             </span>
           </a>
         ))}
-        <button
-          onClick={() => {
-            setIsContactModalOpen(true);
-            setIsOpen(false);
-          }}
-          className="bg-deep-black text-brand-yellow px-8 py-5 rounded-sm text-lg font-bold w-full text-center mt-8 hover:bg-brand-yellow hover:text-deep-black active:scale-95 transition-all duration-300 shadow-lg focus:outline-none focus:ring-4 focus:ring-brand-yellow/50"
+        <div
           style={{
             opacity: isOpen ? 1 : 0,
             transform: isOpen ? 'translateY(0)' : 'translateY(20px)',
             transition: `opacity 0.5s ease-out ${navItems.length * 0.1 + 0.2}s, transform 0.5s ease-out ${navItems.length * 0.1 + 0.2}s`
           }}
-          aria-label="Apri form di contatto"
         >
-          Contattami <ArrowUpRight size={18} className="inline-block ml-2" aria-hidden="true" />
-        </button>
+          <EnhancedButton
+            onClick={() => {
+              setIsContactModalOpen(true);
+              setIsOpen(false);
+            }}
+            icon={ArrowUpRight}
+            iconPosition="right"
+            variant="secondary"
+            size="lg"
+            className="w-full mt-8 shadow-lg"
+            ariaLabel="Apri form di contatto"
+          >
+            Contattami
+          </EnhancedButton>
+        </div>
       </div>
 
       {/* Contact Modal */}

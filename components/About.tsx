@@ -51,8 +51,17 @@ const About: React.FC = () => {
             </div>
 
             <div className="pt-8 pl-6 flex gap-4">
-              <a href="https://www.linkedin.com/in/albertopasinati/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#0077b5] text-white rounded-sm font-bold hover:bg-[#006399] hover:shadow-lg active:scale-95 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#0077b5]/50">
-                <Linkedin size={20} /> LinkedIn Profile
+              <a
+                href="https://www.linkedin.com/in/albertopasinati/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 px-6 py-3 bg-[#0077b5] text-white rounded-sm font-bold hover:bg-[#006399] hover:shadow-xl active:scale-95 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#0077b5]/50"
+              >
+                <Linkedin
+                  size={20}
+                  className="transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
+                />
+                <span>LinkedIn Profile</span>
               </a>
             </div>
           </div>

@@ -121,7 +121,7 @@ const Hero: React.FC = () => {
                 trackCTAClick('Scopri i miei progetti', 'Hero Section');
                 scrollToPortfolio(e);
               }}
-              className="relative overflow-hidden bg-deep-black text-white px-8 py-4 rounded-sm font-bold flex items-center gap-3 hover:bg-brand-yellow hover:text-black transition-all duration-300 shadow-lg inline-flex active:scale-95"
+              className="group relative overflow-hidden bg-deep-black text-white px-8 py-4 rounded-sm font-bold flex items-center gap-3 hover:bg-brand-yellow hover:text-black transition-all duration-300 shadow-lg hover:shadow-2xl inline-flex active:scale-95 focus:outline-none focus:ring-4 focus:ring-brand-yellow/50"
             >
               {ripples.map((ripple) => (
                 <span
@@ -137,7 +137,10 @@ const Hero: React.FC = () => {
                 />
               ))}
               <span className="relative z-10">Scopri i miei progetti</span>
-              <ArrowRight size={20} className="relative z-10" />
+              <ArrowRight
+                size={20}
+                className="relative z-10 transition-transform duration-300 group-hover:translate-x-1"
+              />
             </a>
           </div>
         </div>
