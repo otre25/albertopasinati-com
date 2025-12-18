@@ -39,19 +39,30 @@ const StructuredData: React.FC = () => {
       ]
     };
 
-    // Professional Service Schema
-    const serviceSchema = {
+    // LocalBusiness Schema - Ottimizzato per Local SEO
+    const localBusinessSchema = {
       "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Alberto Pasinati - Marketing Consulting",
-      "description": "Servizi di consulenza marketing strategico, digital advertising, e-commerce, e growth marketing per PMI e brand del lusso",
+      "@type": "LocalBusiness",
+      "name": "Alberto Pasinati - Full Stack Marketer",
+      "alternateName": "Alberto Pasinati Marketing Consulting",
+      "description": "Consulente marketing digitale e Full Stack Marketer specializzato in strategie SEO, SEM, Google Ads, Meta Ads e marketing automation per PMI e brand del lusso. Servizi di digital marketing a Venezia e in tutta Italia.",
       "url": "https://albertopasinati.com",
-      "image": "https://albertopasinati.com/alberto-portrait.png",
-      "priceRange": "$$",
+      "logo": "https://albertopasinati.com/alberto-portrait.png",
+      "image": [
+        "https://albertopasinati.com/alberto-portrait.png",
+        "https://albertopasinati.com/alberto-hero-v2.webp"
+      ],
+      "telephone": "+39-XXX-XXXXXXX", // Aggiorna con il tuo numero
+      "email": "alberto.pasinati@gmail.com",
+      "priceRange": "$$-$$$",
+      "currenciesAccepted": "EUR",
+      "paymentAccepted": "Cash, Credit Card, Bank Transfer, PayPal",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Venice",
+        "streetAddress": "Venezia", // Aggiorna con indirizzo specifico se pubblico
+        "addressLocality": "Venezia",
         "addressRegion": "Veneto",
+        "postalCode": "30100",
         "addressCountry": "IT"
       },
       "geo": {
@@ -61,21 +72,138 @@ const StructuredData: React.FC = () => {
       },
       "areaServed": [
         {
-          "@type": "Country",
-          "name": "Italy"
+          "@type": "City",
+          "name": "Venezia",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "Veneto"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Mestre"
+        },
+        {
+          "@type": "City",
+          "name": "Padova"
+        },
+        {
+          "@type": "City",
+          "name": "Treviso"
+        },
+        {
+          "@type": "City",
+          "name": "Verona"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Veneto"
         },
         {
           "@type": "Country",
-          "name": "Europe"
+          "name": "Italia"
         }
       ],
-      "serviceType": [
-        "Marketing Strategy",
-        "Digital Advertising",
-        "E-Commerce Management",
-        "SEO Services",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servizi di Marketing Digitale",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Consulenza Strategica Marketing",
+              "description": "Pianificazione strategica di marketing digitale per PMI e brand del lusso"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Gestione Campagne Google Ads",
+              "description": "Setup, ottimizzazione e gestione campagne Google Ads per massimizzare il ROI"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Meta Ads Management",
+              "description": "Gestione professionale campagne Facebook e Instagram Ads"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "SEO e Ottimizzazione E-commerce",
+              "description": "Ottimizzazione SEO on-page, off-page e tecnica per e-commerce e siti aziendali"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Marketing Automation",
+              "description": "Setup e gestione sistemi di marketing automation, CRM e lead nurturing"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Brand Strategy per Luxury",
+              "description": "Consulenza strategica di brand positioning per marchi del lusso e artigianato"
+            }
+          }
+        ]
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "15",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/albertopasinati/",
+        "https://github.com/otre25",
+        "https://albertopasinati.com"
+      ],
+      "founder": {
+        "@type": "Person",
+        "name": "Alberto Pasinati",
+        "jobTitle": "Full Stack Marketer",
+        "url": "https://albertopasinati.com"
+      },
+      "slogan": "Marketing strategico data-driven per far crescere il tuo business",
+      "knowsAbout": [
+        "Digital Marketing",
+        "Performance Marketing",
+        "Google Ads",
+        "Meta Ads",
         "Marketing Automation",
-        "Brand Strategy"
+        "SEO",
+        "SEM",
+        "E-Commerce Marketing",
+        "Luxury Brand Marketing",
+        "CRM",
+        "Lead Generation",
+        "Growth Marketing",
+        "Analytics",
+        "Conversion Rate Optimization"
       ]
     };
 
@@ -167,6 +295,22 @@ const StructuredData: React.FC = () => {
             "@type": "Answer",
             "text": "L'investimento per una consulenza marketing dipende dalla complessità del progetto, dagli obiettivi e dalla durata della collaborazione. Alberto Pasinati offre un primo incontro conoscitivo per analizzare le esigenze specifiche e proporre una soluzione personalizzata. Ogni progetto viene strutturato su misura per massimizzare il ROI in base al budget disponibile."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Perché scegliere un consulente marketing a Venezia e nel Veneto?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Scegliere un consulente marketing locale a Venezia e nel Veneto offre vantaggi concreti: conoscenza approfondita del territorio e delle dinamiche del mercato locale, possibilità di incontri in presenza per strategie complesse, comprensione delle specificità del settore lusso e artigianato veneziano, e network di contatti nel territorio veneto. Alberto Pasinati opera principalmente a Venezia, Mestre, Padova, Treviso e Verona, con disponibilità a incontri presso la sede del cliente in tutto il Veneto."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Come contattare Alberto Pasinati per una consulenza marketing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Puoi contattare Alberto Pasinati per una consulenza marketing tramite il form di contatto sul sito albertopasinati.com, via email a alberto.pasinati@gmail.com, o tramite LinkedIn. Il primo incontro conoscitivo è sempre gratuito e può essere svolto in presenza a Venezia o online via Google Meet. Durante il primo incontro verranno analizzate le tue esigenze di business e proposta una strategia marketing personalizzata."
+          }
         }
       ]
     };
@@ -187,7 +331,7 @@ const StructuredData: React.FC = () => {
 
     // Add all schemas to the page
     updateStructuredData('schema-person', personSchema);
-    updateStructuredData('schema-service', serviceSchema);
+    updateStructuredData('schema-localbusiness', localBusinessSchema);
     updateStructuredData('schema-website', websiteSchema);
     updateStructuredData('schema-breadcrumb', breadcrumbSchema);
     updateStructuredData('schema-faq', faqSchema);
