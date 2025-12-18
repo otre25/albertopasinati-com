@@ -4,6 +4,7 @@ import App from './App';
 import ErrorBoundary from './components/ErrorBoundary';
 import { ToastProvider } from './contexts/ToastContext';
 import { reportWebVitals } from './utils/reportWebVitals';
+import * as serviceWorkerRegistration from './utils/serviceWorkerRegistration';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -23,3 +24,14 @@ root.render(
 
 // Inizializza il tracking dei Web Vitals (LCP, INP, CLS, FCP, TTFB)
 reportWebVitals();
+
+// Registra il Service Worker per PWA
+serviceWorkerRegistration.register({
+  onSuccess: () => {
+    console.log('[PWA] App pronta per uso offline');
+  },
+  onUpdate: (registration) => {
+    console.log('[PWA] Nuova versione disponibile');
+    serviceWorkerRegistration.showUpdateNotification(registration);
+  },
+});
