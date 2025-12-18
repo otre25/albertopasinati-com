@@ -21,56 +21,7 @@
     <!-- Preload Critical Resources -->
     <link rel="preload" href="/alberto-hero-v2.webp" as="image" fetchpriority="high">
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              'off-white': '#f8f8f8',
-              'deep-black': '#1a1a1a',
-              'brand-yellow': '#FDBA3C',
-              'brand-dark': '#2D3436',
-              'brand-light': '#636e72',
-            },
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              display: ['Oswald', 'sans-serif'],
-            },
-            animation: {
-              'marquee': 'marquee 25s linear infinite',
-              'fade-in': 'fadeIn 1s ease-out forwards',
-              'ripple': 'ripple 0.6s ease-out',
-              'shimmer': 'shimmer 2s infinite',
-              'slide-in-right': 'slideInRight 0.3s ease-out',
-            },
-            keyframes: {
-              marquee: {
-                '0%': { transform: 'translateX(0%)' },
-                '100%': { transform: 'translateX(-100%)' },
-              },
-              fadeIn: {
-                '0%': { opacity: '0', transform: 'translateY(20px)' },
-                '100%': { opacity: '1', transform: 'translateY(0)' },
-              },
-              ripple: {
-                '0%': { transform: 'scale(0)', opacity: '1' },
-                '100%': { transform: 'scale(4)', opacity: '0' },
-              },
-              shimmer: {
-                '0%': { transform: 'translateX(-100%)' },
-                '100%': { transform: 'translateX(100%)' },
-              },
-              slideInRight: {
-                '0%': { transform: 'translateX(100%)', opacity: '0' },
-                '100%': { transform: 'translateX(0)', opacity: '1' },
-              }
-            }
-          },
-        },
-      }
-    </script>
+    <!-- Tailwind CSS (built locally via PostCSS + PurgeCSS) -->
     <!-- Google Fonts - Preload for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -83,7 +34,6 @@
     <!-- CDN Preconnect -->
     <link rel="preconnect" href="https://esm.sh">
     <link rel="preconnect" href="https://aistudiocdn.com">
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <!-- Preload CSS font file -->
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Oswald:wght@400;600;700&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
