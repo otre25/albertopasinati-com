@@ -4,6 +4,7 @@ import { Project } from '../types';
 import ProjectModal from './ProjectModal';
 import { useInView } from '../hooks/useInView';
 import ImageWithSkeleton from './ImageWithSkeleton';
+import ProjectsStructuredData from './ProjectsStructuredData';
 
 const projectsData: Project[] = [
   {
@@ -90,6 +91,9 @@ const Projects: React.FC = () => {
 
   return (
     <>
+      {/* Structured Data for Projects */}
+      <ProjectsStructuredData projects={projectsData} />
+
       {/* La Mia Esperienza Section - White Background */}
       <section
         ref={experienceView.ref as React.RefObject<HTMLElement>}
