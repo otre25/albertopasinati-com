@@ -3,6 +3,7 @@ import { X, Send, Loader2 } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { useToast } from '../contexts/ToastContext';
 import { EMAILJS_CONFIG } from '../config/emailjs';
+import { useSwipe } from '../hooks/useSwipe';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -38,6 +39,14 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Swipe down to close on mobile
+  const swipeHandlers = useSwipe({
+    onSwipedDown: () => {
+      onClose();
+    },
+    minSwipeDistance: 100,
+  });
 
   // Focus trap e gestione keyboard
   useEffect(() => {
@@ -194,7 +203,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-end md:items-center justify-center md:p-4 bg-black/70 backdrop-blur-sm"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -202,9 +211,18 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
     >
       <div
         ref={modalRef}
-        className="relative w-full max-w-2xl max-h-[90vh] overflow-auto bg-white rounded-sm shadow-2xl"
+        className={`relative w-full max-w-2xl max-h-[85vh] md:max-h-[90vh] overflow-auto bg-white shadow-2xl transition-transform duration-300 ${
+          isOpen ? 'translate-y-0' : 'translate-y-full'
+        } rounded-t-3xl md:rounded-sm`}
         onClick={(e) => e.stopPropagation()}
+        onTouchStart={swipeHandlers.onTouchStart}
+        onTouchMove={swipeHandlers.onTouchMove}
+        onTouchEnd={swipeHandlers.onTouchEnd}
       >
+        {/* Swipe indicator for mobile */}
+        <div className="md:hidden flex justify-center pt-3 pb-2">
+          <div className="w-12 h-1.5 bg-gray-300 rounded-full" aria-hidden="true"></div>
+        </div>
         {/* Close button */}
         <button
           ref={closeButtonRef}

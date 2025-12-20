@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { X, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Project } from '../types';
+import { useSwipe } from '../hooks/useSwipe';
 
 interface ProjectModalProps {
   project: Project;
@@ -16,6 +17,17 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose, o
   const modalRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const previousActiveElement = useRef<HTMLElement | null>(null);
+
+  // Swipe gestures for mobile navigation
+  const swipeHandlers = useSwipe({
+    onSwipedLeft: () => {
+      if (hasNext && onNext) onNext();
+    },
+    onSwipedRight: () => {
+      if (hasPrev && onPrev) onPrev();
+    },
+    minSwipeDistance: 50,
+  });
 
   // Focus trap e gestione keyboard
   useEffect(() => {
@@ -92,6 +104,9 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose, o
         ref={modalRef}
         className="relative w-full max-w-6xl max-h-[90vh] overflow-auto bg-white rounded-sm shadow-2xl"
         onClick={(e) => e.stopPropagation()}
+        onTouchStart={swipeHandlers.onTouchStart}
+        onTouchMove={swipeHandlers.onTouchMove}
+        onTouchEnd={swipeHandlers.onTouchEnd}
       >
         {/* Close button */}
         <button
