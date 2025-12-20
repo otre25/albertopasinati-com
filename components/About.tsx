@@ -1,13 +1,18 @@
 import React from 'react';
 import { Linkedin } from 'lucide-react';
 import { useInView } from '../hooks/useInView';
+import { useSectionTracking } from '../hooks/useConversionTracking';
 
 const About: React.FC = () => {
   const { ref, isInView } = useInView({ threshold: 0.2 });
+  const sectionRef = useSectionTracking('chi_sono', 0.5);
 
   return (
     <section
-      ref={ref as React.RefObject<HTMLElement>}
+      ref={(node) => {
+        (ref as React.MutableRefObject<HTMLElement | null>).current = node;
+        (sectionRef as React.MutableRefObject<HTMLElement | null>).current = node;
+      }}
       className="py-16 md:py-20 px-6 bg-white w-full"
       style={{
         opacity: isInView ? 1 : 0,

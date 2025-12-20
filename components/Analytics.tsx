@@ -75,6 +75,55 @@ export const trackFormSubmission = (formName: string) => {
   });
 };
 
+// Track scroll depth
+export const trackScrollDepth = (depth: number) => {
+  trackEvent('scroll_depth', {
+    depth_percentage: depth,
+    page_path: window.location.pathname,
+  });
+};
+
+// Track section visibility
+export const trackSectionView = (sectionName: string, timeVisible: number) => {
+  trackEvent('section_view', {
+    section_name: sectionName,
+    time_visible_seconds: Math.round(timeVisible),
+    page_path: window.location.pathname,
+  });
+};
+
+// Track user engagement
+export const trackEngagement = (engagementType: string, value?: string | number) => {
+  trackEvent('user_engagement', {
+    engagement_type: engagementType,
+    engagement_value: value,
+    page_path: window.location.pathname,
+  });
+};
+
+// Track conversion funnel step
+export const trackFunnelStep = (
+  funnelName: string,
+  stepName: string,
+  stepNumber: number,
+  additionalData?: Record<string, any>
+) => {
+  trackEvent('funnel_step', {
+    funnel_name: funnelName,
+    step_name: stepName,
+    step_number: stepNumber,
+    ...additionalData,
+  });
+};
+
+// Track time on page
+export const trackTimeOnPage = (seconds: number) => {
+  trackEvent('time_on_page', {
+    time_seconds: Math.round(seconds),
+    page_path: window.location.pathname,
+  });
+};
+
 // Analytics Component - Auto-tracks page views on route change
 const Analytics: React.FC = () => {
   const location = useLocation();

@@ -4,6 +4,7 @@ import About from '../components/About';
 import SkillsMarquee from '../components/SkillsMarquee';
 import SEO from '../components/SEO';
 import StructuredData from '../components/StructuredData';
+import { useConversionTracking } from '../hooks/useConversionTracking';
 
 // Lazy load componenti sotto fold per migliorare performance iniziale
 const Services = lazy(() => import('../components/Services'));
@@ -25,6 +26,9 @@ const SectionSkeleton = () => (
 );
 
 const HomePage: React.FC = () => {
+  // Initialize conversion tracking (scroll depth, time on page)
+  useConversionTracking();
+
   return (
     <>
       <SEO
