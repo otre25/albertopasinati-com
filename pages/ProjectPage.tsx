@@ -80,6 +80,8 @@ const ProjectPage: React.FC = () => {
         description={project.metaDescription}
         keywords={`${project.title.toLowerCase()}, ${project.category.toLowerCase()}, marketing manager, caso studio, ${project.services?.slice(0, 3).join(', ').toLowerCase()}`}
         canonicalUrl={`https://albertopasinati.com/portfolio/${project.slug}`}
+        ogImage={project.imageUrl}
+        ogType="article"
       />
 
       <article className="min-h-screen bg-white">

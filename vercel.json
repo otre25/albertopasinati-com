@@ -1,7 +1,15 @@
 {
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/portfolio/:slug",
+      "destination": "/portfolio/:slug/index.html"
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/privacy-policy/index.html"
+    },
+    {
+      "source": "/((?!portfolio|privacy-policy|assets|.*\\..*).*)",
       "destination": "/index.html"
     }
   ],

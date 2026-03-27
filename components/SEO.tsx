@@ -83,12 +83,31 @@ const SEO: React.FC<SEOProps> = ({
     // Canonical URL
     updateLinkTag('canonical', canonical);
 
+    // hreflang — dichiara la lingua principale del sito (it-IT)
+    const updateHreflang = (hreflang: string, href: string) => {
+      const selector = `link[rel="alternate"][hreflang="${hreflang}"]`;
+      let tag = document.querySelector(selector) as HTMLLinkElement;
+      if (!tag) {
+        tag = document.createElement('link');
+        tag.setAttribute('rel', 'alternate');
+        tag.setAttribute('hreflang', hreflang);
+        document.head.appendChild(tag);
+      }
+      tag.setAttribute('href', href);
+    };
+    updateHreflang('it-IT', canonical);
+    updateHreflang('it', canonical);
+    updateHreflang('x-default', canonical);
+
+    // OG image dimensions
+    updateMetaTag('og:image:width', '1200', true);
+    updateMetaTag('og:image:height', '630', true);
+
     // Additional SEO tags
     updateMetaTag('author', 'Alberto Pasinati');
     updateMetaTag('language', 'Italian');
-    updateMetaTag('revisit-after', '7 days');
 
-  }, [fullTitle, description, keywords, ogImage, ogType, canonical, imageUrl, noindex]);
+  }, [fullTitle, description, keywords, ogImage, ogType, canonical, imageUrl, noindex, siteUrl]);
 
   return null; // This component doesn't render anything
 };
