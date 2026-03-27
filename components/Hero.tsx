@@ -115,7 +115,7 @@ const Hero: React.FC = () => {
           </div>
 
           <div className="pl-6 border-l-4 border-brand-dark max-w-md">
-            <p className="text-lg text-stone-700 leading-relaxed font-medium">
+            <p className="hero-speakable text-lg text-stone-700 leading-relaxed font-medium">
               Ho guidato la strategia marketing di brand del lusso e retail scalando budget superiori a €1M/anno,
               15.000 lead qualificati e mercati EMEA. Metodo, dati e risultati misurabili.
             </p>

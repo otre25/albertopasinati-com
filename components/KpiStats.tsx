@@ -103,7 +103,7 @@ const KpiStats: React.FC = () => {
       className="bg-deep-black py-16 md:py-20 px-6 w-full"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
+        <div className="kpi-speakable text-center mb-12">
           <p className="text-brand-yellow font-display font-bold uppercase tracking-[0.25em] text-sm mb-3">
             I numeri parlano
           </p>

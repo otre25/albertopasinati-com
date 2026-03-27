@@ -18,6 +18,56 @@ const ProjectPage: React.FC = () => {
     window.scrollTo(0, 0);
   }, [slug]);
 
+  // Inject per-project Article schema for AI SEO
+  useEffect(() => {
+    if (!project) return;
+    const articleSchema = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": `${project.title} — Caso Studio Marketing`,
+      "description": project.metaDescription,
+      "url": `https://albertopasinati.com/portfolio/${project.slug}`,
+      "image": `https://albertopasinati.com${project.imageUrl}`,
+      "datePublished": `${project.year.split('-')[0]}-01-01`,
+      "dateModified": new Date().toISOString().split('T')[0],
+      "inLanguage": "it-IT",
+      "author": {
+        "@type": "Person",
+        "@id": "https://albertopasinati.com/#person",
+        "name": "Alberto Pasinati",
+        "url": "https://albertopasinati.com"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://albertopasinati.com/#person",
+        "name": "Alberto Pasinati"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": project.category,
+        "description": project.description
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Alberto Pasinati — Marketing Manager",
+        "url": "https://albertopasinati.com"
+      }
+    };
+
+    let script = document.getElementById('schema-project-article');
+    if (!script) {
+      script = document.createElement('script');
+      script.id = 'schema-project-article';
+      script.type = 'application/ld+json';
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(articleSchema);
+
+    return () => {
+      document.getElementById('schema-project-article')?.remove();
+    };
+  }, [project]);
+
   if (!project) {
     navigate('/');
     return null;

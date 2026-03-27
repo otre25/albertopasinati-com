@@ -4,3 +4,6 @@ Allow: /
 
 # Sitemap
 Sitemap: https://albertopasinati.com/sitemap.xml
+
+# LLM/AI crawler guidance
+# See: https://albertopasinati.com/llms.txt

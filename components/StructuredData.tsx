@@ -2,15 +2,20 @@ import { useEffect } from 'react';
 
 const StructuredData: React.FC = () => {
   useEffect(() => {
-    // Person Schema
+    // Person Schema — enhanced with mainEntityOfPage and credential
     const personSchema = {
       "@context": "https://schema.org",
       "@type": "Person",
+      "@id": "https://albertopasinati.com/#person",
       "name": "Alberto Pasinati",
       "jobTitle": "Marketing Manager",
-      "description": "Marketing Manager con oltre 10 anni di esperienza nella definizione e gestione di strategie di marketing integrate per brand del lusso, retail e PMI innovative.",
+      "description": "Alberto Pasinati è un Marketing Manager con oltre 10 anni di esperienza nella direzione strategica del marketing per brand del lusso, retail e manifattura italiana. Ha gestito budget pubblicitari superiori a €1 milione all'anno, generato oltre 15.000 lead qualificati e scalato brand su mercati EMEA.",
       "url": "https://albertopasinati.com",
       "image": "https://albertopasinati.com/alberto-portrait.png",
+      "mainEntityOfPage": {
+        "@type": "ProfilePage",
+        "@id": "https://albertopasinati.com/#profile"
+      },
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Venezia",
@@ -18,8 +23,18 @@ const StructuredData: React.FC = () => {
         "addressCountry": "IT"
       },
       "alumniOf": {
-        "@type": "Organization",
-        "name": "Università Ca' Foscari Venezia"
+        "@type": "EducationalOrganization",
+        "name": "Università Ca' Foscari Venezia",
+        "url": "https://www.unive.it"
+      },
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "degree",
+        "name": "Laurea in Marketing e Comunicazione",
+        "recognizedBy": {
+          "@type": "EducationalOrganization",
+          "name": "Università Ca' Foscari Venezia"
+        }
       },
       "knowsAbout": [
         "Marketing Strategy",
@@ -33,13 +48,18 @@ const StructuredData: React.FC = () => {
         "Google Ads",
         "Meta Ads",
         "TikTok Ads",
+        "LinkedIn Ads",
         "Web Analytics",
+        "Google Analytics 4",
         "Business Intelligence",
         "CRM",
+        "HubSpot",
         "Lead Generation",
         "Team Leadership",
         "Budget Planning",
-        "Event Marketing"
+        "Event Marketing",
+        "International Trade Shows",
+        "Content Strategy"
       ],
       "sameAs": [
         "https://www.linkedin.com/in/albertopasinati/",
@@ -122,6 +142,66 @@ const StructuredData: React.FC = () => {
       ]
     };
 
+    // ProfilePage Schema — Google-recommended for personal/about pages (AI SEO)
+    const profilePageSchema = {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "@id": "https://albertopasinati.com/#profile",
+      "name": "Alberto Pasinati — Marketing Manager | Portfolio Professionale",
+      "url": "https://albertopasinati.com",
+      "dateCreated": "2024-01-01",
+      "dateModified": new Date().toISOString().split('T')[0],
+      "inLanguage": "it-IT",
+      "mainEntity": {
+        "@id": "https://albertopasinati.com/#person"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [".hero-speakable", ".about-speakable", ".kpi-speakable"]
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://albertopasinati.com" }
+        ]
+      }
+    };
+
+    // HowTo Schema — il metodo di lavoro (ottimizzato per AI engines)
+    const howToSchema = {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "Come Alberto Pasinati imposta una strategia di marketing",
+      "description": "Il processo in 4 fasi per definire e implementare una strategia marketing data-driven che genera risultati misurabili.",
+      "author": { "@id": "https://albertopasinati.com/#person" },
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Analisi e Diagnosi",
+          "text": "Analisi del mercato, dei competitor e del posizionamento attuale del brand. Identificazione delle opportunità di crescita e dei KPI prioritari."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Strategia e Roadmap",
+          "text": "Definizione della strategia di marketing integrata con obiettivi SMART, piano dei canali (digitale e offline), budget allocation e timeline operativa."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Esecuzione Multi-Canale",
+          "text": "Gestione operativa di campagne Google Ads, Meta Ads, content marketing, SEO, eventi fieristici internazionali e PR. Coordinamento team interno e agenzie esterne."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Misurazione e Ottimizzazione",
+          "text": "Monitoraggio continuo tramite GA4, dashboard BI e report periodici. Ottimizzazione in tempo reale basata sui dati per massimizzare il ROI."
+        }
+      ]
+    };
+
     // Website Schema
     const websiteSchema = {
       "@context": "https://schema.org",
@@ -200,7 +280,39 @@ const StructuredData: React.FC = () => {
           "name": "Qual è l'approccio di Alberto Pasinati alla strategia di marketing?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Alberto Pasinati adotta un approccio data-driven e integrato: parte dall'analisi del mercato e del posizionamento competitivo, definisce obiettivi misurabili, coordina l'esecuzione su tutti i canali (digital e offline) e monitora costantemente i risultati per ottimizzare in tempo reale. Ogni strategia è costruita intorno agli obiettivi di business, non attorno ai tool."
+            "text": "Alberto Pasinati adotta un approccio data-driven e integrato in 4 fasi: analisi di mercato e diagnosi del posizionamento, definizione della strategia e roadmap operativa, esecuzione multi-canale (Google Ads, Meta Ads, SEO, eventi), monitoraggio e ottimizzazione continua con GA4 e dashboard BI. Ogni strategia è costruita intorno agli obiettivi di business, non attorno ai tool."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Alberto Pasinati è disponibile per nuove opportunità?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì, Alberto Pasinati è aperto a nuove opportunità professionali come Marketing Manager o Head of Marketing, in particolare per aziende del lusso, retail, manifattura o tech che cercano un professionista con visione strategica a 360° e comprovata capacità di generare risultati misurabili."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Dove si trova Alberto Pasinati e in quali mercati ha operato?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Alberto Pasinati è basato a Venezia, Veneto, Italia. Ha operato principalmente su mercati italiani ed europei (EMEA), con esperienza in eventi internazionali come il Salone del Mobile di Milano, Maison&Objet di Parigi e fiere di settore B2B. Gestisce strategie marketing sia per il mercato italiano che per l'export."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quali strumenti usa Alberto Pasinati per il marketing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Alberto Pasinati utilizza un stack completo di strumenti marketing: Google Ads e Google Analytics 4 per il paid search e il tracking, Meta Ads e TikTok Ads per il social advertising, HubSpot per il CRM e la marketing automation, Shopify e WordPress per l'e-commerce, Semrush per la SEO, Microsoft Clarity per l'analisi comportamentale e LinkedIn Ads per il B2B."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cosa distingue un Marketing Manager da un consulente di marketing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Un Marketing Manager è un professionista interno che guida la strategia di marketing come parte del team di un'azienda, con responsabilità diretta sul budget, sul team e sui risultati di business a lungo termine. Un consulente opera tipicamente su progetti specifici e limitati nel tempo. Alberto Pasinati lavora come Marketing Manager integrando visione strategica, esecuzione operativa e leadership del team."
           }
         }
       ]
@@ -222,6 +334,8 @@ const StructuredData: React.FC = () => {
     if (oldLocalBusiness) oldLocalBusiness.remove();
 
     updateStructuredData('schema-person', personSchema);
+    updateStructuredData('schema-profile-page', profilePageSchema);
+    updateStructuredData('schema-how-to', howToSchema);
     updateStructuredData('schema-professional-service', professionalServiceSchema);
     updateStructuredData('schema-website', websiteSchema);
     updateStructuredData('schema-breadcrumb', breadcrumbSchema);
