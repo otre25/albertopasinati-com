@@ -57,7 +57,7 @@ const Manifesto: React.FC = () => {
               <span className="text-brand-yellow">Marketing.</span>
             </h2>
             <p className="text-gray-400 text-sm mt-5 max-w-sm leading-relaxed">
-              Marketing Manager con visione strategica a 360°. Disponibile per sfide ambiziose, nuovi ruoli e confronti professionali.
+              Marketing Manager con visione strategica e metodo operativo. Disponibile per nuovi ruoli e per parlare di marketing con chi fa le cose sul serio.
             </p>
           </div>
           <div className="flex flex-col gap-4">
@@ -159,7 +159,7 @@ const Manifesto: React.FC = () => {
 
       {/* Bottom Bar */}
       <div className="max-w-7xl mx-auto px-6 py-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
-        <p>© {currentYear} Alberto Pasinati — Full Stack Marketer</p>
+        <p>© {currentYear} Alberto Pasinati — Marketing Manager</p>
         <div className="flex gap-6">
           <a href="/privacy-policy" className="hover:text-brand-yellow transition-colors uppercase tracking-wider">
             Privacy Policy

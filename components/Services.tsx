@@ -45,8 +45,8 @@ const serviceGroups: ServiceGroup[] = [
         color: 'orange',
       },
       {
-        title: 'Web Design & Landing Page Optimization',
-        description: 'Siti web e landing page costruiti per convertire, non solo per essere visivamente curati. UX/UI orientata agli obiettivi di business, con WordPress, Shopify, Webflow e integrazione CRM per trasformare il traffico in lead.',
+        title: 'Digital Presence & Conversion Strategy',
+        description: 'La presenza digitale è un asset di business, non un biglietto da visita. Supervisiono e indirizzo la strategia di siti web, landing page e funnel di conversione — con WordPress, Shopify e Webflow — affinché ogni touchpoint trasformi il traffico in opportunità concrete.',
         icon: Monitor,
         color: 'orange',
       },

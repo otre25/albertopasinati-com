@@ -116,8 +116,9 @@ const Hero: React.FC = () => {
 
           <div className="pl-6 border-l-4 border-brand-dark max-w-md">
             <p className="hero-speakable text-lg text-stone-700 leading-relaxed font-medium">
-              Ho guidato la strategia marketing di brand del lusso e retail scalando budget superiori a €1M/anno,
-              15.000 lead qualificati e mercati EMEA. Metodo, dati e risultati misurabili.
+              Ho costruito e gestito la strategia marketing di brand del lusso e retail —
+              da €1M+/anno di budget pubblicitario a 15.000 lead qualificati, fino ai mercati EMEA.
+              Visione, dati e accountability.
             </p>
           </div>
 

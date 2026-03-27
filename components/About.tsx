@@ -42,16 +42,16 @@ const About: React.FC = () => {
                 Ho gestito budget marketing superiori a 1M€ generando oltre 15.000 lead qualificati per aziende come Wave Murano Glass, Store Cucine e Il Fanale Group.
               </p>
               <p className="pl-6">
-                La mia expertise spazia dalla strategia di posizionamento alla gestione operativa di campagne <span className="bg-brand-yellow/30 px-1">Google Ads, Meta e TikTok</span>, con focus costante sul ROI e sulla crescita sostenibile del business.
+                Il mio lavoro va dalla definizione della strategia di posizionamento alla gestione operativa delle campagne — <span className="bg-brand-yellow/30 px-1">Google Ads, Meta e TikTok</span> — con un focus costante sul ROI e su ogni euro che entra nel funnel.
               </p>
               <p className="pl-6">
-                Laureato in <span className="bg-brand-yellow/30 px-1">Marketing e Comunicazione all'Università Ca' Foscari di Venezia</span>, la mia formazione classica mi ha fornito visione strategica e capacità analitica che applico quotidianamente nella gestione di progetti complessi e team multidisciplinari.
+                Laureato in <span className="bg-brand-yellow/30 px-1">Marketing e Comunicazione all'Università Ca' Foscari di Venezia</span>, ho affinato nel tempo un metodo che mette insieme analisi dei dati, intuizione di brand e coordinamento di team.
               </p>
               <p className="pl-6">
-                Esploratore di nuovi mondi e differenti culture, ho vissuto in Australia, viaggiato e studiato in contesti di respiro internazionale come la Venice International University. Questa apertura mentale mi permette di approcciare progetti con prospettiva globale.
+                Non gestisco solo campagne: definisco priorità, alloco budget, scelgo i partner giusti e tengo insieme visione e operatività. È questa capacità di muoversi su più livelli che distingue un Marketing Manager da uno specialista di canale.
               </p>
               <p className="pl-6">
-                In ambito professionale ho ricoperto diversi ruoli nel Marketing per aziende del settore <span className="font-bold text-deep-black">luxury, retail e manifattura</span>, arrivando negli ultimi 8 anni a gestire tutte le attività di Comunicazione Aziendale come Marketing Manager.
+                Ho guidato il marketing di brand del settore <span className="font-bold text-deep-black">luxury, retail e manifattura</span> come Marketing Manager a tempo pieno, con responsabilità diretta su strategia, team, budget e risultati misurabili.
               </p>
             </div>
 
