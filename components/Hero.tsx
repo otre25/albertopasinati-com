@@ -195,6 +195,8 @@ const Hero: React.FC = () => {
                 <ImageWithSkeleton
                   src="/alberto-hero-v2.webp"
                   alt="Alberto Pasinati - Marketing Manager e Full Stack Marketer"
+                  width={600}
+                  height={600}
                   className="w-full h-full object-cover hover:scale-105 transition-all duration-700"
                   priority
                 />

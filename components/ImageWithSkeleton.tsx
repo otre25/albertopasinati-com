@@ -4,10 +4,12 @@ interface ImageWithSkeletonProps {
   src: string;
   alt: string;
   className?: string;
-  priority?: boolean; // Se true, l'immagine viene caricata con priorità (no lazy loading)
+  priority?: boolean;
+  width?: number;
+  height?: number;
 }
 
-const ImageWithSkeleton: React.FC<ImageWithSkeletonProps> = ({ src, alt, className = '', priority = false }) => {
+const ImageWithSkeleton: React.FC<ImageWithSkeletonProps> = ({ src, alt, className = '', priority = false, width, height }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
@@ -23,6 +25,9 @@ const ImageWithSkeleton: React.FC<ImageWithSkeletonProps> = ({ src, alt, classNa
       <img
         src={src}
         alt={alt}
+        width={width}
+        height={height}
+        decoding="async"
         className={`${className} ${isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`}
         onLoad={() => setIsLoaded(true)}
         loading={priority ? 'eager' : 'lazy'}

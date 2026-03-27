@@ -73,7 +73,7 @@ const KpiItem: React.FC<{ kpi: Kpi; isActive: boolean; index: number }> = ({ kpi
 
   return (
     <div
-      className="flex flex-col items-center text-center px-6 py-10 border-b border-white/10 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0"
+      className="flex flex-col items-center text-center px-6 py-10 bg-deep-black"
       style={{
         opacity: isActive ? 1 : 0,
         transform: isActive ? 'translateY(0)' : 'translateY(24px)',
@@ -113,7 +113,7 @@ const KpiStats: React.FC = () => {
           <div className="h-1 w-16 bg-brand-yellow mx-auto mt-6"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 border border-white/10 rounded-sm overflow-hidden">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 rounded-sm overflow-hidden">
           {kpis.map((kpi, index) => (
             <KpiItem key={index} kpi={kpi} isActive={isInView} index={index} />
           ))}

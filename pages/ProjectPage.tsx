@@ -146,6 +146,8 @@ const ProjectPage: React.FC = () => {
           <ImageWithSkeleton
             src={project.imageUrl}
             alt={`${project.title} — ${project.category} | Alberto Pasinati Marketing Manager`}
+            width={1600}
+            height={700}
             className="w-full h-full object-cover"
           />
         </div>

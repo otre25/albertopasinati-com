@@ -131,6 +131,8 @@ const Projects: React.FC = () => {
                   <ImageWithSkeleton
                     src={project.imageUrl}
                     alt={`${project.title} - ${project.category}`}
+                    width={800}
+                    height={600}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-brand-dark/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
