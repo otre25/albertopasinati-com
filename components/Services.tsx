@@ -3,79 +3,152 @@ import { LayoutDashboard, Coins, Megaphone, PieChart, Monitor, Calendar, Users, 
 import { Service } from '../types';
 import { useInView } from '../hooks/useInView';
 
-const servicesData: Service[] = [
+interface ServiceGroup {
+  area: string;
+  tag: string;
+  items: Service[];
+}
+
+const serviceGroups: ServiceGroup[] = [
   {
-    title: 'Marketing Strategy & Posizionamento',
-    description: 'Definizione di strategie di marketing data-driven per brand del lusso e PMI innovative. Analisi competitiva, posizionamento, identificazione target audience e roadmap operativa con KPI misurabili e focus sul ROI.',
-    icon: LayoutDashboard,
-    color: 'orange',
+    area: 'Strategia',
+    tag: '01',
+    items: [
+      {
+        title: 'Marketing Strategy & Posizionamento',
+        description: 'Definizione di strategie di marketing data-driven per brand del lusso e PMI innovative. Analisi competitiva, posizionamento, identificazione target audience e roadmap operativa con KPI misurabili e focus sul ROI.',
+        icon: LayoutDashboard,
+        color: 'orange',
+      },
+      {
+        title: 'Budget Planning & Ottimizzazione ROI',
+        description: 'Pianificazione e allocazione budget marketing per massimizzare il ritorno sull\'investimento. Esperienza nella gestione di budget superiori a 1M€/anno con focus su performance marketing e riduzione costi di acquisizione cliente (CAC).',
+        icon: Coins,
+        color: 'orange',
+      },
+    ],
   },
   {
-    title: 'Budget Planning & Ottimizzazione ROI',
-    description: 'Pianificazione e allocazione budget marketing per massimizzare il ritorno sull\'investimento. Esperienza nella gestione di budget superiori a 1M€ con focus su performance marketing e riduzione costi di acquisizione cliente (CAC).',
-    icon: Coins,
-    color: 'orange',
+    area: 'Digital & Performance',
+    tag: '02',
+    items: [
+      {
+        title: 'Performance Marketing Multi-Canale',
+        description: 'Ideazione, implementazione e gestione campagne pubblicitarie Google Ads (Search, Display, Shopping), Meta (Facebook/Instagram), TikTok e LinkedIn Ads. Expertise in advertising offline (OOH, stampa, radio) per brand del lusso.',
+        icon: Megaphone,
+        color: 'orange',
+      },
+      {
+        title: 'Web Analytics & Business Intelligence',
+        description: 'Implementazione e monitoraggio performance attraverso Google Analytics 4, MS Clarity, Yandex Metrica e piattaforme BI personalizzate. Analisi comportamento utenti, conversion funnel optimization, attribution modeling e reportistica avanzata.',
+        icon: PieChart,
+        color: 'orange',
+      },
+      {
+        title: 'Web Design & Landing Page Optimization',
+        description: 'Progettazione e sviluppo siti web ed e-commerce con focus su UX/UI. Esperienza con CMS WordPress, Shopify, WooCommerce e piattaforme no-code (Webflow, Glide). Landing page ottimizzate per lead generation con integrazione CRM e marketing automation.',
+        icon: Monitor,
+        color: 'orange',
+      },
+    ],
   },
   {
-    title: 'Performance Marketing Multi-Canale',
-    description: 'Ideazione, implementazione e gestione campagne pubblicitarie Google Ads (Search, Display, Shopping), Meta (Facebook/Instagram), TikTok e LinkedIn Ads. Expertise in advertising offline (OOH, stampa, radio) per brand del lusso.',
-    icon: Megaphone,
-    color: 'orange',
-  },
-  {
-    title: 'Web Analytics & Business Intelligence',
-    description: 'Implementazione e monitoraggio performance attraverso Google Analytics 4, MS Clarity, Yandex Metrica e piattaforme BI personalizzate. Analisi comportamento utenti, conversion funnel optimization, attribution modeling e reportistica avanzata per decision-making basato sui dati.',
-    icon: PieChart,
-    color: 'orange',
-  },
-  {
-    title: 'Web Design & Landing Page Optimization',
-    description: 'Progettazione e sviluppo siti web ed e-commerce con focus su UX/UI. Esperienza con CMS WordPress, Shopify, WooCommerce e piattaforme no-code (Webflow, Glide). Realizzazione landing page ottimizzate per lead generation con integrazione CRM, email marketing e marketing automation.',
-    icon: Monitor,
-    color: 'orange',
-  },
-  {
-    title: 'Event Marketing & Gestione Fiere',
-    description: 'Organizzazione e gestione eventi corporate, inaugurazioni store e partecipazione fiere internazionali di settore (Salone del Mobile Milano, Maison&Objet Parigi, Architect&Work). Coordinamento logistico end-to-end e gestione stakeholder.',
-    icon: Calendar,
-    color: 'orange',
-  },
-  {
-    title: 'Team Leadership & Project Management',
-    description: 'Coordinamento team marketing interni e gestione progetti complessi. Esperienza nella direzione di risorse junior e senior, collaboratori esterni, agenzie creative e fornitori tech. Focus su comunicazione efficace, delega strategica, sviluppo competenze e raggiungimento obiettivi.',
-    icon: Users,
-    color: 'orange',
-  },
-  {
-    title: 'Gestione Fornitori & Partnership',
-    description: 'Negoziazione e gestione rapporti con fornitori, agenzie di comunicazione, partner tecnologici e media. Definizione accordi commerciali, contract management e ottimizzazione costi per massimizzare l\'efficienza operativa.',
-    icon: Handshake,
-    color: 'orange',
+    area: 'Management',
+    tag: '03',
+    items: [
+      {
+        title: 'Event Marketing & Gestione Fiere',
+        description: 'Organizzazione e gestione eventi corporate, inaugurazioni store e partecipazione fiere internazionali (Salone del Mobile Milano, Maison&Objet Parigi, Architect&Work). Coordinamento logistico end-to-end e gestione stakeholder.',
+        icon: Calendar,
+        color: 'orange',
+      },
+      {
+        title: 'Team Leadership & Project Management',
+        description: 'Coordinamento team marketing interni e gestione progetti complessi. Direzione di risorse junior e senior, collaboratori esterni, agenzie creative e fornitori tech. Focus su comunicazione efficace, delega strategica e raggiungimento obiettivi.',
+        icon: Users,
+        color: 'orange',
+      },
+      {
+        title: 'Gestione Fornitori & Partnership',
+        description: 'Negoziazione e gestione rapporti con fornitori, agenzie di comunicazione, partner tecnologici e media. Definizione accordi commerciali, contract management e ottimizzazione costi per massimizzare l\'efficienza operativa.',
+        icon: Handshake,
+        color: 'orange',
+      },
+    ],
   },
 ];
 
+const ServiceRow: React.FC<{
+  service: Service;
+  globalIndex: number;
+  isInView: boolean;
+}> = ({ service, globalIndex, isInView }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div
+      className="group border-t border-stone-200 last:border-b cursor-pointer"
+      style={{
+        opacity: isInView ? 1 : 0,
+        transform: isInView ? 'translateX(0)' : 'translateX(-20px)',
+        transition: `opacity 0.5s ease-out ${globalIndex * 0.06}s, transform 0.5s ease-out ${globalIndex * 0.06}s`,
+      }}
+      onClick={() => setIsOpen(!isOpen)}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setIsOpen(!isOpen); } }}
+      role="button"
+      tabIndex={0}
+      aria-expanded={isOpen}
+      aria-label={service.title}
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      <div className="flex items-center gap-6 py-5 md:py-6 px-2">
+        {/* Icon */}
+        <div className="w-10 h-10 shrink-0 rounded-full bg-stone-100 group-hover:bg-brand-yellow flex items-center justify-center transition-all duration-300">
+          <service.icon size={18} strokeWidth={1.5} className="text-brand-dark group-hover:text-white transition-colors duration-300" />
+        </div>
+
+        {/* Title */}
+        <h3 className="flex-1 text-lg md:text-2xl font-display font-bold uppercase text-brand-dark group-hover:text-brand-yellow transition-colors duration-300 leading-tight">
+          {service.title}
+        </h3>
+
+        {/* Toggle indicator */}
+        <span className="shrink-0 w-8 h-8 flex items-center justify-center text-stone-400 group-hover:text-brand-yellow transition-all duration-300 text-xl font-light">
+          {isOpen ? '−' : '+'}
+        </span>
+      </div>
+
+      {/* Description — slide in */}
+      <div
+        className="overflow-hidden transition-all duration-400 ease-in-out"
+        style={{ maxHeight: isOpen ? '200px' : '0px' }}
+      >
+        <p className="pb-6 px-2 pl-16 text-stone-600 leading-relaxed text-sm md:text-base">
+          {service.description}
+        </p>
+      </div>
+    </div>
+  );
+};
+
 const Services: React.FC = () => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const { ref, isInView } = useInView({ threshold: 0.1 });
+  const { ref, isInView } = useInView({ threshold: 0.05 });
+  let globalIndex = 0;
 
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
-      className="py-16 md:py-20 px-6 bg-off-white w-full relative overflow-hidden"
+      className="py-16 md:py-20 px-6 bg-off-white w-full"
       style={{
         opacity: isInView ? 1 : 0,
-        transform: isInView ? 'translateY(0)' : 'translateY(30px)',
-        transition: 'opacity 0.8s ease-out, transform 0.8s ease-out'
+        transition: 'opacity 0.6s ease-out',
       }}
     >
-      {/* Background decorative elements */}
-      <div className="absolute top-20 left-0 w-96 h-96 bg-brand-yellow/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 right-0 w-96 h-96 bg-brand-yellow/5 rounded-full blur-3xl"></div>
-
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto">
 
         {/* Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 mb-12 md:mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 mb-14 md:mb-20">
           <div className="lg:col-span-5">
             <h2 className="text-6xl md:text-8xl font-display font-black uppercase leading-[0.85]">
               Di Cosa<br />
@@ -85,55 +158,35 @@ const Services: React.FC = () => {
           </div>
           <div className="lg:col-span-7 flex items-center">
             <p className="text-xl text-stone-700 leading-relaxed border-l-4 border-brand-yellow pl-6">
-              Competenze end-to-end che spaziano dalla definizione strategica all'esecuzione operativa di campagne marketing integrate. Approccio data-driven con focus costante su performance, ROI e crescita sostenibile del business.
+              Dalla definizione della strategia alla gestione operativa: un approccio a 360° che unisce visione di business, esecuzione data-driven e leadership di team.
             </p>
           </div>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {servicesData.map((service, index) => (
-            <div
-              key={index}
-              role="article"
-              tabIndex={0}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              onFocus={() => setHoveredIndex(index)}
-              onBlur={() => setHoveredIndex(null)}
-              className="bg-white p-8 rounded-sm transition-all duration-500 border-b-4 border-transparent hover:border-brand-yellow focus:border-brand-yellow group relative overflow-hidden cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:ring-offset-2"
-              style={{
-                transform: hoveredIndex === index ? 'translateY(-8px) scale(1.02)' : 'translateY(0) scale(1)',
-                boxShadow: hoveredIndex === index ? '0 20px 40px rgba(0,0,0,0.1)' : '0 4px 6px rgba(0,0,0,0.05)',
-              }}
-              aria-label={service.title}
-            >
-              {/* Animated background on hover */}
-              <div
-                className="absolute inset-0 bg-gradient-to-br from-brand-yellow/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              ></div>
+        {/* Groups */}
+        <div className="space-y-12 md:space-y-16">
+          {serviceGroups.map((group) => (
+            <div key={group.tag} className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8">
 
-              <div className="relative z-10">
-                <div
-                  className="w-14 h-14 rounded-full bg-brand-yellow/20 flex items-center justify-center mb-6 text-brand-dark group-hover:bg-brand-yellow group-hover:text-white transition-all duration-500"
-                  style={{
-                    transform: hoveredIndex === index ? 'rotate(360deg) scale(1.1)' : 'rotate(0deg) scale(1)',
-                  }}
-                >
-                  <service.icon size={28} strokeWidth={1.5} />
-                </div>
-
-                <h3 className="text-xl font-display font-bold mb-3 text-brand-dark uppercase tracking-wide group-hover:text-brand-yellow transition-colors duration-300">
-                  {service.title}
-                </h3>
-                <p className="text-stone-700 leading-relaxed text-sm">
-                  {service.description}
-                </p>
+              {/* Group label — sticky sidebar */}
+              <div className="lg:col-span-3 flex lg:flex-col lg:pt-5 items-center lg:items-start gap-3">
+                <span className="font-mono text-xs text-gray-400 uppercase tracking-widest">{group.tag}</span>
+                <h3 className="font-display font-black text-2xl md:text-3xl uppercase text-deep-black">{group.area}</h3>
               </div>
 
-              {/* Number badge */}
-              <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-stone-100 text-stone-600 flex items-center justify-center text-xs font-bold group-hover:bg-brand-yellow group-hover:text-white transition-all duration-300">
-                {String(index + 1).padStart(2, '0')}
+              {/* Service rows */}
+              <div className="lg:col-span-9">
+                {group.items.map((service) => {
+                  const idx = globalIndex++;
+                  return (
+                    <ServiceRow
+                      key={service.title}
+                      service={service}
+                      globalIndex={idx}
+                      isInView={isInView}
+                    />
+                  );
+                })}
               </div>
             </div>
           ))}

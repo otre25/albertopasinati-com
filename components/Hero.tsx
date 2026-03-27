@@ -82,13 +82,21 @@ const Hero: React.FC = () => {
   return (
     <section className="relative min-h-[600px] md:min-h-[calc(100vh-80px)] py-12 px-6 max-w-7xl mx-auto flex flex-col justify-center overflow-hidden">
 
-      {/* Abstract Background Element */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-b from-gray-100 to-transparent -z-10 skew-x-12 opacity-50"></div>
+      {/* Dot grid background */}
+      <div
+        className="absolute inset-0 -z-10 opacity-[0.035]"
+        style={{
+          backgroundImage: 'radial-gradient(circle, #1a1a1a 1.5px, transparent 1.5px)',
+          backgroundSize: '28px 28px',
+        }}
+      />
+      {/* Gradient fade on edges */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-white via-transparent to-white pointer-events-none" />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+
         {/* Text Content */}
-        <div className="relative z-10 order-2 lg:order-1">
+        <div className="relative z-10 order-1 lg:order-1">
           {/* Hidden H1 for SEO */}
           <h1 className="sr-only">Alberto Pasinati - Full Stack Marketer e Marketing Manager</h1>
 
@@ -113,7 +121,7 @@ const Hero: React.FC = () => {
             </p>
           </div>
 
-          <div className="mt-10">
+          <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <a
               href="#portfolio"
               onClick={(e) => {
@@ -142,12 +150,21 @@ const Hero: React.FC = () => {
                 className="relative z-10 transition-transform duration-300 group-hover:translate-x-1"
               />
             </a>
+            <a
+              href="https://www.linkedin.com/in/albertopasinati/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group text-sm font-bold text-stone-500 hover:text-brand-yellow transition-colors duration-300 flex items-center gap-1.5 focus:outline-none focus:ring-4 focus:ring-brand-yellow/50 rounded-sm"
+            >
+              <span>LinkedIn Profile</span>
+              <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5" />
+            </a>
           </div>
         </div>
 
         {/* Hero Image / Graphic */}
-        <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end">
-           <div className="relative w-full max-w-md aspect-square flex items-center justify-center">
+        <div className="relative order-2 lg:order-2 flex justify-center lg:justify-end">
+           <div className="relative w-full max-w-[260px] sm:max-w-sm md:max-w-md aspect-square flex items-center justify-center">
               {/* Concentric Yellow Semi-Circles with Movement */}
               <div className="absolute inset-0 flex items-center justify-center">
                 {/* Inner semi-circle - bottom right */}

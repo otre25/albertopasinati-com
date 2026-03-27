@@ -186,20 +186,30 @@ const Projects: React.FC = () => {
                   />
                   <div className="absolute inset-0 bg-brand-dark/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
+                  {/* Year badge */}
+                  <div className="absolute top-4 left-4 bg-deep-black/80 text-white text-xs font-mono font-bold px-3 py-1 rounded-sm backdrop-blur-sm">
+                    {project.year}
+                  </div>
+
                   {/* Overlay Icon */}
                   <div className="absolute bottom-6 right-6 bg-brand-yellow text-black p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0 shadow-lg">
                     <ArrowUpRight size={24} />
                   </div>
                 </div>
 
-                <div className="flex justify-between items-start border-t-2 border-transparent group-hover:border-brand-yellow pt-4 transition-colors">
-                  <div>
-                    <h3 className="text-3xl font-display font-bold uppercase mb-1">{project.title}</h3>
-                    <p className="font-mono text-xs text-gray-500 uppercase tracking-wider">{project.category}</p>
+                <div className="border-t-2 border-transparent group-hover:border-brand-yellow pt-4 transition-colors">
+                  <div className="flex justify-between items-start mb-2">
+                    <div>
+                      <h3 className="text-3xl font-display font-bold uppercase mb-1">{project.title}</h3>
+                      <p className="font-mono text-xs text-gray-500 uppercase tracking-wider">{project.category}</p>
+                    </div>
+                    <span className="font-display font-bold text-gray-300 text-2xl group-hover:text-brand-dark transition-colors shrink-0 ml-4">
+                      {project.number}
+                    </span>
                   </div>
-                  <span className="font-display font-bold text-gray-300 text-2xl group-hover:text-brand-dark transition-colors">
-                    {project.number}
-                  </span>
+                  <p className="text-stone-500 text-sm leading-relaxed line-clamp-2 mt-2">
+                    {project.description}
+                  </p>
                 </div>
               </div>
             ))}

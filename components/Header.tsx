@@ -23,7 +23,7 @@ const Header: React.FC = () => {
     { label: 'CHI SONO', id: 'chi-sono' },
     { label: 'COSA FACCIO', id: 'cosa-faccio' },
     { label: 'PORTFOLIO', id: 'portfolio' },
-    { label: 'PERSONAL', id: 'personal' },
+    { label: 'LAB', id: 'personal' },
   ];
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, id: string) => {

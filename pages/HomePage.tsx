@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import Hero from '../components/Hero';
 import About from '../components/About';
+import KpiStats from '../components/KpiStats';
 import SkillsMarquee from '../components/SkillsMarquee';
 import SEO from '../components/SEO';
 import StructuredData from '../components/StructuredData';
@@ -32,9 +33,9 @@ const HomePage: React.FC = () => {
   return (
     <>
       <SEO
-        title="Alberto Pasinati | Full Stack Marketer"
-        description="Marketing Manager specializzato in strategie digital e offline per brand del lusso e PMI innovative. Oltre 10 anni di esperienza in performance marketing, marketing automation e crescita del fatturato."
-        keywords="marketing manager, full stack marketer, digital marketing, performance marketing, marketing automation, brand strategy, SEO, e-commerce, Venice, Venezia, Store Cucine, Wave Murano Glass, Il Fanale"
+        title="Marketing Manager | Alberto Pasinati — Luxury & Digital"
+        description="10+ anni come Marketing Manager: €1M+/anno gestiti, 15K lead, brand luxury e retail scalati. Strategia a 360° — dalla campagna al team. Scopri il portfolio."
+        keywords="marketing manager venezia, marketing manager veneto, marketing manager luxury brand, digital marketing manager italia, full stack marketer portfolio, performance marketing manager, brand strategy luxury, marketing manager esperienza, google ads manager, meta ads specialist, marketing manager e-commerce"
         ogImage="/alberto-portrait-og.webp"
       />
       <StructuredData />
@@ -45,6 +46,7 @@ const HomePage: React.FC = () => {
         <section id="chi-sono">
           <About />
         </section>
+        <KpiStats />
         <SkillsMarquee />
         <Suspense fallback={<SectionSkeleton />}>
           <section id="cosa-faccio">

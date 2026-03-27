@@ -162,13 +162,7 @@ const ProjectsStructuredData: React.FC<ProjectsStructuredDataProps> = ({ project
         "copyrightYear": project.year.includes('-')
           ? parseInt(project.year.split('-')[0])
           : parseInt(project.year),
-        "aggregateRating": project.client ? {
-          "@type": "AggregateRating",
-          "ratingValue": "5",
-          "reviewCount": "1",
-          "bestRating": "5",
-          "worstRating": "1"
-        } : undefined
+        "aggregateRating": undefined
       };
 
       // Create or update script tag for this project

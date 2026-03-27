@@ -8,13 +8,13 @@ const StructuredData: React.FC = () => {
       "@type": "Person",
       "name": "Alberto Pasinati",
       "jobTitle": "Marketing Manager",
-      "description": "Full Stack Marketer specializzato in strategie digital e offline per brand del lusso e PMI innovative",
+      "description": "Marketing Manager con oltre 10 anni di esperienza nella definizione e gestione di strategie di marketing integrate per brand del lusso, retail e PMI innovative.",
       "url": "https://albertopasinati.com",
       "image": "https://albertopasinati.com/alberto-portrait.png",
-      "email": "alberto.pasinati@gmail.com",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Venice",
+        "addressLocality": "Venezia",
+        "addressRegion": "Veneto",
         "addressCountry": "IT"
       },
       "alumniOf": {
@@ -22,16 +22,24 @@ const StructuredData: React.FC = () => {
         "name": "Università Ca' Foscari Venezia"
       },
       "knowsAbout": [
+        "Marketing Strategy",
         "Digital Marketing",
         "Performance Marketing",
         "Marketing Automation",
+        "Brand Strategy",
+        "Luxury Brand Marketing",
         "SEO",
         "E-Commerce",
-        "Brand Strategy",
         "Google Ads",
         "Meta Ads",
+        "TikTok Ads",
+        "Web Analytics",
+        "Business Intelligence",
         "CRM",
-        "Lead Generation"
+        "Lead Generation",
+        "Team Leadership",
+        "Budget Planning",
+        "Event Marketing"
       ],
       "sameAs": [
         "https://www.linkedin.com/in/albertopasinati/",
@@ -39,113 +47,42 @@ const StructuredData: React.FC = () => {
       ]
     };
 
-    // LocalBusiness Schema - Ottimizzato per Local SEO
-    const localBusinessSchema = {
+    // ProfessionalService Schema — corretto per un Marketing Manager (non LocalBusiness)
+    const professionalServiceSchema = {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Alberto Pasinati - Full Stack Marketer",
-      "alternateName": "Alberto Pasinati Marketing Consulting",
-      "description": "Consulente marketing digitale e Full Stack Marketer specializzato in strategie SEO, SEM, Google Ads, Meta Ads e marketing automation per PMI e brand del lusso. Servizi di digital marketing a Venezia e in tutta Italia.",
+      "@type": "ProfessionalService",
+      "name": "Alberto Pasinati — Marketing Manager",
+      "description": "Marketing Manager con oltre 10 anni di esperienza nella direzione strategica del marketing a 360°. Expertise in performance marketing, brand strategy luxury, digital advertising e team leadership.",
       "url": "https://albertopasinati.com",
-      "logo": "https://albertopasinati.com/alberto-portrait.png",
-      "image": [
-        "https://albertopasinati.com/alberto-portrait.png",
-        "https://albertopasinati.com/alberto-hero-v2.webp"
-      ],
-      "telephone": "+39-XXX-XXXXXXX", // Aggiorna con il tuo numero
-      "email": "alberto.pasinati@gmail.com",
-      "priceRange": "$$-$$$",
-      "currenciesAccepted": "EUR",
-      "paymentAccepted": "Cash, Credit Card, Bank Transfer, PayPal",
+      "image": "https://albertopasinati.com/alberto-hero-v2.webp",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Venezia", // Aggiorna con indirizzo specifico se pubblico
         "addressLocality": "Venezia",
         "addressRegion": "Veneto",
-        "postalCode": "30100",
         "addressCountry": "IT"
       },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "45.4408",
-        "longitude": "12.3155"
-      },
       "areaServed": [
-        {
-          "@type": "City",
-          "name": "Venezia",
-          "containedInPlace": {
-            "@type": "AdministrativeArea",
-            "name": "Veneto"
-          }
-        },
-        {
-          "@type": "City",
-          "name": "Mestre"
-        },
-        {
-          "@type": "City",
-          "name": "Padova"
-        },
-        {
-          "@type": "City",
-          "name": "Treviso"
-        },
-        {
-          "@type": "City",
-          "name": "Verona"
-        },
-        {
-          "@type": "AdministrativeArea",
-          "name": "Veneto"
-        },
-        {
-          "@type": "Country",
-          "name": "Italia"
-        }
+        { "@type": "AdministrativeArea", "name": "Veneto" },
+        { "@type": "Country", "name": "Italia" }
       ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
-        "name": "Servizi di Marketing Digitale",
+        "name": "Competenze di Marketing",
         "itemListElement": [
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Consulenza Strategica Marketing",
-              "description": "Pianificazione strategica di marketing digitale per PMI e brand del lusso"
+              "name": "Marketing Strategy & Posizionamento",
+              "description": "Definizione di strategie di marketing data-driven con analisi competitiva, posizionamento e roadmap operativa con KPI misurabili."
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Gestione Campagne Google Ads",
-              "description": "Setup, ottimizzazione e gestione campagne Google Ads per massimizzare il ROI"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Meta Ads Management",
-              "description": "Gestione professionale campagne Facebook e Instagram Ads"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "SEO e Ottimizzazione E-commerce",
-              "description": "Ottimizzazione SEO on-page, off-page e tecnica per e-commerce e siti aziendali"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Marketing Automation",
-              "description": "Setup e gestione sistemi di marketing automation, CRM e lead nurturing"
+              "name": "Performance Marketing Multi-Canale",
+              "description": "Gestione campagne Google Ads, Meta Ads, TikTok e LinkedIn Ads con focus su ROI e ottimizzazione continua."
             }
           },
           {
@@ -153,57 +90,35 @@ const StructuredData: React.FC = () => {
             "itemOffered": {
               "@type": "Service",
               "name": "Brand Strategy per Luxury",
-              "description": "Consulenza strategica di brand positioning per marchi del lusso e artigianato"
+              "description": "Posizionamento premium, eventi fieristici internazionali e comunicazione multi-lingua per mercati EMEA."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Web Analytics & Business Intelligence",
+              "description": "Implementazione GA4, dashboard BI, attribution modeling e reportistica avanzata per decision-making data-driven."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Team Leadership & Project Management",
+              "description": "Coordinamento team marketing, gestione agenzie creative e fornitori tech, con focus su obiettivi e sviluppo competenze."
             }
           }
         ]
       },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday"
-        ],
-        "opens": "09:00",
-        "closes": "18:00"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5.0",
-        "reviewCount": "15",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
-      "sameAs": [
-        "https://www.linkedin.com/in/albertopasinati/",
-        "https://github.com/otre25",
-        "https://albertopasinati.com"
-      ],
       "founder": {
         "@type": "Person",
         "name": "Alberto Pasinati",
-        "jobTitle": "Full Stack Marketer",
+        "jobTitle": "Marketing Manager",
         "url": "https://albertopasinati.com"
       },
-      "slogan": "Marketing strategico data-driven per far crescere il tuo business",
-      "knowsAbout": [
-        "Digital Marketing",
-        "Performance Marketing",
-        "Google Ads",
-        "Meta Ads",
-        "Marketing Automation",
-        "SEO",
-        "SEM",
-        "E-Commerce Marketing",
-        "Luxury Brand Marketing",
-        "CRM",
-        "Lead Generation",
-        "Growth Marketing",
-        "Analytics",
-        "Conversion Rate Optimization"
+      "sameAs": [
+        "https://www.linkedin.com/in/albertopasinati/"
       ]
     };
 
@@ -211,9 +126,9 @@ const StructuredData: React.FC = () => {
     const websiteSchema = {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "name": "Alberto Pasinati - Full Stack Marketer",
+      "name": "Alberto Pasinati — Marketing Manager",
       "url": "https://albertopasinati.com",
-      "description": "Portfolio e servizi di Alberto Pasinati, Marketing Manager con oltre 10 anni di esperienza",
+      "description": "Portfolio e presentazione professionale di Alberto Pasinati, Marketing Manager con oltre 10 anni di esperienza in brand strategy, performance marketing e team leadership.",
       "author": {
         "@type": "Person",
         "name": "Alberto Pasinati"
@@ -221,7 +136,7 @@ const StructuredData: React.FC = () => {
       "inLanguage": "it-IT"
     };
 
-    // BreadcrumbList Schema (for homepage)
+    // BreadcrumbList Schema
     const breadcrumbSchema = {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
@@ -235,7 +150,7 @@ const StructuredData: React.FC = () => {
       ]
     };
 
-    // FAQ Schema for Voice Search & Rich Snippets
+    // FAQ Schema — domande da esperto di marketing, non da freelance
     const faqSchema = {
       "@context": "https://schema.org",
       "@type": "FAQPage",
@@ -245,109 +160,75 @@ const StructuredData: React.FC = () => {
           "name": "Chi è Alberto Pasinati?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Alberto Pasinati è un Full Stack Marketer e Marketing Manager con oltre 10 anni di esperienza nel digital marketing. Basato a Venezia, si specializza in strategie di marketing per brand del lusso e PMI innovative, con expertise in Google Ads, Meta Ads, marketing automation e crescita del fatturato."
+            "text": "Alberto Pasinati è un Marketing Manager con oltre 10 anni di esperienza nella direzione strategica del marketing per brand del lusso, retail e PMI innovative. Ha gestito budget superiori a €1M/anno, generato oltre 15.000 lead qualificati e guidato la strategia marketing di brand come Wave Murano Glass, Store Cucine e Il Fanale Group."
           }
         },
         {
           "@type": "Question",
-          "name": "Cosa fa un Full Stack Marketer?",
+          "name": "Cosa significa essere un Full Stack Marketer?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Un Full Stack Marketer gestisce l'intera strategia di marketing end-to-end, dalla pianificazione strategica all'esecuzione operativa. Include competenze in digital advertising (Google Ads, Meta Ads), SEO, marketing automation, CRM, e-commerce, analytics e growth marketing. Alberto Pasinati offre un approccio completo che copre sia il marketing strategico che l'implementazione tecnica."
+            "text": "Un Full Stack Marketer padroneggia l'intera catena del marketing — dalla definizione della strategia di brand alla gestione operativa delle campagne, dall'analisi dei dati alla leadership del team. Non è uno specialista di un singolo canale, ma un professionista che coordina tutti gli asset di marketing verso un obiettivo di business misurabile."
           }
         },
         {
           "@type": "Question",
-          "name": "Quali servizi di marketing digitale offre Alberto Pasinati?",
+          "name": "Quali risultati ha ottenuto Alberto Pasinati come Marketing Manager?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Alberto Pasinati offre consulenza strategica di marketing, gestione campagne Google Ads e Meta Ads, SEO e ottimizzazione e-commerce, marketing automation e CRM, brand strategy per luxury brands, lead generation B2B e B2C, e coordinamento team marketing. Ogni progetto viene personalizzato in base agli obiettivi di business del cliente."
+            "text": "Nel corso della sua carriera Alberto Pasinati ha gestito budget marketing superiori a €1M/anno, generato oltre 15.000 lead qualificati per clienti B2B e B2C, scalato brand del lusso su mercati internazionali EMEA, coordinato team multidisciplinari e gestito fiere internazionali come il Salone del Mobile di Milano e Maison&Objet di Parigi."
           }
         },
         {
           "@type": "Question",
-          "name": "Come posso aumentare il fatturato della mia azienda con il digital marketing?",
+          "name": "In quali settori ha esperienza Alberto Pasinati?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Per aumentare il fatturato è fondamentale combinare strategia e tattica: ottimizzazione del funnel di conversione, campagne di performance marketing mirate (Google Ads e Meta Ads), marketing automation per lead nurturing, SEO per traffico organico qualificato, e data analysis per decisioni data-driven. Alberto Pasinati sviluppa strategie personalizzate basate su analisi approfondita del mercato e degli obiettivi di crescita."
+            "text": "Alberto Pasinati ha maturato esperienza consolidata nei settori luxury, retail e manifattura di alta gamma. Ha lavorato con brand dell'artigianato veneziano (Wave Murano Glass), del retail cucine (Store Cucine, 20 negozi in Italia), dell'illuminazione di design (Il Fanale Group) e della gioielleria artigianale (Atelier Alessandra)."
           }
         },
         {
           "@type": "Question",
-          "name": "Alberto Pasinati lavora con brand del lusso?",
+          "name": "Come si misura il ROI di una strategia marketing?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sì, Alberto Pasinati ha esperienza consolidata nel marketing per luxury brands. Ha gestito progetti per Wave Murano Glass (artigianato vetrario veneziano), Il Fanale Group (illuminazione di design), e altri brand del settore lusso e artigianato di alta gamma. La sua expertise include posizionamento premium, eventi fieristici internazionali e comunicazione multi-lingua per mercati EMEA."
+            "text": "Il ROI di una strategia marketing si misura attraverso KPI definiti in fase di pianificazione: costo per lead (CPL), costo di acquisizione cliente (CAC), revenue generata per canale, tasso di conversione e lifetime value del cliente. Alberto Pasinati utilizza Google Analytics 4, piattaforme BI personalizzate e attribution modeling per garantire visibilità completa su ogni euro investito."
           }
         },
         {
           "@type": "Question",
-          "name": "Dove opera Alberto Pasinati come consulente marketing?",
+          "name": "Qual è l'approccio di Alberto Pasinati alla strategia di marketing?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Alberto Pasinati è basato a Venezia e opera su tutto il territorio italiano, con particolare focus sul Veneto. Offre anche consulenza in remoto per clienti internazionali, avendo gestito progetti per mercati europei (EMEA) con campagne multi-lingua e strategie di marketing internazionale."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Quanto costa una consulenza di marketing con Alberto Pasinati?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "L'investimento per una consulenza marketing dipende dalla complessità del progetto, dagli obiettivi e dalla durata della collaborazione. Alberto Pasinati offre un primo incontro conoscitivo per analizzare le esigenze specifiche e proporre una soluzione personalizzata. Ogni progetto viene strutturato su misura per massimizzare il ROI in base al budget disponibile."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Perché scegliere un consulente marketing a Venezia e nel Veneto?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Scegliere un consulente marketing locale a Venezia e nel Veneto offre vantaggi concreti: conoscenza approfondita del territorio e delle dinamiche del mercato locale, possibilità di incontri in presenza per strategie complesse, comprensione delle specificità del settore lusso e artigianato veneziano, e network di contatti nel territorio veneto. Alberto Pasinati opera principalmente a Venezia, Mestre, Padova, Treviso e Verona, con disponibilità a incontri presso la sede del cliente in tutto il Veneto."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Come contattare Alberto Pasinati per una consulenza marketing?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Puoi contattare Alberto Pasinati per una consulenza marketing tramite il form di contatto sul sito albertopasinati.com, via email a alberto.pasinati@gmail.com, o tramite LinkedIn. Il primo incontro conoscitivo è sempre gratuito e può essere svolto in presenza a Venezia o online via Google Meet. Durante il primo incontro verranno analizzate le tue esigenze di business e proposta una strategia marketing personalizzata."
+            "text": "Alberto Pasinati adotta un approccio data-driven e integrato: parte dall'analisi del mercato e del posizionamento competitivo, definisce obiettivi misurabili, coordina l'esecuzione su tutti i canali (digital e offline) e monitora costantemente i risultati per ottimizzare in tempo reale. Ogni strategia è costruita intorno agli obiettivi di business, non attorno ai tool."
           }
         }
       ]
     };
 
-    // Create or update script tag for structured data
     const updateStructuredData = (id: string, schema: object) => {
       let script = document.getElementById(id);
-
       if (!script) {
         script = document.createElement('script');
         script.id = id;
         script.type = 'application/ld+json';
         document.head.appendChild(script);
       }
-
       script.textContent = JSON.stringify(schema);
     };
 
-    // Add all schemas to the page
+    // Rimuovi LocalBusiness se presente da versioni precedenti
+    const oldLocalBusiness = document.getElementById('schema-localbusiness');
+    if (oldLocalBusiness) oldLocalBusiness.remove();
+
     updateStructuredData('schema-person', personSchema);
-    updateStructuredData('schema-localbusiness', localBusinessSchema);
+    updateStructuredData('schema-professional-service', professionalServiceSchema);
     updateStructuredData('schema-website', websiteSchema);
     updateStructuredData('schema-breadcrumb', breadcrumbSchema);
     updateStructuredData('schema-faq', faqSchema);
-
-    // Cleanup function
-    return () => {
-      // Optionally remove schemas on unmount
-      // const schemaIds = ['schema-person', 'schema-service', 'schema-website', 'schema-breadcrumb'];
-      // schemaIds.forEach(id => {
-      //   const script = document.getElementById(id);
-      //   if (script) script.remove();
-      // });
-    };
   }, []);
 
-  return null; // This component doesn't render anything
+  return null;
 };
 
 export default StructuredData;

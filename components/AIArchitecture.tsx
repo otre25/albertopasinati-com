@@ -49,9 +49,21 @@ const PersonalProjects: React.FC = () => {
         transition: 'opacity 0.8s ease-out, transform 0.8s ease-out'
       }}
     >
-       <div className="max-w-7xl mx-auto mb-12 text-center">
-         <h2 className="text-3xl md:text-4xl font-display font-bold uppercase mb-4 text-brand-dark">I miei progetti personali</h2>
-         <div className="w-16 h-1 bg-brand-yellow mx-auto"></div>
+       <div className="max-w-7xl mx-auto mb-12 md:mb-16">
+         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+           <div className="lg:col-span-5">
+             <h2 className="text-6xl md:text-8xl font-display font-black uppercase leading-[0.85]">
+               Side<br />
+               <span className="text-brand-yellow">Lab.</span>
+             </h2>
+             <div className="h-2 w-24 bg-brand-yellow mt-6"></div>
+           </div>
+           <div className="lg:col-span-7 flex items-center">
+             <p className="text-xl text-stone-700 leading-relaxed border-l-4 border-brand-yellow pl-6">
+               Progetti personali nati dalla curiosità: dal podcast alla Business Intelligence. Ogni progetto è l'applicazione concreta di un metodo.
+             </p>
+           </div>
+         </div>
        </div>
 
        <div className="max-w-4xl mx-auto space-y-8">

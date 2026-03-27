@@ -69,6 +69,25 @@ const About: React.FC = () => {
                 <span>LinkedIn Profile</span>
               </a>
             </div>
+
+            {/* Tool Stack */}
+            <div className="pt-10 pl-6 border-t border-stone-100 mt-10">
+              <p className="text-xs font-bold uppercase tracking-widest text-stone-400 mb-4">Tool & Piattaforme</p>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  'Google Ads', 'Meta Ads', 'TikTok Ads', 'LinkedIn Ads',
+                  'Google Analytics 4', 'Search Console', 'HubSpot', 'Shopify',
+                  'WordPress', 'Webflow', 'MS Clarity', 'Semrush',
+                ].map((tool) => (
+                  <span
+                    key={tool}
+                    className="px-3 py-1.5 text-xs font-bold bg-stone-100 text-stone-600 rounded-sm hover:bg-brand-yellow hover:text-deep-black transition-colors duration-200 cursor-default"
+                  >
+                    {tool}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
 
         </div>
