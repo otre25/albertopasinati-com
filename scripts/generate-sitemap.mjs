@@ -15,19 +15,15 @@ const SITE_URL = 'https://albertopasinati.com';
 const OUTPUT_PATH = path.join(__dirname, '../public/sitemap.xml');
 
 // Definisci le tue route statiche
+const today = new Date().toISOString().split('T')[0];
+
 const routes = [
-  {
-    path: '/',
-    changefreq: 'weekly',
-    priority: '1.0',
-    lastmod: new Date().toISOString().split('T')[0]
-  },
-  {
-    path: '/privacy-policy',
-    changefreq: 'monthly',
-    priority: '0.5',
-    lastmod: new Date().toISOString().split('T')[0]
-  }
+  { path: '/',                                    changefreq: 'weekly',  priority: '1.0', lastmod: today },
+  { path: '/portfolio/store-cucine',              changefreq: 'monthly', priority: '0.8', lastmod: today },
+  { path: '/portfolio/wave-murano-glass',         changefreq: 'monthly', priority: '0.8', lastmod: today },
+  { path: '/portfolio/il-fanale-group',           changefreq: 'monthly', priority: '0.8', lastmod: today },
+  { path: '/portfolio/atelier-alessandra',        changefreq: 'monthly', priority: '0.8', lastmod: today },
+  { path: '/privacy-policy',                      changefreq: 'monthly', priority: '0.3', lastmod: today },
 ];
 
 // Funzione per generare XML sitemap

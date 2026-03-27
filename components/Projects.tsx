@@ -1,66 +1,11 @@
 import React, { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
-import { Project } from '../types';
+import { Link } from 'react-router-dom';
 import ProjectModal from './ProjectModal';
 import { useInView } from '../hooks/useInView';
 import ImageWithSkeleton from './ImageWithSkeleton';
 import ProjectsStructuredData from './ProjectsStructuredData';
-
-const projectsData: Project[] = [
-  {
-    id: '1',
-    title: 'Store Cucine',
-    category: 'Marketing Management B2C',
-    imageUrl: '/kitchen.webp',
-    year: '2018-2023',
-    number: '01',
-    description: 'Marketing Manager per Store Cucine, retailer nel settore cucine componibili e arredamento contract con 20 negozi in Italia. Gestione strategia marketing omnicanale con focus su digital advertising e lead generation.',
-    client: 'Store Cucine',
-    services: ['Marketing Strategy & Planning', 'Digital Advertising (Google Ads, Meta)', 'Lead Generation & CRM', 'Event Marketing', 'Team Coordination'],
-    kpis: ['20 negozi coordinati su scala nazionale', 'Budget advertising superiore a €500K/anno', 'Lead generation B2C omnicanale', '5 anni di gestione marketing continuativa'],
-    mockupUrl: '/kitchen.webp'
-  },
-  {
-    id: '2',
-    title: 'Wave Murano Glass',
-    category: 'Marketing Management B2B2C',
-    imageUrl: '/murano-glass.webp',
-    year: '2023-2024',
-    number: '02',
-    description: 'Direzione Marketing per Wave Murano Glass, brand dell\'artigianato vetrario veneziano con distribuzione internazionale. Sviluppo strategia di posizionamento sui mercati EMEA, gestione eventi fieristici di alto profilo e campagne digital multi-lingua.',
-    client: 'Wave Murano Glass',
-    services: ['International Marketing Strategy', 'Event Marketing & Trade Shows', 'Digital Communication Multi-language', 'Brand Positioning Luxury', 'SEO Internazionale', 'Partnership Management'],
-    kpis: ['Posizionamento luxury su mercati EMEA', 'Campagne digital multi-lingua (IT, EN, FR)', 'Fiere: Maison&Objet Parigi, Architect&Work', 'SEO internazionale multi-mercato'],
-    mockupUrl: '/murano-glass.webp'
-  },
-  {
-    id: '3',
-    title: 'Il Fanale Group',
-    category: 'Marketing Management B2B',
-    imageUrl: '/lighting-design.webp',
-    year: '2015-2017',
-    number: '03',
-    description: 'Marketing Management per Il Fanale Group, azienda nel settore illuminazione di design e forniture contract. Pianificazione strategica annuale, coordinamento partecipazione Salone del Mobile Milano e gestione campagne marketing B2B per network dealer nazionali e internazionali.',
-    client: 'Il Fanale Group',
-    services: ['Marketing Strategy B2B', 'Trade Fair Management (Salone del Mobile)', 'CRM Implementation & Automation', 'Dealer Network Communication', 'Content Marketing & Video Production', 'Budget Management'],
-    kpis: ['Salone del Mobile Milano — coordinamento stand', 'CRM implementato e integrato da zero', 'Network dealer nazionale e internazionale', 'Pianificazione strategica annuale B2B'],
-    mockupUrl: '/lighting-design.webp'
-  },
-  {
-    id: '4',
-    title: 'Atelier Alessandra',
-    category: 'Brand Identity & E-Commerce',
-    imageUrl: '/Alessandra-Atelier-original-Murano-glass-jewels.webp',
-    year: '2022',
-    number: '04',
-    description: 'Progetto completo di rebranding e lancio e-commerce per Atelier Alessandra, brand di gioielli da donna in vetro di Murano. Sviluppo brand identity, realizzazione e-commerce Shopify con focus UX/UI, strategia SEO on-page.',
-    client: 'Atelier Alessandra',
-    services: ['Brand Identity Design', 'E-Commerce Development (Shopify)', 'UX/UI Design', 'SEO Strategy', 'Performance Marketing (Meta + Google Shopping)', 'Email Marketing Automation', 'Social Media Strategy'],
-    kpis: ['E-commerce Shopify costruito da zero', 'Brand identity completa — naming, visual, tone of voice', 'SEO on-page + Performance Marketing Meta & Google', 'Sito live: alessandratelier.it'],
-    websiteUrl: 'https://alessandratelier.it/',
-    mockupUrl: '/Alessandra-Atelier-original-Murano-glass-jewels.webp'
-  }
-];
+import { projectsData } from '../data/projects';
 
 const brands = [
   "Wave Murano Glass",
@@ -214,6 +159,14 @@ const Projects: React.FC = () => {
                   <p className="text-stone-500 text-sm leading-relaxed line-clamp-2 mt-2">
                     {project.description}
                   </p>
+                  <Link
+                    to={`/portfolio/${(project as any).slug}`}
+                    onClick={(e) => e.stopPropagation()}
+                    className="inline-flex items-center gap-1 mt-3 text-xs font-bold uppercase tracking-wider text-stone-400 hover:text-brand-yellow transition-colors"
+                    aria-label={`Vedi caso studio completo di ${project.title}`}
+                  >
+                    Caso studio completo <ArrowUpRight size={12} />
+                  </Link>
                 </div>
               </div>
             ))}

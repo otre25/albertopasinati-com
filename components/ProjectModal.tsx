@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import { X, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, ExternalLink, ChevronLeft, ChevronRight, ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Project } from '../types';
 import { useSwipe } from '../hooks/useSwipe';
 
@@ -213,17 +214,26 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose, o
               )}
             </div>
 
-            {/* Website Button */}
-            {project.websiteUrl && (
-              <a
-                href={project.websiteUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-black font-bold uppercase text-sm hover:bg-brand-yellow transition-colors border-2 border-brand-yellow"
+            {/* CTA buttons */}
+            <div className="flex flex-col gap-3">
+              {project.websiteUrl && (
+                <a
+                  href={project.websiteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-black font-bold uppercase text-sm hover:bg-brand-yellow transition-colors border-2 border-brand-yellow"
+                >
+                  Visita sito live <ExternalLink size={18} />
+                </a>
+              )}
+              <Link
+                to={`/portfolio/${(project as any).slug}`}
+                onClick={onClose}
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/20 text-white font-bold uppercase text-sm hover:border-brand-yellow hover:text-brand-yellow transition-colors"
               >
-                Visita sito live <ExternalLink size={18} />
-              </a>
-            )}
+                Caso studio completo <ArrowUpRight size={18} />
+              </Link>
+            </div>
           </div>
 
           {/* Right side - Mockup/Preview */}
