@@ -16,13 +16,13 @@ const serviceGroups: ServiceGroup[] = [
     items: [
       {
         title: 'Marketing Strategy & Posizionamento',
-        description: 'Definizione di strategie di marketing data-driven per brand del lusso e PMI innovative. Analisi competitiva, posizionamento, identificazione target audience e roadmap operativa con KPI misurabili e focus sul ROI.',
+        description: 'Una strategia che parte dai dati del tuo mercato e si traduce in posizionamento chiaro, audience definita e roadmap operativa con KPI misurabili. Ogni decisione è giustificata da un obiettivo di business concreto.',
         icon: LayoutDashboard,
         color: 'orange',
       },
       {
         title: 'Budget Planning & Ottimizzazione ROI',
-        description: 'Pianificazione e allocazione budget marketing per massimizzare il ritorno sull\'investimento. Esperienza nella gestione di budget superiori a 1M€/anno con focus su performance marketing e riduzione costi di acquisizione cliente (CAC).',
+        description: 'Ogni euro deve lavorare. Gestione di budget superiori a €1M/anno con allocazione ottimale per canale, riduzione del CAC e monitoraggio continuo del ritorno su ogni investimento.',
         icon: Coins,
         color: 'orange',
       },
@@ -34,19 +34,19 @@ const serviceGroups: ServiceGroup[] = [
     items: [
       {
         title: 'Performance Marketing Multi-Canale',
-        description: 'Ideazione, implementazione e gestione campagne pubblicitarie Google Ads (Search, Display, Shopping), Meta (Facebook/Instagram), TikTok e LinkedIn Ads. Expertise in advertising offline (OOH, stampa, radio) per brand del lusso.',
+        description: 'Campagne che portano lead qualificati e vendite, non solo click. Google Ads, Meta, TikTok e LinkedIn gestiti con ottimizzazione continua, attribution modeling multi-touch e reportistica trasparente.',
         icon: Megaphone,
         color: 'orange',
       },
       {
         title: 'Web Analytics & Business Intelligence',
-        description: 'Implementazione e monitoraggio performance attraverso Google Analytics 4, MS Clarity, Yandex Metrica e piattaforme BI personalizzate. Analisi comportamento utenti, conversion funnel optimization, attribution modeling e reportistica avanzata.',
+        description: 'Trasformo i dati in decisioni. GA4, dashboard BI personalizzate e attribution modeling per avere visibilità completa su ogni canale, ottimizzare il funnel di conversione e giustificare ogni euro investito.',
         icon: PieChart,
         color: 'orange',
       },
       {
         title: 'Web Design & Landing Page Optimization',
-        description: 'Progettazione e sviluppo siti web ed e-commerce con focus su UX/UI. Esperienza con CMS WordPress, Shopify, WooCommerce e piattaforme no-code (Webflow, Glide). Landing page ottimizzate per lead generation con integrazione CRM e marketing automation.',
+        description: 'Siti web e landing page costruiti per convertire, non solo per essere visivamente curati. UX/UI orientata agli obiettivi di business, con WordPress, Shopify, Webflow e integrazione CRM per trasformare il traffico in lead.',
         icon: Monitor,
         color: 'orange',
       },
@@ -58,19 +58,19 @@ const serviceGroups: ServiceGroup[] = [
     items: [
       {
         title: 'Event Marketing & Gestione Fiere',
-        description: 'Organizzazione e gestione eventi corporate, inaugurazioni store e partecipazione fiere internazionali (Salone del Mobile Milano, Maison&Objet Parigi, Architect&Work). Coordinamento logistico end-to-end e gestione stakeholder.',
+        description: 'Presenza fieristica che genera opportunità concrete. Salone del Mobile, Maison&Objet e fiere internazionali gestite end-to-end: dalla logistica alla qualifica dei contatti acquisiti. Ogni evento è un investimento misurabile.',
         icon: Calendar,
         color: 'orange',
       },
       {
         title: 'Team Leadership & Project Management',
-        description: 'Coordinamento team marketing interni e gestione progetti complessi. Direzione di risorse junior e senior, collaboratori esterni, agenzie creative e fornitori tech. Focus su comunicazione efficace, delega strategica e raggiungimento obiettivi.',
+        description: 'Un team marketing produce risultati quando è guidato con obiettivi chiari e feedback costante. Esperienza nella direzione di team interni, agenzie creative e fornitori tech con focus su delega strategica e sviluppo competenze.',
         icon: Users,
         color: 'orange',
       },
       {
         title: 'Gestione Fornitori & Partnership',
-        description: 'Negoziazione e gestione rapporti con fornitori, agenzie di comunicazione, partner tecnologici e media. Definizione accordi commerciali, contract management e ottimizzazione costi per massimizzare l\'efficienza operativa.',
+        description: 'La qualità del risultato finale dipende anche dai partner. Selezione, negoziazione e gestione di agenzie, freelance e fornitori tech per massimizzare qualità, ridurre i costi ed eliminare le inefficienze operative.',
         icon: Handshake,
         color: 'orange',
       },

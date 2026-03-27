@@ -45,7 +45,7 @@ const About: React.FC = () => {
                 La mia expertise spazia dalla strategia di posizionamento alla gestione operativa di campagne <span className="bg-brand-yellow/30 px-1">Google Ads, Meta e TikTok</span>, con focus costante sul ROI e sulla crescita sostenibile del business.
               </p>
               <p className="pl-6">
-                La mia formazione classica e la laurea in Marketing e Comunicazione mi hanno fornito <span className="bg-brand-yellow/30 px-1">visione strategica e capacità analitica</span>, competenze che applico quotidianamente nella gestione di progetti complessi e team multidisciplinari.
+                Laureato in <span className="bg-brand-yellow/30 px-1">Marketing e Comunicazione all'Università Ca' Foscari di Venezia</span>, la mia formazione classica mi ha fornito visione strategica e capacità analitica che applico quotidianamente nella gestione di progetti complessi e team multidisciplinari.
               </p>
               <p className="pl-6">
                 Esploratore di nuovi mondi e differenti culture, ho vissuto in Australia, viaggiato e studiato in contesti di respiro internazionale come la Venice International University. Questa apertura mentale mi permette di approcciare progetti con prospettiva globale.

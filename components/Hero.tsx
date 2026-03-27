@@ -98,7 +98,7 @@ const Hero: React.FC = () => {
         {/* Text Content */}
         <div className="relative z-10 order-1 lg:order-1">
           {/* Hidden H1 for SEO */}
-          <h1 className="sr-only">Alberto Pasinati - Full Stack Marketer e Marketing Manager</h1>
+          <h1 className="sr-only">Alberto Pasinati — Marketing Manager con 10+ anni in Brand Strategy, Performance Marketing e Digital per brand del lusso e retail</h1>
 
           {/* Visual animated title */}
           <div className="text-6xl md:text-8xl font-display font-black leading-[0.9] uppercase mb-8 min-h-[180px] md:min-h-[240px]" aria-hidden="true">
@@ -116,8 +116,8 @@ const Hero: React.FC = () => {
 
           <div className="pl-6 border-l-4 border-brand-dark max-w-md">
             <p className="text-lg text-stone-700 leading-relaxed font-medium">
-              Marketing Manager specializzato in strategie digital e offline per brand del lusso e PMI innovative.
-              Oltre 10 anni di esperienza in performance marketing, marketing automation e crescita del fatturato.
+              Ho guidato la strategia marketing di brand del lusso e retail scalando budget superiori a €1M/anno,
+              15.000 lead qualificati e mercati EMEA. Metodo, dati e risultati misurabili.
             </p>
           </div>
 

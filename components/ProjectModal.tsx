@@ -180,10 +180,25 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose, o
                 <div className="text-xl font-bold">{project.year}</div>
               </div>
 
+              {/* KPIs / Risultati */}
+              {project.kpis && project.kpis.length > 0 && (
+                <div className="mb-8">
+                  <div className="text-xs uppercase tracking-wider text-gray-500 mb-3">Risultati & Attività chiave</div>
+                  <ul className="space-y-2">
+                    {project.kpis.map((kpi, index) => (
+                      <li key={index} className="flex items-start gap-2 text-sm text-gray-200">
+                        <span className="text-brand-yellow mt-0.5 shrink-0">◆</span>
+                        {kpi}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
               {/* Services */}
               {project.services && project.services.length > 0 && (
                 <div className="mb-8">
-                  <div className="text-xs uppercase tracking-wider text-gray-500 mb-3">Servizi</div>
+                  <div className="text-xs uppercase tracking-wider text-gray-500 mb-3">Competenze applicate</div>
                   <div className="flex flex-wrap gap-2">
                     {project.services.map((service, index) => (
                       <span

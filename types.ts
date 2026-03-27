@@ -10,6 +10,7 @@ export interface Project {
   description?: string;
   client?: string;
   services?: string[];
+  kpis?: string[];
   websiteUrl?: string;
   mockupUrl?: string;
 }

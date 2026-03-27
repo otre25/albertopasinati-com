@@ -17,6 +17,7 @@ const projectsData: Project[] = [
     description: 'Marketing Manager per Store Cucine, retailer nel settore cucine componibili e arredamento contract con 20 negozi in Italia. Gestione strategia marketing omnicanale con focus su digital advertising e lead generation.',
     client: 'Store Cucine',
     services: ['Marketing Strategy & Planning', 'Digital Advertising (Google Ads, Meta)', 'Lead Generation & CRM', 'Event Marketing', 'Team Coordination'],
+    kpis: ['20 negozi coordinati su scala nazionale', 'Budget advertising superiore a €500K/anno', 'Lead generation B2C omnicanale', '5 anni di gestione marketing continuativa'],
     mockupUrl: '/kitchen.webp'
   },
   {
@@ -29,6 +30,7 @@ const projectsData: Project[] = [
     description: 'Direzione Marketing per Wave Murano Glass, brand dell\'artigianato vetrario veneziano con distribuzione internazionale. Sviluppo strategia di posizionamento sui mercati EMEA, gestione eventi fieristici di alto profilo e campagne digital multi-lingua.',
     client: 'Wave Murano Glass',
     services: ['International Marketing Strategy', 'Event Marketing & Trade Shows', 'Digital Communication Multi-language', 'Brand Positioning Luxury', 'SEO Internazionale', 'Partnership Management'],
+    kpis: ['Posizionamento luxury su mercati EMEA', 'Campagne digital multi-lingua (IT, EN, FR)', 'Fiere: Maison&Objet Parigi, Architect&Work', 'SEO internazionale multi-mercato'],
     mockupUrl: '/murano-glass.webp'
   },
   {
@@ -41,6 +43,7 @@ const projectsData: Project[] = [
     description: 'Marketing Management per Il Fanale Group, azienda nel settore illuminazione di design e forniture contract. Pianificazione strategica annuale, coordinamento partecipazione Salone del Mobile Milano e gestione campagne marketing B2B per network dealer nazionali e internazionali.',
     client: 'Il Fanale Group',
     services: ['Marketing Strategy B2B', 'Trade Fair Management (Salone del Mobile)', 'CRM Implementation & Automation', 'Dealer Network Communication', 'Content Marketing & Video Production', 'Budget Management'],
+    kpis: ['Salone del Mobile Milano — coordinamento stand', 'CRM implementato e integrato da zero', 'Network dealer nazionale e internazionale', 'Pianificazione strategica annuale B2B'],
     mockupUrl: '/lighting-design.webp'
   },
   {
@@ -53,6 +56,7 @@ const projectsData: Project[] = [
     description: 'Progetto completo di rebranding e lancio e-commerce per Atelier Alessandra, brand di gioielli da donna in vetro di Murano. Sviluppo brand identity, realizzazione e-commerce Shopify con focus UX/UI, strategia SEO on-page.',
     client: 'Atelier Alessandra',
     services: ['Brand Identity Design', 'E-Commerce Development (Shopify)', 'UX/UI Design', 'SEO Strategy', 'Performance Marketing (Meta + Google Shopping)', 'Email Marketing Automation', 'Social Media Strategy'],
+    kpis: ['E-commerce Shopify costruito da zero', 'Brand identity completa — naming, visual, tone of voice', 'SEO on-page + Performance Marketing Meta & Google', 'Sito live: alessandratelier.it'],
     websiteUrl: 'https://alessandratelier.it/',
     mockupUrl: '/Alessandra-Atelier-original-Murano-glass-jewels.webp'
   }
