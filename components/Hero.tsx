@@ -185,8 +185,8 @@ const Hero: React.FC = () => {
                 ></div>
               </div>
 
-              {/* Badge Outside Circle - Top Left */}
-              <div className="absolute top-8 left-0 bg-white p-4 shadow-lg z-20 max-w-[120px]">
+              {/* Badge Outside Circle - Top Left (hidden on mobile, visible sm+) */}
+              <div className="hidden sm:block absolute top-8 left-0 bg-white p-4 shadow-lg z-20 max-w-[120px]">
                 <p className="font-display font-bold text-3xl md:text-4xl text-deep-black leading-none">10+</p>
                 <p className="text-[9px] md:text-[10px] text-deep-black uppercase tracking-wider font-bold mt-1">Anni di esperienza</p>
               </div>
