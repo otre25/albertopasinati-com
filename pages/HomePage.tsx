@@ -33,8 +33,8 @@ const HomePage: React.FC = () => {
   return (
     <>
       <SEO
-        title="Marketing Manager | Alberto Pasinati — Luxury & Digital"
-        description="10+ anni come Marketing Manager: €1M+/anno gestiti, 15K lead, brand luxury e retail scalati. Strategia a 360° — dalla campagna al team. Scopri il portfolio."
+        title="Marketing Manager a Venezia | Alberto Pasinati"
+        description="Marketing Manager a Venezia con 10+ anni. €1M+/anno gestiti, 15K lead, brand luxury scalati. Specializzato in Google Ads, Meta Ads e strategie di crescita."
         keywords="marketing manager venezia, marketing manager veneto, marketing manager luxury brand, digital marketing manager italia, full stack marketer portfolio, performance marketing manager, brand strategy luxury, marketing manager esperienza, google ads manager, meta ads specialist, marketing manager e-commerce"
         ogImage="/alberto-portrait-og.webp"
       />

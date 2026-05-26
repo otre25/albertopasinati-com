@@ -54,7 +54,7 @@ const ProjectPage: React.FC = () => {
       }
     };
 
-    let script = document.getElementById('schema-project-article');
+    let script = document.getElementById('schema-project-article') as HTMLScriptElement | null;
     if (!script) {
       script = document.createElement('script');
       script.id = 'schema-project-article';

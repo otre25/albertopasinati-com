@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 const StructuredData: React.FC = () => {
   useEffect(() => {
@@ -319,7 +319,7 @@ const StructuredData: React.FC = () => {
     };
 
     const updateStructuredData = (id: string, schema: object) => {
-      let script = document.getElementById(id);
+      let script = document.getElementById(id) as HTMLScriptElement | null;
       if (!script) {
         script = document.createElement('script');
         script.id = id;

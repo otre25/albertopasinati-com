@@ -6,6 +6,7 @@ import { useInView } from '../hooks/useInView';
 import ImageWithSkeleton from './ImageWithSkeleton';
 import ProjectsStructuredData from './ProjectsStructuredData';
 import { projectsData } from '../data/projects';
+import { Project } from '../types';
 
 const brands = [
   "Wave Murano Glass",

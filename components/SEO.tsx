@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 interface SEOProps {
   title?: string;
@@ -11,8 +11,8 @@ interface SEOProps {
 }
 
 const SEO: React.FC<SEOProps> = ({
-  title = 'Alberto Pasinati | Full Stack Marketer',
-  description = 'Full Stack Marketer e Marketing Manager a Venezia. Oltre 10 anni di esperienza in digital marketing, Google Ads, Meta Ads e marketing automation per luxury brands e PMI. Consulenza strategica per crescita fatturato ed e-commerce.',
+  title = 'Alberto Pasinati | Marketing Manager a Venezia',
+  description = 'Marketing Manager a Venezia con 10+ anni. €1M+/anno gestiti, 15K lead, brand luxury scalati. Specializzato in Google Ads, Meta Ads e strategie di crescita.',
   keywords = 'marketing manager venezia, consulente marketing venezia, full stack marketer venezia, digital marketing venice, marketing manager mestre, consulente google ads venezia, esperto meta ads veneto, performance marketing venezia, google ads specialist venice, marketing automation venezia, luxury brand marketing venice, e-commerce specialist venezia, SEO specialist veneto, lead generation venezia, consulente marketing padova, marketing strategist treviso, agenzia marketing venezia, consulente digital marketing veneto, marketing manager verona',
   ogImage = '/alberto-portrait-og.webp', // Ottimizzata: 47KB invece di 4.7MB
   ogType = 'website',

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 // Microsoft Clarity Project ID
 const CLARITY_PROJECT_ID = 'ueax9axbkx';
@@ -18,7 +18,7 @@ export const initClarity = () => {
   }
 
   // Microsoft Clarity script injection
-  (function(c: any, l: Document, a: string, r: string, i: string, t?: HTMLScriptElement, y?: HTMLElement) {
+  (function(c: any, l: Document, a: string, r: string, i: string, t?: HTMLScriptElement, y?: Element) {
     c[a] = c[a] || function() { (c[a].q = c[a].q || []).push(arguments); };
     t = l.createElement(r) as HTMLScriptElement;
     t.async = true;

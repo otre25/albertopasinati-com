@@ -38,13 +38,3 @@ export function reportWebVitals() {
   onTTFB(sendToGoogleAnalytics);
 }
 
-// Estendi il tipo Window per includere gtag
-declare global {
-  interface Window {
-    gtag?: (
-      command: string,
-      eventName: string,
-      params?: Record<string, any>
-    ) => void;
-  }
-}

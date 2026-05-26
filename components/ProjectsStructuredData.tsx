@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Project } from '../types';
 
 interface ProjectsStructuredDataProps {
-  projects: Project[];
+  projects: (Project & { slug: string; metaDescription: string })[];
 }
 
 const ProjectsStructuredData: React.FC<ProjectsStructuredDataProps> = ({ projects }) => {
@@ -23,7 +23,7 @@ const ProjectsStructuredData: React.FC<ProjectsStructuredDataProps> = ({ project
           "creator": {
             "@type": "Person",
             "name": "Alberto Pasinati",
-            "jobTitle": "Full Stack Marketer",
+            "jobTitle": "Marketing Manager",
             "url": "https://albertopasinati.com"
           },
           "author": {
@@ -38,7 +38,7 @@ const ProjectsStructuredData: React.FC<ProjectsStructuredDataProps> = ({ project
             : project.year,
           "image": `https://albertopasinati.com${project.imageUrl}`,
           "thumbnailUrl": `https://albertopasinati.com${project.imageUrl}`,
-          "url": project.websiteUrl || `https://albertopasinati.com#project-${project.id}`,
+          "url": project.websiteUrl || `https://albertopasinati.com/portfolio/${project.slug}`,
           "genre": project.category,
           "keywords": [
             project.category,
@@ -94,7 +94,7 @@ const ProjectsStructuredData: React.FC<ProjectsStructuredDataProps> = ({ project
         "creator": {
           "@type": "Person",
           "name": "Alberto Pasinati",
-          "jobTitle": "Full Stack Marketer",
+          "jobTitle": "Marketing Manager",
           "url": "https://albertopasinati.com",
           "sameAs": [
             "https://www.linkedin.com/in/albertopasinati/",
@@ -119,7 +119,7 @@ const ProjectsStructuredData: React.FC<ProjectsStructuredDataProps> = ({ project
           "description": project.description
         },
         "thumbnailUrl": `https://albertopasinati.com${project.imageUrl}`,
-        "url": project.websiteUrl || `https://albertopasinati.com#project-${project.id}`,
+        "url": project.websiteUrl || `https://albertopasinati.com/portfolio/${project.slug}`,
         "genre": project.category,
         "keywords": [
           project.category,
@@ -161,13 +161,12 @@ const ProjectsStructuredData: React.FC<ProjectsStructuredDataProps> = ({ project
         },
         "copyrightYear": project.year.includes('-')
           ? parseInt(project.year.split('-')[0])
-          : parseInt(project.year),
-        "aggregateRating": undefined
+          : parseInt(project.year)
       };
 
       // Create or update script tag for this project
       const scriptId = `schema-project-${project.id}`;
-      let script = document.getElementById(scriptId);
+      let script = document.getElementById(scriptId) as HTMLScriptElement | null;
 
       if (!script) {
         script = document.createElement('script');
@@ -180,7 +179,7 @@ const ProjectsStructuredData: React.FC<ProjectsStructuredDataProps> = ({ project
     });
 
     // Add ItemList schema
-    let itemListScript = document.getElementById('schema-projects-list');
+    let itemListScript = document.getElementById('schema-projects-list') as HTMLScriptElement | null;
     if (!itemListScript) {
       itemListScript = document.createElement('script');
       itemListScript.id = 'schema-projects-list';

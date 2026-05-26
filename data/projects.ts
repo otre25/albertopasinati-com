@@ -14,7 +14,7 @@ export const projectsData: (Project & { slug: string; metaDescription: string })
     services: ['Marketing Strategy & Planning', 'Digital Advertising (Google Ads, Meta)', 'Lead Generation & CRM', 'Event Marketing', 'Team Coordination'],
     kpis: ['20 negozi coordinati su scala nazionale', 'Budget advertising superiore a €500K/anno', 'Lead generation B2C omnicanale', '5 anni di gestione marketing continuativa'],
     mockupUrl: '/kitchen.webp',
-    metaDescription: 'Caso studio: Marketing Manager per Store Cucine — 20 negozi, €500K+/anno di budget, lead generation B2C omnicanale su Google Ads e Meta. 5 anni di gestione strategica.',
+    metaDescription: 'Marketing Manager per Store Cucine: 20 negozi in Italia, €500K+/anno su Google Ads e Meta, lead generation B2C omnicanale. 5 anni di gestione continuativa.',
   },
   {
     id: '2',
@@ -29,7 +29,7 @@ export const projectsData: (Project & { slug: string; metaDescription: string })
     services: ['International Marketing Strategy', 'Event Marketing & Trade Shows', 'Digital Communication Multi-language', 'Brand Positioning Luxury', 'SEO Internazionale', 'Partnership Management'],
     kpis: ['Posizionamento luxury su mercati EMEA', 'Campagne digital multi-lingua (IT, EN, FR)', 'Fiere: Maison&Objet Parigi, Architect&Work', 'SEO internazionale multi-mercato'],
     mockupUrl: '/murano-glass.webp',
-    metaDescription: 'Caso studio: Marketing Manager per Wave Murano Glass — brand luxury veneziano. Strategia EMEA, Maison&Objet Parigi, campagne multi-lingua e SEO internazionale.',
+    metaDescription: 'Marketing Manager per Wave Murano Glass, brand luxury veneziano. Strategia EMEA, Maison&Objet Parigi, campagne multi-lingua e SEO internazionale.',
   },
   {
     id: '3',
@@ -44,7 +44,7 @@ export const projectsData: (Project & { slug: string; metaDescription: string })
     services: ['Marketing Strategy B2B', 'Trade Fair Management (Salone del Mobile)', 'CRM Implementation & Automation', 'Dealer Network Communication', 'Content Marketing & Video Production', 'Budget Management'],
     kpis: ['Salone del Mobile Milano — coordinamento stand', 'CRM implementato e integrato da zero', 'Network dealer nazionale e internazionale', 'Pianificazione strategica annuale B2B'],
     mockupUrl: '/lighting-design.webp',
-    metaDescription: 'Caso studio: Marketing Manager per Il Fanale Group — illuminazione di design. Salone del Mobile Milano, CRM da zero, network dealer B2B nazionale e internazionale.',
+    metaDescription: 'Marketing Manager per Il Fanale Group, illuminazione di design. Salone del Mobile Milano, CRM implementato da zero, dealer network B2B nazionale e internazionale.',
   },
   {
     id: '4',
@@ -60,6 +60,6 @@ export const projectsData: (Project & { slug: string; metaDescription: string })
     kpis: ['E-commerce Shopify costruito da zero', 'Brand identity completa — naming, visual, tone of voice', 'SEO on-page + Performance Marketing Meta & Google', 'Sito live: alessandratelier.it'],
     websiteUrl: 'https://alessandratelier.it/',
     mockupUrl: '/Alessandra-Atelier-original-Murano-glass-jewels.webp',
-    metaDescription: 'Caso studio: Rebranding e e-commerce Shopify per Atelier Alessandra — gioielli vetro di Murano. Brand identity, SEO, Meta Ads e Google Shopping. Sito live.',
+    metaDescription: 'Rebranding e e-commerce Shopify per Atelier Alessandra, gioielli in vetro di Murano. Brand identity completa, SEO on-page, Meta Ads e Google Shopping.',
   },
 ];
