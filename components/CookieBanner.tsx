@@ -70,6 +70,13 @@ const CookieBanner: React.FC = () => {
     localStorage.setItem('cookieConsent', type);
     localStorage.setItem('cookieConsentDate', new Date().toISOString());
     localStorage.setItem('cookiePreferences', JSON.stringify(prefs));
+    // Update GA4 consent mode immediately (no reload needed for consent)
+    if (typeof window.gtag !== 'undefined') {
+      window.gtag('consent', 'update', {
+        analytics_storage: prefs.analytics ? 'granted' : 'denied',
+        ad_storage: prefs.marketing ? 'granted' : 'denied',
+      });
+    }
     closeBanner();
 
     // Mostra feedback prima del reload
