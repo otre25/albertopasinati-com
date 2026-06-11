@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Linkedin, Github, ArrowUpRight, MapPin } from 'lucide-react';
 import ContactModal from './ContactModal';
+import { trackCTAClick } from './Analytics';
 
 const footerNavSections = [
   {
@@ -62,7 +63,7 @@ const Manifesto: React.FC = () => {
           </div>
           <div className="flex flex-col gap-4">
             <button
-              onClick={() => setIsContactModalOpen(true)}
+              onClick={() => { trackCTAClick('Scrivimi', 'Manifesto Section'); setIsContactModalOpen(true); }}
               className="group inline-flex items-center gap-3 bg-brand-yellow text-deep-black px-8 py-4 font-bold uppercase tracking-wider text-sm hover:bg-white transition-all duration-300 active:scale-95 focus:outline-none focus:ring-4 focus:ring-brand-yellow/50"
             >
               Scrivimi

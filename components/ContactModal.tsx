@@ -4,6 +4,7 @@ import emailjs from '@emailjs/browser';
 import { useToast } from '../contexts/ToastContext';
 import { EMAILJS_CONFIG } from '../config/emailjs';
 import { useSwipe } from '../hooks/useSwipe';
+import { trackFormSubmission } from './Analytics';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -172,6 +173,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
         EMAILJS_CONFIG.publicKey
       );
 
+      trackFormSubmission('contact_form');
       showToast('Messaggio inviato con successo!', 'success');
       onClose();
     } catch (error) {

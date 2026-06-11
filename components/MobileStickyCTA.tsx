@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Mail } from 'lucide-react';
+import { trackCTAClick } from './Analytics';
 
 interface MobileStickyCTAProps {
   onOpenContact: () => void;
@@ -29,7 +30,7 @@ const MobileStickyCTA: React.FC<MobileStickyCTAProps> = ({ onOpenContact }) => {
       }`}
     >
       <button
-        onClick={onOpenContact}
+        onClick={() => { trackCTAClick('Contattami', 'Mobile Sticky CTA'); onOpenContact(); }}
         className="w-full bg-brand-yellow text-deep-black py-4 px-6 font-bold text-lg flex items-center justify-center gap-3 shadow-2xl hover:bg-deep-black hover:text-brand-yellow transition-all duration-300 active:scale-95"
         aria-label="Apri form di contatto"
       >

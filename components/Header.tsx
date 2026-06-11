@@ -3,6 +3,7 @@ import { Menu, X, ArrowUpRight } from 'lucide-react';
 import ContactModal from './ContactModal';
 import MobileStickyCTA from './MobileStickyCTA';
 import EnhancedButton from './EnhancedButton';
+import { trackCTAClick } from './Analytics';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -77,7 +78,7 @@ const Header: React.FC = () => {
             </a>
           ))}
           <EnhancedButton
-            onClick={() => setIsContactModalOpen(true)}
+            onClick={() => { trackCTAClick('Contattami', 'Header Desktop'); setIsContactModalOpen(true); }}
             icon={ArrowUpRight}
             iconPosition="right"
             variant="primary"
@@ -143,6 +144,7 @@ const Header: React.FC = () => {
         >
           <EnhancedButton
             onClick={() => {
+              trackCTAClick('Contattami', 'Header Mobile');
               setIsContactModalOpen(true);
               setIsOpen(false);
             }}

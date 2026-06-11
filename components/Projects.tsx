@@ -7,6 +7,7 @@ import ImageWithSkeleton from './ImageWithSkeleton';
 import ProjectsStructuredData from './ProjectsStructuredData';
 import { projectsData } from '../data/projects';
 import { Project } from '../types';
+import { trackCTAClick } from './Analytics';
 
 const brands = [
   "Wave Murano Glass",
@@ -119,10 +120,11 @@ const Projects: React.FC = () => {
                 role="button"
                 tabIndex={0}
                 className="group cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:ring-offset-4 rounded-sm"
-                onClick={() => setSelectedProject(project)}
+                onClick={() => { trackCTAClick(project.title, 'Projects Grid'); setSelectedProject(project); }}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
+                    trackCTAClick(project.title, 'Projects Grid');
                     setSelectedProject(project);
                   }
                 }}
