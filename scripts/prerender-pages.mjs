@@ -90,7 +90,11 @@ function injectMeta(html, { slug, title, description, image, category }) {
     <meta name="twitter:title" content="${title}" />
     <meta name="twitter:description" content="${description}" />
     <meta name="twitter:image" content="${imageUrl}" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://albertopasinati.com"},{"@type":"ListItem","position":2,"name":"Portfolio","item":"https://albertopasinati.com/#portfolio"},{"@type":"ListItem","position":3,"name":"${title.split(' —')[0]}","item":"${url}"}]}</script>`;
+    <link rel="alternate" hreflang="it-IT" href="${url}" />
+    <link rel="alternate" hreflang="it" href="${url}" />
+    <link rel="alternate" hreflang="x-default" href="${url}" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://albertopasinati.com"},{"@type":"ListItem","position":2,"name":"Portfolio","item":"https://albertopasinati.com/#portfolio"},{"@type":"ListItem","position":3,"name":"${title.split(' —')[0]}","item":"${url}"}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","@id":"${url}#article","headline":"${title}","description":"${description}","image":"${imageUrl}","url":"${url}","author":{"@type":"Person","@id":"https://albertopasinati.com/#person","name":"Alberto Pasinati"},"publisher":{"@type":"Person","@id":"https://albertopasinati.com/#person","name":"Alberto Pasinati"},"mainEntityOfPage":{"@type":"WebPage","@id":"${url}"},"articleSection":"${category}","inLanguage":"it-IT"}</script>`;
 
   return cleanHtml.replace(/<title>.*?<\/title>/, metaBlock);
 }
