@@ -99,9 +99,10 @@ const SEO: React.FC<SEOProps> = ({
     updateHreflang('it', canonical);
     updateHreflang('x-default', canonical);
 
-    // OG image dimensions
+    // OG image dimensions + alt
     updateMetaTag('og:image:width', '1200', true);
     updateMetaTag('og:image:height', '630', true);
+    updateMetaTag('og:image:alt', fullTitle, true);
 
     // Additional SEO tags
     updateMetaTag('author', 'Alberto Pasinati');

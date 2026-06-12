@@ -11,7 +11,7 @@ const StructuredData: React.FC = () => {
       "jobTitle": "Marketing Manager",
       "description": "Alberto Pasinati è un Marketing Manager con oltre 10 anni di esperienza nella direzione strategica del marketing per brand del lusso, retail e manifattura italiana. Ha gestito budget pubblicitari superiori a €1 milione all'anno, generato oltre 15.000 lead qualificati e scalato brand su mercati EMEA.",
       "url": "https://albertopasinati.com",
-      "image": "https://albertopasinati.com/alberto-portrait.png",
+      "image": "https://albertopasinati.com/alberto-portrait-og.webp",
       "mainEntityOfPage": {
         "@type": "ProfilePage",
         "@id": "https://albertopasinati.com/#profile"

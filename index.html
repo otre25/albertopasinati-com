@@ -17,6 +17,7 @@
     <meta property="og:image" content="https://albertopasinati.com/alberto-portrait-og.webp" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Alberto Pasinati — Marketing Manager a Venezia" />
     <meta property="og:locale" content="it_IT" />
 
     <!-- Twitter Card -->
@@ -105,21 +106,65 @@
     <script>
       window.process = { env: { NODE_ENV: 'production' } };
     </script>
-    <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@18.2.0",
-    "react/jsx-runtime": "https://esm.sh/react@18.2.0/jsx-runtime",
-    "react-dom": "https://esm.sh/react-dom@18.2.0?deps=react@18.2.0",
-    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client?deps=react@18.2.0",
-    "react-router-dom": "https://esm.sh/react-router-dom@6.22.3?deps=react@18.2.0,react-dom@18.2.0",
-    "@remix-run/router": "https://esm.sh/@remix-run/router@1.15.3",
-    "lucide-react": "https://esm.sh/lucide-react@0.344.0?deps=react@18.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/"
-  }
-}
-</script>
+    <!-- Inline critical schemas: Person + WebSite + FAQ (visible on first Googlebot crawl, no JS required) -->
+    <script type="application/ld+json" id="schema-person">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://albertopasinati.com/#person",
+      "name": "Alberto Pasinati",
+      "jobTitle": "Marketing Manager",
+      "description": "Alberto Pasinati è un Marketing Manager con oltre 10 anni di esperienza nella direzione strategica del marketing per brand del lusso, retail e manifattura italiana.",
+      "url": "https://albertopasinati.com",
+      "image": "https://albertopasinati.com/alberto-portrait-og.webp",
+      "address": { "@type": "PostalAddress", "addressLocality": "Venezia", "addressRegion": "Veneto", "addressCountry": "IT" },
+      "sameAs": ["https://www.linkedin.com/in/albertopasinati/", "https://github.com/otre25"]
+    }
+    </script>
+    <script type="application/ld+json" id="schema-website">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Alberto Pasinati — Marketing Manager",
+      "url": "https://albertopasinati.com",
+      "description": "Portfolio e presentazione professionale di Alberto Pasinati, Marketing Manager con oltre 10 anni di esperienza in brand strategy, performance marketing e team leadership.",
+      "author": { "@type": "Person", "@id": "https://albertopasinati.com/#person" },
+      "inLanguage": "it-IT"
+    }
+    </script>
+    <script type="application/ld+json" id="schema-faq">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Chi è Alberto Pasinati?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Alberto Pasinati è un Marketing Manager con oltre 10 anni di esperienza nella direzione strategica del marketing per brand del lusso, retail e PMI innovative. Ha gestito budget superiori a €1M/anno, generato oltre 15.000 lead qualificati e guidato la strategia marketing di brand come Wave Murano Glass, Store Cucine e Il Fanale Group." }
+        },
+        {
+          "@type": "Question",
+          "name": "Cosa significa essere un Full Stack Marketer?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Un Full Stack Marketer padroneggia l'intera catena del marketing — dalla definizione della strategia di brand alla gestione operativa delle campagne, dall'analisi dei dati alla leadership del team." }
+        },
+        {
+          "@type": "Question",
+          "name": "Quali risultati ha ottenuto Alberto Pasinati come Marketing Manager?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Alberto Pasinati ha gestito budget marketing superiori a €1M/anno, generato oltre 15.000 lead qualificati per clienti B2B e B2C, scalato brand del lusso su mercati internazionali EMEA e coordinato fiere come il Salone del Mobile di Milano e Maison&Objet di Parigi." }
+        },
+        {
+          "@type": "Question",
+          "name": "Alberto Pasinati è disponibile per nuove opportunità?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sì, Alberto Pasinati è aperto a nuove opportunità professionali come Marketing Manager o Head of Marketing, in particolare per aziende del lusso, retail, manifattura o tech che cercano un professionista con visione strategica a 360° e comprovata capacità di generare risultati misurabili." }
+        },
+        {
+          "@type": "Question",
+          "name": "Dove si trova Alberto Pasinati?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Alberto Pasinati è basato a Venezia, Veneto, Italia. Ha operato su mercati italiani ed europei (EMEA), con esperienza in eventi internazionali come il Salone del Mobile di Milano e Maison&Objet di Parigi." }
+        }
+      ]
+    }
+    </script>
   <link rel="stylesheet" href="/index.css">
 </head>
   <body>

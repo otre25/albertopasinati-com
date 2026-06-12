@@ -82,13 +82,15 @@ function injectMeta(html, { slug, title, description, image, category }) {
     <meta property="og:image" content="${imageUrl}" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="${title}" />
     <meta property="og:locale" content="it_IT" />
     <meta property="article:author" content="Alberto Pasinati" />
     <meta property="article:section" content="${category}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${title}" />
     <meta name="twitter:description" content="${description}" />
-    <meta name="twitter:image" content="${imageUrl}" />`;
+    <meta name="twitter:image" content="${imageUrl}" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://albertopasinati.com"},{"@type":"ListItem","position":2,"name":"Portfolio","item":"https://albertopasinati.com/#portfolio"},{"@type":"ListItem","position":3,"name":"${title.split(' —')[0]}","item":"${url}"}]}</script>`;
 
   return cleanHtml.replace(/<title>.*?<\/title>/, metaBlock);
 }
