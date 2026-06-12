@@ -104,7 +104,10 @@ const Projects: React.FC = () => {
         <div className="px-6">
           <div className="max-w-7xl mx-auto mb-10 md:mb-12 flex flex-col md:flex-row items-start md:items-end justify-between">
             <div>
-              <h2 className="text-6xl md:text-8xl font-display font-black uppercase leading-[0.9] text-deep-black">
+              <h2
+                aria-label="Archivio Progetti: casi studio di Marketing Management B2C, B2B e Brand Identity — Store Cucine, Wave Murano Glass, Il Fanale Group, Atelier Alessandra"
+                className="text-6xl md:text-8xl font-display font-black uppercase leading-[0.9] text-deep-black"
+              >
                 Archivio <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-orange-500">Progetti</span>
               </h2>
             </div>

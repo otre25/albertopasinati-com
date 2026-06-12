@@ -27,7 +27,10 @@ const About: React.FC = () => {
           {/* Left Column - Title */}
           <div className="lg:col-span-4">
             <div className="lg:sticky lg:top-32">
-              <h2 className="text-6xl md:text-8xl font-display font-black uppercase leading-[0.85]">
+              <h2
+                aria-label="Chi è Alberto Pasinati — Marketing Manager Senior e Consulente Strategico con oltre 10 anni di esperienza"
+                className="text-6xl md:text-8xl font-display font-black uppercase leading-[0.85]"
+              >
                 Chi<br />
                 <span className="text-brand-yellow">Sono</span>
               </h2>

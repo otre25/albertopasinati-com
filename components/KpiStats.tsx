@@ -107,7 +107,10 @@ const KpiStats: React.FC = () => {
           <p className="text-brand-yellow font-display font-bold uppercase tracking-[0.25em] text-sm mb-3">
             I numeri parlano
           </p>
-          <h2 className="text-4xl md:text-6xl font-display font-black uppercase text-white leading-tight">
+          <h2
+            aria-label="Risultati misurabili come Marketing Manager: oltre 10 anni di esperienza, €1M+ di budget gestito annuo, 15.000 lead qualificati generati"
+            className="text-4xl md:text-6xl font-display font-black uppercase text-white leading-tight"
+          >
             Risultati <span className="text-brand-yellow">Misurabili</span>
           </h2>
           <div className="h-1 w-16 bg-brand-yellow mx-auto mt-6"></div>

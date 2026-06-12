@@ -150,7 +150,10 @@ const Services: React.FC = () => {
         {/* Header */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 mb-14 md:mb-20">
           <div className="lg:col-span-5">
-            <h2 className="text-6xl md:text-8xl font-display font-black uppercase leading-[0.85]">
+            <h2
+              aria-label="Di cosa mi occupo: Marketing Strategy, Performance Marketing Multi-Canale, Web Analytics, Event Marketing e Team Leadership"
+              className="text-6xl md:text-8xl font-display font-black uppercase leading-[0.85]"
+            >
               Di Cosa<br />
               <span className="text-brand-yellow">Mi Occupo</span>
             </h2>
