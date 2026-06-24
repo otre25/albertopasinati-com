@@ -76,15 +76,21 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose, o
     document.addEventListener('keydown', handleKeyboard);
     document.addEventListener('keydown', handleTabKey);
 
-    // Previene scroll del body quando il modal è aperto
-    document.body.style.overflow = 'hidden';
+    const scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
 
     return () => {
       document.removeEventListener('keydown', handleKeyboard);
       document.removeEventListener('keydown', handleTabKey);
-      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      window.scrollTo(0, scrollY);
 
-      // Ripristina il focus all'elemento precedente
       if (previousActiveElement.current) {
         previousActiveElement.current.focus();
       }
