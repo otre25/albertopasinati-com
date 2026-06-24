@@ -42,19 +42,19 @@ const About: React.FC = () => {
           <div className="lg:col-span-8">
             <div className="space-y-6 text-lg text-stone-700 leading-relaxed">
               <p className="about-speakable text-deep-black text-xl border-l-4 border-brand-yellow pl-6">
-                Ho gestito budget marketing superiori a 1M€ generando oltre 15.000 lead qualificati per aziende come Wave Murano Glass, Store Cucine e Il Fanale Group.
+                Ho guidato la funzione marketing di brand del lusso, retail e manifattura italiana — con responsabilità diretta su strategia, team e budget superiori a €1M/anno — portando crescita misurabile su mercati italiani ed europei.
               </p>
               <p className="pl-6">
-                Il mio lavoro va dalla definizione della strategia di posizionamento alla gestione operativa delle campagne — <span className="bg-brand-yellow/30 px-1">Google Ads, Meta e TikTok</span> — con un focus costante sul ROI e su ogni euro che entra nel funnel.
+                Dal posizionamento di brand all'allocazione del budget, dalla selezione dei partner alla costruzione del team: gestisco il marketing come <span className="bg-brand-yellow/30 px-1">funzione strategica integrata</span>, non come insieme di canali da ottimizzare.
               </p>
               <p className="pl-6">
-                Laureato in <span className="bg-brand-yellow/30 px-1">Marketing e Comunicazione all'Università Ca' Foscari di Venezia</span>, ho affinato nel tempo un metodo che mette insieme analisi dei dati, intuizione di brand e coordinamento di team.
+                Laureato in <span className="bg-brand-yellow/30 px-1">Marketing e Comunicazione all'Università Ca' Foscari di Venezia</span>, ho costruito un metodo che integra visione strategica, lettura dei dati e coordinamento di team multidisciplinari.
               </p>
               <p className="pl-6">
-                Non gestisco solo campagne: definisco priorità, alloco budget, scelgo i partner giusti e tengo insieme visione e operatività. È questa capacità di muoversi su più livelli che distingue un Marketing Manager da uno specialista di canale.
+                Lavoro al livello in cui le decisioni di marketing impattano il business: definisco le priorità, alloco le risorse, scelgo i partner e tengo la squadra allineata su obiettivi misurabili. L'esecuzione conta — ma serve a realizzare una strategia, non a sostituirla.
               </p>
               <p className="pl-6">
-                Ho guidato il marketing di brand del settore <span className="font-bold text-deep-black">luxury, retail e manifattura</span> come Marketing Manager a tempo pieno, con responsabilità diretta su strategia, team, budget e risultati misurabili.
+                Ho coordinato team interni e agenzie esterne, gestito fiere internazionali come <span className="font-bold text-deep-black">Salone del Mobile</span> e <span className="font-bold text-deep-black">Maison&Objet</span>, e scalato brand su mercati EMEA. Cerco contesti dove il marketing è una leva di crescita, non un costo da contenere.
               </p>
             </div>
 
@@ -75,18 +75,17 @@ const About: React.FC = () => {
 
             {/* Tool Stack */}
             <div className="pt-10 pl-6 border-t border-stone-100 mt-10">
-              <p className="text-xs font-bold uppercase tracking-widest text-stone-400 mb-4">Tool & Piattaforme</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-stone-400 mb-4">Ecosistema tecnologico supervisionato</p>
               <div className="flex flex-wrap gap-2">
                 {[
-                  'Google Ads', 'Meta Ads', 'TikTok Ads', 'LinkedIn Ads',
-                  'Google Analytics 4', 'Search Console', 'HubSpot', 'Shopify',
-                  'WordPress', 'Webflow', 'MS Clarity', 'Semrush',
-                ].map((tool) => (
+                  'Performance Marketing', 'Marketing Automation', 'CRM & Lead Management',
+                  'Analytics & Data', 'E-commerce', 'SEO & Content',
+                ].map((area) => (
                   <span
-                    key={tool}
+                    key={area}
                     className="px-3 py-1.5 text-xs font-bold bg-stone-100 text-stone-600 rounded-sm hover:bg-brand-yellow hover:text-deep-black transition-colors duration-200 cursor-default"
                   >
-                    {tool}
+                    {area}
                   </span>
                 ))}
               </div>
