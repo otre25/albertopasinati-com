@@ -9,7 +9,7 @@ const StructuredData: React.FC = () => {
       "@id": "https://albertopasinati.com/#person",
       "name": "Alberto Pasinati",
       "jobTitle": "Marketing Manager",
-      "description": "Alberto Pasinati è un Marketing Manager con oltre 10 anni di esperienza nella direzione strategica del marketing per brand del lusso, retail e manifattura italiana. Ha gestito budget pubblicitari superiori a €1 milione all'anno, generato oltre 15.000 lead qualificati e scalato brand su mercati EMEA.",
+      "description": "Alberto Pasinati è un Marketing Manager con oltre 10 anni di esperienza nella direzione strategica del marketing per brand del lusso, retail e manifattura italiana. Ha guidato la funzione marketing con responsabilità diretta su strategia, team e budget superiori a €1M/anno, generato oltre 15.000 lead qualificati e scalato brand su mercati EMEA.",
       "url": "https://albertopasinati.com",
       "image": "https://albertopasinati.com/alberto-portrait-og.webp",
       "mainEntityOfPage": {
@@ -101,8 +101,8 @@ const StructuredData: React.FC = () => {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Performance Marketing Multi-Canale",
-              "description": "Gestione campagne Google Ads, Meta Ads, TikTok e LinkedIn Ads con focus su ROI e ottimizzazione continua."
+              "name": "Performance Marketing & Budget Allocation",
+              "description": "Definizione del mix di canali, allocazione del budget media e supervisione delle performance su tutti i touchpoint digitali e offline."
             }
           },
           {
@@ -301,10 +301,10 @@ const StructuredData: React.FC = () => {
         },
         {
           "@type": "Question",
-          "name": "Quali strumenti usa Alberto Pasinati per il marketing?",
+          "name": "Come Alberto Pasinati gestisce il budget marketing?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Alberto Pasinati utilizza un stack completo di strumenti marketing: Google Ads e Google Analytics 4 per il paid search e il tracking, Meta Ads e TikTok Ads per il social advertising, HubSpot per il CRM e la marketing automation, Shopify e WordPress per l'e-commerce, Semrush per la SEO, Microsoft Clarity per l'analisi comportamentale e LinkedIn Ads per il B2B."
+            "text": "Alberto Pasinati adotta un approccio strutturato alla gestione del budget marketing: definisce le priorità di investimento in base agli obiettivi di business, alloca le risorse tra canali digitali, eventi e attività offline, seleziona e coordina agenzie e fornitori, e monitora il ROI attraverso dashboard dedicate. Ha gestito budget marketing superiori a €1M/anno con accountability diretta sui risultati."
           }
         },
         {
