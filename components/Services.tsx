@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { LayoutDashboard, Coins, Megaphone, PieChart, Monitor, Calendar, Users, Handshake } from 'lucide-react';
 import { Service } from '../types';
 import { useInView } from '../hooks/useInView';
@@ -78,53 +78,46 @@ const serviceGroups: ServiceGroup[] = [
   },
 ];
 
-const ServiceRow: React.FC<{
+const ServiceCard: React.FC<{
   service: Service;
   globalIndex: number;
   isInView: boolean;
-}> = ({ service, globalIndex, isInView }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
+  accent?: boolean;
+  wide?: boolean;
+}> = ({ service, globalIndex, isInView, accent, wide }) => {
   return (
     <div
-      className="group border-t border-stone-200 last:border-b cursor-pointer"
       style={{
         opacity: isInView ? 1 : 0,
-        transform: isInView ? 'translateX(0)' : 'translateX(-20px)',
+        transform: isInView ? 'translateY(0)' : 'translateY(20px)',
         transition: `opacity 0.5s ease-out ${globalIndex * 0.06}s, transform 0.5s ease-out ${globalIndex * 0.06}s`,
       }}
-      onClick={() => setIsOpen(!isOpen)}
-      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setIsOpen(!isOpen); } }}
-      role="button"
-      tabIndex={0}
-      aria-expanded={isOpen}
-      aria-label={service.title}
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
+      className={wide ? 'sm:col-span-2' : ''}
     >
-      <div className="flex items-center gap-6 py-5 md:py-6 px-2">
-        {/* Icon */}
-        <div className="w-10 h-10 shrink-0 rounded-full bg-stone-100 group-hover:bg-brand-yellow flex items-center justify-center transition-all duration-300">
-          <service.icon size={18} strokeWidth={1.5} className="text-brand-dark group-hover:text-white transition-colors duration-300" />
+      <div
+        className={`group h-full border border-stone-200 hover:border-brand-yellow rounded-sm p-6 md:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
+          accent ? 'bg-deep-black' : 'bg-white'
+        }`}
+      >
+        <div
+          className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 mb-5 ${
+            accent ? 'bg-white/10 group-hover:bg-brand-yellow' : 'bg-stone-100 group-hover:bg-brand-yellow'
+          }`}
+        >
+          <service.icon
+            size={20}
+            strokeWidth={1.5}
+            className={`transition-colors duration-300 group-hover:text-black ${accent ? 'text-brand-yellow' : 'text-brand-dark'}`}
+          />
         </div>
-
-        {/* Title */}
-        <h3 className="flex-1 text-lg md:text-2xl font-display font-bold uppercase text-brand-dark group-hover:text-brand-yellow transition-colors duration-300 leading-tight">
+        <h3
+          className={`text-xl md:text-2xl font-display font-bold uppercase mb-3 leading-tight ${
+            accent ? 'text-white' : 'text-brand-dark'
+          }`}
+        >
           {service.title}
         </h3>
-
-        {/* Toggle indicator */}
-        <span className="shrink-0 w-8 h-8 flex items-center justify-center text-stone-400 group-hover:text-brand-yellow transition-all duration-300 text-xl font-light">
-          {isOpen ? '−' : '+'}
-        </span>
-      </div>
-
-      {/* Description — slide in */}
-      <div
-        className="overflow-hidden transition-all duration-400 ease-in-out"
-        style={{ maxHeight: isOpen ? '200px' : '0px' }}
-      >
-        <p className="pb-6 px-2 pl-16 text-stone-600 leading-relaxed text-sm md:text-base">
+        <p className={`leading-relaxed text-sm ${accent ? 'text-stone-300' : 'text-stone-600'}`}>
           {service.description}
         </p>
       </div>
@@ -177,16 +170,18 @@ const Services: React.FC = () => {
                 <h3 className="font-display font-black text-2xl md:text-3xl uppercase text-deep-black">{group.area}</h3>
               </div>
 
-              {/* Service rows */}
-              <div className="lg:col-span-9">
-                {group.items.map((service) => {
+              {/* Service cards — bento grid */}
+              <div className="lg:col-span-9 grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+                {group.items.map((service, itemIdx) => {
                   const idx = globalIndex++;
                   return (
-                    <ServiceRow
+                    <ServiceCard
                       key={service.title}
                       service={service}
                       globalIndex={idx}
                       isInView={isInView}
+                      accent={itemIdx === 0}
+                      wide={itemIdx === 0 && group.items.length > 2}
                     />
                   );
                 })}

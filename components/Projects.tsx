@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ProjectModal from './ProjectModal';
@@ -21,8 +21,30 @@ const brands = [
 
 const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [tiltEnabled, setTiltEnabled] = useState(false);
   const experienceView = useInView({ threshold: 0.15 });
   const portfolioView = useInView({ threshold: 0.1 });
+
+  useEffect(() => {
+    const finePointer = window.matchMedia('(pointer: fine)').matches;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    setTiltEnabled(finePointer && !reducedMotion);
+  }, []);
+
+  const handleTilt = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!tiltEnabled) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width - 0.5;
+    const py = (e.clientY - rect.top) / rect.height - 0.5;
+    e.currentTarget.style.transition = 'transform 0.1s ease-out';
+    e.currentTarget.style.transform = `perspective(800px) rotateX(${py * -8}deg) rotateY(${px * 8}deg)`;
+  };
+
+  const resetTilt = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!tiltEnabled) return;
+    e.currentTarget.style.transition = 'transform 0.4s ease-out';
+    e.currentTarget.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg)';
+  };
 
   const currentProjectIndex = selectedProject
     ? projectsData.findIndex(p => p.id === selectedProject.id)
@@ -138,7 +160,12 @@ const Projects: React.FC = () => {
                 }}
                 aria-label={`Apri dettagli progetto ${project.title}`}
               >
-                <div className="relative overflow-hidden bg-gray-100 aspect-[4/3] mb-4 rounded-sm">
+                <div
+                  className="relative overflow-hidden bg-gray-100 aspect-[4/3] mb-4 rounded-sm"
+                  style={{ transformStyle: 'preserve-3d', willChange: tiltEnabled ? 'transform' : undefined }}
+                  onMouseMove={handleTilt}
+                  onMouseLeave={resetTilt}
+                >
                   <ImageWithSkeleton
                     src={project.imageUrl}
                     alt={`${project.title} - ${project.category}`}
