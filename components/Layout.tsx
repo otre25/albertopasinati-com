@@ -8,12 +8,14 @@ import CookieBanner from './CookieBanner';
 import Analytics from './Analytics';
 import MicrosoftClarity from './MicrosoftClarity';
 import ScrollProgressBar from './ScrollProgressBar';
+import CustomCursor from './CustomCursor';
 
 const Layout: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Analytics />
       <MicrosoftClarity />
+      <CustomCursor />
       <SkipLink />
       <ScrollToTop />
       <ScrollProgressBar />

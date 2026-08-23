@@ -25,13 +25,16 @@ root.render(
 // Inizializza il tracking dei Web Vitals (LCP, INP, CLS, FCP, TTFB)
 reportWebVitals();
 
-// Registra il Service Worker per PWA
-serviceWorkerRegistration.register({
-  onSuccess: () => {
-    console.log('[PWA] App pronta per uso offline');
-  },
-  onUpdate: (registration) => {
-    console.log('[PWA] Nuova versione disponibile');
-    serviceWorkerRegistration.showUpdateNotification(registration);
-  },
-});
+// Registra il Service Worker per PWA (solo in produzione: in dev cachava
+// asset stale e rompeva CSS/HMR dopo un reload)
+if (import.meta.env.PROD) {
+  serviceWorkerRegistration.register({
+    onSuccess: () => {
+      console.log('[PWA] App pronta per uso offline');
+    },
+    onUpdate: (registration) => {
+      console.log('[PWA] Nuova versione disponibile');
+      serviceWorkerRegistration.showUpdateNotification(registration);
+    },
+  });
+}

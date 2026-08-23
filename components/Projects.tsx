@@ -117,12 +117,17 @@ const Projects: React.FC = () => {
           </div>
 
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-6 md:gap-x-8 gap-y-10 md:gap-y-16">
-            {projectsData.map((project) => (
+            {projectsData.map((project, index) => (
               <div
                 key={project.id}
                 role="button"
                 tabIndex={0}
                 className="group cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:ring-offset-4 rounded-sm"
+                style={{
+                  opacity: portfolioView.isInView ? 1 : 0,
+                  transform: portfolioView.isInView ? 'translateY(0)' : 'translateY(24px)',
+                  transition: `opacity 0.6s ease-out ${index * 0.1}s, transform 0.6s ease-out ${index * 0.1}s`,
+                }}
                 onClick={() => { trackCTAClick(project.title, 'Projects Grid'); setSelectedProject(project); }}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {

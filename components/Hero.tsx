@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { useRipple } from '../hooks/useRipple';
 import { trackCTAClick } from './Analytics';
@@ -64,6 +64,47 @@ const Hero: React.FC = () => {
     return () => clearInterval(interval);
   }, [currentTitleIndex]);
 
+  const heroRef = useRef<HTMLElement>(null);
+  const ringsRef = useRef<HTMLDivElement>(null);
+  const imageWrapRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const finePointer = window.matchMedia('(pointer: fine)').matches;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!finePointer || reducedMotion) return;
+
+    const section = heroRef.current;
+    if (!section) return;
+
+    let targetX = 0;
+    let targetY = 0;
+    let raf: number;
+
+    const handleMove = (e: MouseEvent) => {
+      const rect = section.getBoundingClientRect();
+      targetX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+      targetY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+    };
+
+    const tick = () => {
+      if (ringsRef.current) {
+        ringsRef.current.style.transform = `translate3d(${targetX * -14}px, ${targetY * -14}px, 0)`;
+      }
+      if (imageWrapRef.current) {
+        imageWrapRef.current.style.transform = `translate3d(${targetX * 8}px, ${targetY * 8}px, 0)`;
+      }
+      raf = requestAnimationFrame(tick);
+    };
+
+    section.addEventListener('mousemove', handleMove);
+    raf = requestAnimationFrame(tick);
+
+    return () => {
+      section.removeEventListener('mousemove', handleMove);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
   const scrollToPortfolio = (e: React.MouseEvent) => {
     e.preventDefault();
     const element = document.getElementById('portfolio');
@@ -80,7 +121,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-[600px] md:min-h-[calc(100vh-80px)] py-12 px-6 max-w-7xl mx-auto flex flex-col justify-center overflow-hidden">
+    <section ref={heroRef} className="relative min-h-[600px] md:min-h-[calc(100vh-80px)] py-12 px-6 max-w-7xl mx-auto flex flex-col justify-center overflow-hidden">
 
       {/* Dot grid background */}
       <div
@@ -167,7 +208,7 @@ const Hero: React.FC = () => {
         <div className="relative order-2 lg:order-2 flex justify-center lg:justify-end">
            <div className="relative w-full max-w-[260px] sm:max-w-sm md:max-w-md aspect-square flex items-center justify-center">
               {/* Concentric Yellow Semi-Circles with Movement */}
-              <div className="absolute inset-0 flex items-center justify-center">
+              <div ref={ringsRef} className="absolute inset-0 flex items-center justify-center">
                 {/* Inner semi-circle - bottom right */}
                 <div
                   className="absolute w-[85%] h-[85%] rounded-full border-[10px] border-transparent border-r-brand-yellow border-b-brand-yellow opacity-60"
@@ -192,7 +233,7 @@ const Hero: React.FC = () => {
               </div>
 
               {/* Main Image Container */}
-              <div className="relative z-10 bg-gray-200 w-[75%] h-[75%] overflow-hidden rounded-full border-8 border-white shadow-2xl">
+              <div ref={imageWrapRef} className="relative z-10 bg-gray-200 w-[75%] h-[75%] overflow-hidden rounded-full border-8 border-white shadow-2xl">
                 <ImageWithSkeleton
                   src="/alberto-hero-v2.webp"
                   alt="Alberto Pasinati - Marketing Manager e Full Stack Marketer"
