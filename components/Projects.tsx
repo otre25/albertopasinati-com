@@ -108,7 +108,7 @@ const Projects: React.FC = () => {
                 aria-label="Archivio Progetti: casi studio di Marketing Management B2C, B2B e Brand Identity — Store Cucine, Wave Murano Glass, Il Fanale Group, Atelier Alessandra"
                 className="text-6xl md:text-8xl font-display font-black uppercase leading-[0.9] text-deep-black"
               >
-                Archivio <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-orange-500">Progetti</span>
+                Archivio <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-brand-terracotta">Progetti</span>
               </h2>
             </div>
             <div className="text-right mt-6 md:mt-0 font-mono text-sm text-gray-500">
@@ -165,7 +165,7 @@ const Projects: React.FC = () => {
                       <h3 className="text-3xl font-display font-bold uppercase mb-1">{project.title}</h3>
                       <p className="font-mono text-xs text-gray-500 uppercase tracking-wider">{project.category}</p>
                     </div>
-                    <span className="font-display font-bold text-gray-300 text-2xl group-hover:text-brand-dark transition-colors shrink-0 ml-4">
+                    <span className="font-display font-bold text-gray-300 text-2xl group-hover:text-brand-terracotta transition-colors shrink-0 ml-4">
                       {project.number}
                     </span>
                   </div>

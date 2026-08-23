@@ -173,7 +173,7 @@ const Services: React.FC = () => {
 
               {/* Group label — sticky sidebar */}
               <div className="lg:col-span-3 flex lg:flex-col lg:pt-5 items-center lg:items-start gap-3">
-                <span className="font-mono text-xs text-gray-400 uppercase tracking-widest">{group.tag}</span>
+                <span className="font-mono text-xs text-brand-terracotta uppercase tracking-widest">{group.tag}</span>
                 <h3 className="font-display font-black text-2xl md:text-3xl uppercase text-deep-black">{group.area}</h3>
               </div>
 

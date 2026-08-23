@@ -13,6 +13,7 @@ export default {
         'off-white': '#f8f8f8',
         'deep-black': '#1a1a1a',
         'brand-yellow': '#FDBA3C',
+        'brand-terracotta': '#C1440E',
         'brand-dark': '#2D3436',
         'brand-light': '#636e72',
       },
