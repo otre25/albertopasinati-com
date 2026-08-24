@@ -16,13 +16,13 @@ const serviceGroups: ServiceGroup[] = [
     items: [
       {
         title: 'Marketing Strategy & Posizionamento',
-        description: 'Una strategia che parte dai dati del tuo mercato e si traduce in posizionamento chiaro, audience definita e roadmap operativa con KPI misurabili. Ogni decisione è giustificata da un obiettivo di business concreto.',
+        description: 'Dati di mercato tradotti in posizionamento chiaro, roadmap e KPI misurabili.',
         icon: LayoutDashboard,
         color: 'orange',
       },
       {
         title: 'Budget Planning & Ottimizzazione ROI',
-        description: 'Ogni euro deve lavorare. Gestione di budget superiori a €1M/anno con allocazione ottimale per canale, riduzione del CAC e monitoraggio continuo del ritorno su ogni investimento.',
+        description: 'Budget oltre €1M/anno allocati per canale, CAC in calo, ROI sotto controllo.',
         icon: Coins,
         color: 'orange',
       },
@@ -34,19 +34,19 @@ const serviceGroups: ServiceGroup[] = [
     items: [
       {
         title: 'Performance Marketing Multi-Canale',
-        description: 'Campagne che portano lead qualificati e vendite, non solo click. Google Ads, Meta, TikTok e LinkedIn gestiti con ottimizzazione continua, attribution modeling multi-touch e reportistica trasparente.',
+        description: 'Google, Meta, TikTok, LinkedIn: lead qualificati, non solo click.',
         icon: Megaphone,
         color: 'orange',
       },
       {
         title: 'Web Analytics & Business Intelligence',
-        description: 'Trasformo i dati in decisioni. GA4, dashboard BI personalizzate e attribution modeling per avere visibilità completa su ogni canale, ottimizzare il funnel di conversione e giustificare ogni euro investito.',
+        description: 'GA4 e dashboard BI su misura: ogni euro giustificato dai dati.',
         icon: PieChart,
         color: 'orange',
       },
       {
         title: 'Digital Presence & Conversion Strategy',
-        description: 'La presenza digitale è un asset di business, non un biglietto da visita. Supervisiono e indirizzo la strategia di siti web, landing page e funnel di conversione — con WordPress, Shopify e Webflow — affinché ogni touchpoint trasformi il traffico in opportunità concrete.',
+        description: 'Siti, landing page e funnel — WordPress, Shopify, Webflow — che convertono traffico in opportunità.',
         icon: Monitor,
         color: 'orange',
       },
@@ -58,19 +58,19 @@ const serviceGroups: ServiceGroup[] = [
     items: [
       {
         title: 'Event Marketing & Gestione Fiere',
-        description: 'Presenza fieristica che genera opportunità concrete. Salone del Mobile, Maison&Objet e fiere internazionali gestite end-to-end: dalla logistica alla qualifica dei contatti acquisiti. Ogni evento è un investimento misurabile.',
+        description: 'Salone del Mobile, Maison&Objet e fiere internazionali gestite end-to-end, dalla logistica ai contatti qualificati.',
         icon: Calendar,
         color: 'orange',
       },
       {
         title: 'Team Leadership & Project Management',
-        description: 'Un team marketing produce risultati quando è guidato con obiettivi chiari e feedback costante. Esperienza nella direzione di team interni, agenzie creative e fornitori tech con focus su delega strategica e sviluppo competenze.',
+        description: 'Team interni e agenzie, guidati con obiettivi chiari e delega reale.',
         icon: Users,
         color: 'orange',
       },
       {
         title: 'Gestione Fornitori & Partnership',
-        description: 'La qualità del risultato finale dipende anche dai partner. Selezione, negoziazione e gestione di agenzie, freelance e fornitori tech per massimizzare qualità, ridurre i costi ed eliminare le inefficienze operative.',
+        description: 'Agenzie, freelance e fornitori tech selezionati e negoziati per qualità e costi sotto controllo.',
         icon: Handshake,
         color: 'orange',
       },
@@ -102,7 +102,7 @@ const ServiceCard: React.FC<{
         <h3 className="text-xl md:text-2xl font-display font-bold uppercase mb-3 leading-tight text-brand-dark">
           {service.title}
         </h3>
-        <p className="leading-relaxed text-sm text-stone-600">
+        <p className="leading-snug text-base font-medium text-stone-700">
           {service.description}
         </p>
       </div>
