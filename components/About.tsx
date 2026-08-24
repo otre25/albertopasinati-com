@@ -40,22 +40,36 @@ const About: React.FC = () => {
 
           {/* Right Column - Content */}
           <div className="lg:col-span-8">
-            <div className="space-y-6 text-lg text-stone-700 leading-relaxed">
+            <div className="text-lg text-stone-700 leading-relaxed">
               <p className="about-speakable text-deep-black text-xl border-l-4 border-brand-yellow pl-6">
                 Ho guidato la funzione marketing di brand del lusso, retail e manifattura italiana — con responsabilità diretta su strategia, team e budget superiori a €1M/anno — portando crescita misurabile su mercati italiani ed europei.
               </p>
-              <p className="pl-6">
-                Dal posizionamento di brand all'allocazione del budget, dalla selezione dei partner alla costruzione del team: gestisco il marketing come <span className="bg-brand-yellow/30 px-1">funzione strategica integrata</span>, non come insieme di canali da ottimizzare.
-              </p>
-              <p className="pl-6">
-                Laureato in <span className="bg-brand-yellow/30 px-1">Marketing e Comunicazione all'Università Ca' Foscari di Venezia</span>, ho costruito un metodo che integra visione strategica, lettura dei dati e coordinamento di team multidisciplinari.
-              </p>
-              <p className="pl-6">
-                Lavoro al livello in cui le decisioni di marketing impattano il business: definisco le priorità, alloco le risorse, scelgo i partner e tengo la squadra allineata su obiettivi misurabili. L'esecuzione conta — ma serve a realizzare una strategia, non a sostituirla.
-              </p>
-              <p className="pl-6">
-                Ho coordinato team interni e agenzie esterne, gestito fiere internazionali come <span className="font-bold text-deep-black">Salone del Mobile</span> e <span className="font-bold text-deep-black">Maison&Objet</span>, e scalato brand su mercati EMEA. Cerco contesti dove il marketing è una leva di crescita, non un costo da contenere.
-              </p>
+              <dl className="mt-8 pl-6 space-y-5">
+                <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[120px_1fr] gap-x-4 gap-y-1 items-baseline">
+                  <dt className="text-xs font-bold uppercase tracking-widest text-brand-terracotta">Approccio</dt>
+                  <dd className="text-base font-medium text-stone-700 leading-snug">
+                    Marketing come <span className="font-bold text-deep-black">funzione strategica integrata</span>, non canali da ottimizzare uno per uno.
+                  </dd>
+                </div>
+                <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[120px_1fr] gap-x-4 gap-y-1 items-baseline">
+                  <dt className="text-xs font-bold uppercase tracking-widest text-brand-terracotta">Formazione</dt>
+                  <dd className="text-base font-medium text-stone-700 leading-snug">
+                    Laurea in Marketing e Comunicazione, <span className="font-bold text-deep-black">Ca' Foscari Venezia</span>.
+                  </dd>
+                </div>
+                <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[120px_1fr] gap-x-4 gap-y-1 items-baseline">
+                  <dt className="text-xs font-bold uppercase tracking-widest text-brand-terracotta">Livello</dt>
+                  <dd className="text-base font-medium text-stone-700 leading-snug">
+                    Priorità, risorse, partner, team — <span className="font-bold text-deep-black">allineati su obiettivi misurabili</span>.
+                  </dd>
+                </div>
+                <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[120px_1fr] gap-x-4 gap-y-1 items-baseline">
+                  <dt className="text-xs font-bold uppercase tracking-widest text-brand-terracotta">Track record</dt>
+                  <dd className="text-base font-medium text-stone-700 leading-snug">
+                    <span className="font-bold text-deep-black">Salone del Mobile</span>, <span className="font-bold text-deep-black">Maison&Objet</span>, scaling su mercati EMEA.
+                  </dd>
+                </div>
+              </dl>
             </div>
 
             <div className="pt-8 pl-6 flex gap-4">
