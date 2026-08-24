@@ -82,9 +82,7 @@ const ServiceCard: React.FC<{
   service: Service;
   globalIndex: number;
   isInView: boolean;
-  accent?: boolean;
-  wide?: boolean;
-}> = ({ service, globalIndex, isInView, accent, wide }) => {
+}> = ({ service, globalIndex, isInView }) => {
   return (
     <div
       style={{
@@ -92,32 +90,19 @@ const ServiceCard: React.FC<{
         transform: isInView ? 'translateY(0)' : 'translateY(20px)',
         transition: `opacity 0.5s ease-out ${globalIndex * 0.06}s, transform 0.5s ease-out ${globalIndex * 0.06}s`,
       }}
-      className={wide ? 'sm:col-span-2' : ''}
     >
-      <div
-        className={`group h-full border border-stone-200 hover:border-brand-yellow rounded-sm p-6 md:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
-          accent ? 'bg-deep-black' : 'bg-white'
-        }`}
-      >
-        <div
-          className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 mb-5 ${
-            accent ? 'bg-white/10 group-hover:bg-brand-yellow' : 'bg-stone-100 group-hover:bg-brand-yellow'
-          }`}
-        >
+      <div className="group h-full bg-white border border-stone-200 hover:border-brand-yellow rounded-sm p-6 md:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+        <div className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 mb-5 bg-stone-100 group-hover:bg-brand-yellow">
           <service.icon
             size={20}
             strokeWidth={1.5}
-            className={`transition-colors duration-300 group-hover:text-black ${accent ? 'text-brand-yellow' : 'text-brand-dark'}`}
+            className="text-brand-dark transition-colors duration-300 group-hover:text-black"
           />
         </div>
-        <h3
-          className={`text-xl md:text-2xl font-display font-bold uppercase mb-3 leading-tight ${
-            accent ? 'text-white' : 'text-brand-dark'
-          }`}
-        >
+        <h3 className="text-xl md:text-2xl font-display font-bold uppercase mb-3 leading-tight text-brand-dark">
           {service.title}
         </h3>
-        <p className={`leading-relaxed text-sm ${accent ? 'text-stone-300' : 'text-stone-600'}`}>
+        <p className="leading-relaxed text-sm text-stone-600">
           {service.description}
         </p>
       </div>
@@ -172,7 +157,7 @@ const Services: React.FC = () => {
 
               {/* Service cards — bento grid */}
               <div className="lg:col-span-9 grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-                {group.items.map((service, itemIdx) => {
+                {group.items.map((service) => {
                   const idx = globalIndex++;
                   return (
                     <ServiceCard
@@ -180,8 +165,6 @@ const Services: React.FC = () => {
                       service={service}
                       globalIndex={idx}
                       isInView={isInView}
-                      accent={itemIdx === 0}
-                      wide={itemIdx === 0 && group.items.length > 2}
                     />
                   );
                 })}
