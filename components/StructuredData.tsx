@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { faqItems } from '../data/faq';
+import { methodTitle, methodDescription, methodSteps } from '../data/method';
 
 const StructuredData: React.FC = () => {
   useEffect(() => {
@@ -168,39 +169,20 @@ const StructuredData: React.FC = () => {
       }
     };
 
-    // HowTo Schema — il metodo di lavoro (ottimizzato per AI engines)
+    // HowTo Schema — stessa fonte (data/method.ts) della sezione "Il Metodo"
+    // visibile, così contenuto in pagina e markup restano allineati.
     const howToSchema = {
       "@context": "https://schema.org",
       "@type": "HowTo",
-      "name": "Come Alberto Pasinati imposta una strategia di marketing",
-      "description": "Il processo in 4 fasi per definire e implementare una strategia marketing data-driven che genera risultati misurabili.",
+      "name": methodTitle,
+      "description": methodDescription,
       "author": { "@id": "https://albertopasinati.com/#person" },
-      "step": [
-        {
-          "@type": "HowToStep",
-          "position": 1,
-          "name": "Analisi e Diagnosi",
-          "text": "Analisi del mercato, dei competitor e del posizionamento attuale del brand. Identificazione delle opportunità di crescita e dei KPI prioritari."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 2,
-          "name": "Strategia e Roadmap",
-          "text": "Definizione della strategia di marketing integrata con obiettivi SMART, piano dei canali (digitale e offline), budget allocation e timeline operativa."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 3,
-          "name": "Esecuzione Multi-Canale",
-          "text": "Gestione operativa di campagne Google Ads, Meta Ads, content marketing, SEO, eventi fieristici internazionali e PR. Coordinamento team interno e agenzie esterne."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 4,
-          "name": "Misurazione e Ottimizzazione",
-          "text": "Monitoraggio continuo tramite GA4, dashboard BI e report periodici. Ottimizzazione in tempo reale basata sui dati per massimizzare il ROI."
-        }
-      ]
+      "step": methodSteps.map((step, i) => ({
+        "@type": "HowToStep",
+        "position": i + 1,
+        "name": step.name,
+        "text": step.text,
+      })),
     };
 
     // Website Schema
