@@ -21,6 +21,15 @@ const ProjectPage: React.FC = () => {
   // Inject per-project Article schema for AI SEO
   useEffect(() => {
     if (!project) return;
+    const breadcrumbSchema = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://albertopasinati.com" },
+        { "@type": "ListItem", "position": 2, "name": "Portfolio", "item": "https://albertopasinati.com/#portfolio" },
+        { "@type": "ListItem", "position": 3, "name": project.title, "item": `https://albertopasinati.com/portfolio/${project.slug}` },
+      ],
+    };
     const articleSchema = {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -54,17 +63,22 @@ const ProjectPage: React.FC = () => {
       }
     };
 
-    let script = document.getElementById('schema-project-article') as HTMLScriptElement | null;
-    if (!script) {
-      script = document.createElement('script');
-      script.id = 'schema-project-article';
-      script.type = 'application/ld+json';
-      document.head.appendChild(script);
-    }
-    script.textContent = JSON.stringify(articleSchema);
+    const inject = (id: string, schema: object) => {
+      let script = document.getElementById(id) as HTMLScriptElement | null;
+      if (!script) {
+        script = document.createElement('script');
+        script.id = id;
+        script.type = 'application/ld+json';
+        document.head.appendChild(script);
+      }
+      script.textContent = JSON.stringify(schema);
+    };
+    inject('schema-project-article', articleSchema);
+    inject('schema-project-breadcrumb', breadcrumbSchema);
 
     return () => {
       document.getElementById('schema-project-article')?.remove();
+      document.getElementById('schema-project-breadcrumb')?.remove();
     };
   }, [project]);
 
