@@ -11,6 +11,7 @@ import { useConversionTracking } from '../hooks/useConversionTracking';
 const Services = lazy(() => import('../components/Services'));
 const Projects = lazy(() => import('../components/Projects'));
 const PersonalProjects = lazy(() => import('../components/AIArchitecture'));
+const Faq = lazy(() => import('../components/Faq'));
 
 // Skeleton loader minimale per Suspense fallback
 const SectionSkeleton = () => (
@@ -60,6 +61,9 @@ const HomePage: React.FC = () => {
           <section id="personal">
             <PersonalProjects />
           </section>
+        </Suspense>
+        <Suspense fallback={<SectionSkeleton />}>
+          <Faq />
         </Suspense>
       </div>
     </>
