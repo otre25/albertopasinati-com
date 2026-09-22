@@ -1,132 +1,118 @@
 /**
- * Post-build pre-render script
- * Genera file HTML statici per ogni pagina progetto con meta tag corretti.
- * Vercel serve questi file direttamente per i bot (Facebook, LinkedIn, WhatsApp,
- * GPTBot, PerplexityBot) che non eseguono JavaScript.
+ * Post-build pre-render — snapshot Puppeteer.
  *
- * Usage: node scripts/prerender-pages.mjs (auto-eseguito da npm run build)
+ * Avvia `vite preview` sulla dist appena buildata, apre ogni route con un
+ * browser reale, lascia girare React (che via SEO.tsx / StructuredData.tsx
+ * inietta meta tag + JSON-LD corretti per pagina), poi serializza il DOM e
+ * scrive HTML statico per ogni route.
+ *
+ * I crawler senza JS (Bing, anteprima LinkedIn, GPTBot, PerplexityBot, ecc.)
+ * ricevono così contenuto reale invece di <div id="root"></div> vuoto.
+ * Al primo load in browser React fa createRoot su #root non vuoto e ri-renderizza
+ * client-side: nessun mismatch di hydration perché non usiamo hydrateRoot.
+ *
+ * Usage: node scripts/prerender-pages.mjs  (auto-eseguito da `npm run build`)
  */
 
 import fs from 'fs';
 import path from 'path';
+import { spawn } from 'child_process';
 import { fileURLToPath } from 'url';
+import puppeteer from 'puppeteer';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(__dirname, '../dist');
-const SITE_URL = 'https://albertopasinati.com';
+const PORT = 4179;
+const ORIGIN = `http://localhost:${PORT}`;
 
-// Dati progetti — speculari a data/projects.ts
-const projects = [
-  {
-    slug: 'store-cucine',
-    title: 'Store Cucine — Caso Studio Marketing | Alberto Pasinati',
-    description: 'Caso studio: Marketing Manager per Store Cucine — 20 negozi, €500K+/anno di budget, lead generation B2C omnicanale su Google Ads e Meta. 5 anni di gestione strategica.',
-    image: '/kitchen.webp',
-    category: 'Marketing Management B2C',
-  },
-  {
-    slug: 'wave-murano-glass',
-    title: 'Wave Murano Glass — Caso Studio Marketing | Alberto Pasinati',
-    description: 'Caso studio: Marketing Manager per Wave Murano Glass — brand luxury veneziano. Strategia EMEA, Maison&Objet Parigi, campagne multi-lingua e SEO internazionale.',
-    image: '/murano-glass.webp',
-    category: 'Marketing Management B2B2C',
-  },
-  {
-    slug: 'il-fanale-group',
-    title: 'Il Fanale Group — Caso Studio Marketing | Alberto Pasinati',
-    description: 'Caso studio: Marketing Manager per Il Fanale Group — illuminazione di design. Salone del Mobile Milano, CRM da zero, network dealer B2B nazionale e internazionale.',
-    image: '/lighting-design.webp',
-    category: 'Marketing Management B2B',
-  },
-  {
-    slug: 'atelier-alessandra',
-    title: 'Atelier Alessandra — Caso Studio Marketing | Alberto Pasinati',
-    description: 'Caso studio: Rebranding e e-commerce Shopify per Atelier Alessandra — gioielli vetro di Murano. Brand identity, SEO, Meta Ads e Google Shopping. Sito live.',
-    image: '/Alessandra-Atelier-original-Murano-glass-jewels.webp',
-    category: 'Brand Identity & E-Commerce',
-  },
+// Route da prerenderare. '/' sovrascrive dist/index.html; le altre creano
+// dist/<route>/index.html (Vercel le serve via i rewrite in vercel.json).
+const ROUTES = [
+  '/',
+  '/portfolio/store-cucine',
+  '/portfolio/wave-murano-glass',
+  '/portfolio/il-fanale-group',
+  '/portfolio/atelier-alessandra',
+  '/privacy-policy',
 ];
 
-function stripExistingMeta(html) {
-  // Rimuove i meta statici dell'homepage per evitare duplicati
-  return html
-    .replace(/<meta name="description"[^>]*>/g, '')
-    .replace(/<meta name="robots"[^>]*>/g, '')
-    .replace(/<meta name="author"[^>]*>/g, '')
-    .replace(/<meta property="og:[^"]*"[^>]*>/g, '')
-    .replace(/<meta property="twitter:[^"]*"[^>]*>/g, '')
-    .replace(/<meta name="twitter:[^"]*"[^>]*>/g, '')
-    .replace(/<link rel="canonical"[^>]*>/g, '')
-    .replace(/<!-- Open Graph[^>]*-->/g, '')
-    .replace(/<!-- Twitter Card[^>]*-->/g, '')
-    .replace(/<!-- Canonical[^>]*-->/g, '');
-}
+const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
-function injectMeta(html, { slug, title, description, image, category }) {
-  const url = `${SITE_URL}/portfolio/${slug}`;
-  const imageUrl = `${SITE_URL}${image}`;
-
-  // Prima rimuove i meta esistenti per evitare duplicati
-  const cleanHtml = stripExistingMeta(html);
-
-  const metaBlock = `<title>${title}</title>
-    <meta name="description" content="${description}" />
-    <meta name="robots" content="index, follow" />
-    <meta name="author" content="Alberto Pasinati" />
-    <link rel="canonical" href="${url}" />
-    <meta property="og:type" content="article" />
-    <meta property="og:site_name" content="Alberto Pasinati" />
-    <meta property="og:url" content="${url}" />
-    <meta property="og:title" content="${title}" />
-    <meta property="og:description" content="${description}" />
-    <meta property="og:image" content="${imageUrl}" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="${title}" />
-    <meta property="og:locale" content="it_IT" />
-    <meta property="article:author" content="Alberto Pasinati" />
-    <meta property="article:section" content="${category}" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="${title}" />
-    <meta name="twitter:description" content="${description}" />
-    <meta name="twitter:image" content="${imageUrl}" />
-    <link rel="alternate" hreflang="it-IT" href="${url}" />
-    <link rel="alternate" hreflang="it" href="${url}" />
-    <link rel="alternate" hreflang="x-default" href="${url}" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://albertopasinati.com"},{"@type":"ListItem","position":2,"name":"Portfolio","item":"https://albertopasinati.com/#portfolio"},{"@type":"ListItem","position":3,"name":"${title.split(' —')[0]}","item":"${url}"}]}</script>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","@id":"${url}#article","headline":"${title}","description":"${description}","image":"${imageUrl}","url":"${url}","author":{"@type":"Person","@id":"https://albertopasinati.com/#person","name":"Alberto Pasinati"},"publisher":{"@type":"Person","@id":"https://albertopasinati.com/#person","name":"Alberto Pasinati"},"mainEntityOfPage":{"@type":"WebPage","@id":"${url}"},"articleSection":"${category}","inLanguage":"it-IT"}</script>`;
-
-  return cleanHtml.replace(/<title>.*?<\/title>/, metaBlock);
-}
-
-function prerender() {
-  const indexHtml = fs.readFileSync(path.join(DIST, 'index.html'), 'utf-8');
-
-  let count = 0;
-  for (const project of projects) {
-    const dir = path.join(DIST, 'portfolio', project.slug);
-    fs.mkdirSync(dir, { recursive: true });
-
-    const html = injectMeta(indexHtml, project);
-    fs.writeFileSync(path.join(dir, 'index.html'), html, 'utf-8');
-    count++;
-    console.log(`✅ Pre-rendered: /portfolio/${project.slug}`);
+async function waitForServer(url, timeoutMs = 20000) {
+  const start = Date.now();
+  while (Date.now() - start < timeoutMs) {
+    try {
+      const res = await fetch(url);
+      if (res.ok) return;
+    } catch {
+      /* server non ancora su */
+    }
+    await wait(300);
   }
-
-  // Genera anche privacy-policy con meta corretti
-  const privacyDir = path.join(DIST, 'privacy-policy');
-  fs.mkdirSync(privacyDir, { recursive: true });
-  const privacyHtml = indexHtml.replace(
-    /<title>.*?<\/title>/,
-    `<title>Privacy Policy | Alberto Pasinati</title>
-    <meta name="description" content="Informativa sulla privacy del sito albertopasinati.com — Marketing Manager Alberto Pasinati." />
-    <meta name="robots" content="noindex, follow" />
-    <link rel="canonical" href="${SITE_URL}/privacy-policy" />`
-  );
-  fs.writeFileSync(path.join(privacyDir, 'index.html'), privacyHtml, 'utf-8');
-  console.log(`✅ Pre-rendered: /privacy-policy`);
-
-  console.log(`\n🚀 Pre-render completato: ${count + 1} pagine generate`);
+  throw new Error(`vite preview non raggiungibile su ${url} entro ${timeoutMs}ms`);
 }
 
-prerender();
+async function main() {
+  // 1. Static server sulla dist
+  const server = spawn(
+    'npx',
+    ['vite', 'preview', '--port', String(PORT), '--strictPort'],
+    { cwd: path.join(__dirname, '..'), stdio: 'ignore' },
+  );
+
+  const cleanup = () => {
+    if (!server.killed) server.kill();
+  };
+  process.on('exit', cleanup);
+  process.on('SIGINT', () => { cleanup(); process.exit(1); });
+
+  try {
+    await waitForServer(ORIGIN);
+
+    // 2. Browser
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    });
+
+    // 3. Cattura tutte le route in memoria (non scrivere mentre il server serve
+    //    la stessa cartella, o le richieste successive prenderebbero il file
+    //    parziale invece del fallback SPA).
+    const snapshots = [];
+    for (const route of ROUTES) {
+      const page = await browser.newPage();
+      await page.goto(`${ORIGIN}${route}`, { waitUntil: 'networkidle2', timeout: 30000 });
+      // Aspetta che React abbia montato e gli effect (meta/schema) siano girati.
+      await page.waitForFunction(
+        () => document.querySelector('#root')?.childElementCount > 0,
+        { timeout: 15000 },
+      );
+      await wait(1200); // settle: animazioni hero + iniezione tag in <head>
+      const html = '<!DOCTYPE html>\n' + (await page.content()).replace(/^<!DOCTYPE html>\s*/i, '');
+      snapshots.push({ route, html });
+      await page.close();
+      console.log(`✅ Snapshot: ${route}`);
+    }
+
+    await browser.close();
+
+    // 4. Scrivi i file
+    for (const { route, html } of snapshots) {
+      const outPath =
+        route === '/'
+          ? path.join(DIST, 'index.html')
+          : path.join(DIST, route, 'index.html');
+      fs.mkdirSync(path.dirname(outPath), { recursive: true });
+      fs.writeFileSync(outPath, html, 'utf-8');
+    }
+
+    console.log(`\n🚀 Pre-render completato: ${snapshots.length} pagine`);
+  } finally {
+    cleanup();
+  }
+}
+
+main().catch((err) => {
+  console.error('❌ Pre-render fallito:', err);
+  process.exit(1);
+});

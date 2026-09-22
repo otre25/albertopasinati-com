@@ -43,10 +43,12 @@ const FlipLetter: React.FC<{ char: string; delay: number }> = ({ char, delay }) 
 
 const Hero: React.FC = () => {
   const { ripples, createRipple } = useRipple();
+  // "Marketing Manager" is first — it's the stable H1 the prerender snapshot
+  // captures and the term every schema / llms.txt / title tag commits to.
   const titles = [
-    ["Full Stack", "Marketer."],
     ["Marketing", "Manager."],
-    ["Marketing", "Strategist."]
+    ["Marketing", "Strategist."],
+    ["Full Stack", "Marketer."]
   ];
 
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
@@ -138,22 +140,26 @@ const Hero: React.FC = () => {
 
         {/* Text Content */}
         <div className="relative z-10 order-1 lg:order-1">
-          {/* Hidden H1 for SEO */}
-          <h1 className="sr-only">Alberto Pasinati — Marketing Manager con 10+ anni in Brand Strategy, Performance Marketing e Digital per brand del lusso e retail</h1>
-
-          {/* Visual animated title */}
-          <div className="text-6xl md:text-8xl font-display font-black leading-[0.9] uppercase mb-8 min-h-[180px] md:min-h-[240px]" aria-hidden="true">
-            <span className="block whitespace-nowrap" key={key}>
-              {displayedTitle[0].split('').map((char, index) => (
-                <FlipLetter key={`${key}-line1-${index}`} char={char} delay={index * 50} />
-              ))}
+          {/* Animated title — this IS the H1. aria-label stays fixed so screen
+              readers and crawlers get a stable "Marketing Manager" accessible
+              name while the visible letters rotate; inner spans are aria-hidden. */}
+          <h1
+            aria-label="Alberto Pasinati — Marketing Manager con 10+ anni in Brand Strategy, Performance Marketing e Digital per brand del lusso e retail"
+            className="text-6xl md:text-8xl font-display font-black leading-[0.9] uppercase mb-8 min-h-[180px] md:min-h-[240px]"
+          >
+            <span aria-hidden="true">
+              <span className="block whitespace-nowrap" key={key}>
+                {displayedTitle[0].split('').map((char, index) => (
+                  <FlipLetter key={`${key}-line1-${index}`} char={char} delay={index * 50} />
+                ))}
+              </span>
+              <span className="text-brand-yellow block whitespace-nowrap" key={`${key}-line2`}>
+                {displayedTitle[1].split('').map((char, index) => (
+                  <FlipLetter key={`${key}-line2-${index}`} char={char} delay={(displayedTitle[0].length + index) * 50} />
+                ))}
+              </span>
             </span>
-            <span className="text-brand-yellow block whitespace-nowrap" key={`${key}-line2`}>
-              {displayedTitle[1].split('').map((char, index) => (
-                <FlipLetter key={`${key}-line2-${index}`} char={char} delay={(displayedTitle[0].length + index) * 50} />
-              ))}
-            </span>
-          </div>
+          </h1>
 
           <div className="pl-6 border-l-4 border-brand-dark max-w-md">
             <p className="hero-speakable text-lg text-stone-700 leading-relaxed font-medium">

@@ -9,8 +9,10 @@ import { useConversionTracking } from '../hooks/useConversionTracking';
 
 // Lazy load componenti sotto fold per migliorare performance iniziale
 const Services = lazy(() => import('../components/Services'));
+const Method = lazy(() => import('../components/Method'));
 const Projects = lazy(() => import('../components/Projects'));
 const PersonalProjects = lazy(() => import('../components/AIArchitecture'));
+const Faq = lazy(() => import('../components/Faq'));
 
 // Skeleton loader minimale per Suspense fallback
 const SectionSkeleton = () => (
@@ -54,12 +56,18 @@ const HomePage: React.FC = () => {
           </section>
         </Suspense>
         <Suspense fallback={<SectionSkeleton />}>
+          <Method />
+        </Suspense>
+        <Suspense fallback={<SectionSkeleton />}>
           <Projects />
         </Suspense>
         <Suspense fallback={<SectionSkeleton />}>
           <section id="personal">
             <PersonalProjects />
           </section>
+        </Suspense>
+        <Suspense fallback={<SectionSkeleton />}>
+          <Faq />
         </Suspense>
       </div>
     </>
