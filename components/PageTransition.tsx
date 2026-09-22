@@ -27,7 +27,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({ children }) => {
       key={displayKey}
       style={{
         opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'translateY(0)' : 'translateY(8px)',
+        transform: isVisible ? 'none' : 'translateY(8px)',
         transition: 'opacity 0.25s ease-out, transform 0.25s ease-out',
       }}
     >
