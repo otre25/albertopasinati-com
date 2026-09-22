@@ -113,6 +113,9 @@ async function main() {
 }
 
 main().catch((err) => {
-  console.error('❌ Pre-render fallito:', err);
-  process.exit(1);
+  // Non bloccare il deploy: se Puppeteer non riesce a girare in questo
+  // ambiente (es. lib di sistema mancanti su Vercel), la dist da `vite
+  // build` è già valida e funzionante client-side — meglio spedirla senza
+  // prerender che non spedire nulla.
+  console.error('⚠️  Pre-render saltato (build prosegue senza):', err.message || err);
 });
