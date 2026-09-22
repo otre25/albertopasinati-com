@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import ProjectModal from './ProjectModal';
+import { Link, useNavigate } from 'react-router-dom';
 import { useInView } from '../hooks/useInView';
 import ImageWithSkeleton from './ImageWithSkeleton';
 import ProjectsStructuredData from './ProjectsStructuredData';
 import { projectsData } from '../data/projects';
-import { Project } from '../types';
 import { trackCTAClick } from './Analytics';
 
 const brands = [
@@ -20,7 +18,7 @@ const brands = [
 ];
 
 const Projects: React.FC = () => {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const navigate = useNavigate();
   const [tiltEnabled, setTiltEnabled] = useState(false);
   const experienceView = useInView({ threshold: 0.15 });
   const portfolioView = useInView({ threshold: 0.1 });
@@ -44,22 +42,6 @@ const Projects: React.FC = () => {
     if (!tiltEnabled) return;
     e.currentTarget.style.transition = 'transform 0.4s ease-out';
     e.currentTarget.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg)';
-  };
-
-  const currentProjectIndex = selectedProject
-    ? projectsData.findIndex(p => p.id === selectedProject.id)
-    : -1;
-
-  const handleNext = () => {
-    if (currentProjectIndex < projectsData.length - 1) {
-      setSelectedProject(projectsData[currentProjectIndex + 1]);
-    }
-  };
-
-  const handlePrev = () => {
-    if (currentProjectIndex > 0) {
-      setSelectedProject(projectsData[currentProjectIndex - 1]);
-    }
   };
 
   return (
@@ -150,15 +132,15 @@ const Projects: React.FC = () => {
                   transform: portfolioView.isInView ? 'translateY(0)' : 'translateY(24px)',
                   transition: `opacity 0.6s ease-out ${index * 0.1}s, transform 0.6s ease-out ${index * 0.1}s`,
                 }}
-                onClick={() => { trackCTAClick(project.title, 'Projects Grid'); setSelectedProject(project); }}
+                onClick={() => { trackCTAClick(project.title, 'Projects Grid'); navigate(`/portfolio/${(project as any).slug}`); }}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
                     trackCTAClick(project.title, 'Projects Grid');
-                    setSelectedProject(project);
+                    navigate(`/portfolio/${(project as any).slug}`);
                   }
                 }}
-                aria-label={`Apri dettagli progetto ${project.title}`}
+                aria-label={`Vai al caso studio di ${project.title}`}
               >
                 <div
                   className="relative overflow-hidden bg-gray-100 aspect-[4/3] mb-4 rounded-sm"
@@ -213,19 +195,6 @@ const Projects: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* Project Modal */}
-      {selectedProject && (
-        <ProjectModal
-          project={selectedProject}
-          isOpen={selectedProject !== null}
-          onClose={() => setSelectedProject(null)}
-          onNext={handleNext}
-          onPrev={handlePrev}
-          hasNext={currentProjectIndex < projectsData.length - 1}
-          hasPrev={currentProjectIndex > 0}
-        />
-      )}
     </>
   );
 };
