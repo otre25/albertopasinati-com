@@ -11,7 +11,7 @@ const footerNavSections = [
       { label: 'Chi Sono', href: '#chi-sono' },
       { label: 'Cosa Faccio', href: '#cosa-faccio' },
       { label: 'Portfolio', href: '#portfolio' },
-      { label: 'Progetti Personali', href: '#personal' },
+      { label: 'Side Lab', href: '/lab' },
     ],
   },
   {

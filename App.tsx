@@ -7,6 +7,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import PageTransition from './components/PageTransition';
 
 const ProjectPage = lazy(() => import('./pages/ProjectPage'));
+const PersonalPage = lazy(() => import('./pages/PersonalPage'));
 
 const App: React.FC = () => {
   return (
@@ -21,6 +22,16 @@ const App: React.FC = () => {
               <Suspense fallback={<div className="min-h-screen bg-deep-black" />}>
                 <PageTransition>
                   <ProjectPage />
+                </PageTransition>
+              </Suspense>
+            }
+          />
+          <Route
+            path="lab"
+            element={
+              <Suspense fallback={<div className="min-h-screen bg-off-white" />}>
+                <PageTransition>
+                  <PersonalPage />
                 </PageTransition>
               </Suspense>
             }

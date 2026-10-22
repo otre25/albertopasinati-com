@@ -33,6 +33,7 @@ const ROUTES = [
   '/portfolio/wave-murano-glass',
   '/portfolio/il-fanale-group',
   '/portfolio/atelier-alessandra',
+  '/lab',
   '/privacy-policy',
 ];
 

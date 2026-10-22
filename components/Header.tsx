@@ -20,11 +20,9 @@ const Header: React.FC = () => {
   }, []);
 
   const navItems = [
-    { label: 'HOME', id: 'home' },
+    { label: 'PROGETTI', id: 'portfolio' },
+    { label: 'SERVIZI', id: 'cosa-faccio' },
     { label: 'CHI SONO', id: 'chi-sono' },
-    { label: 'COSA FACCIO', id: 'cosa-faccio' },
-    { label: 'PORTFOLIO', id: 'portfolio' },
-    { label: 'LAB', id: 'personal' },
   ];
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, id: string) => {
@@ -60,7 +58,7 @@ const Header: React.FC = () => {
           <div className="w-10 h-10 bg-brand-dark text-white flex items-center justify-center font-display font-bold text-xl rounded-sm group-hover:bg-brand-yellow group-hover:text-deep-black transition-colors">
             AP
           </div>
-          <span className="hidden md:block font-display font-bold tracking-tight text-xl group-hover:text-brand-yellow transition-colors">
+          <span className="hidden md:block font-display font-bold tracking-tight text-xl group-hover:text-brand-amber transition-colors">
             ALBERTO PASINATI
           </span>
         </a>
@@ -72,7 +70,7 @@ const Header: React.FC = () => {
               key={item.label}
               href={`#${item.id}`}
               onClick={(e) => handleScroll(e, item.id)}
-              className="text-sm font-bold tracking-wide transition-colors uppercase hover:text-brand-yellow text-deep-black cursor-pointer focus:outline-none focus:ring-4 focus:ring-brand-yellow/50 rounded-sm px-2 py-1"
+              className="text-sm font-bold tracking-wide transition-colors uppercase hover:text-brand-amber text-deep-black cursor-pointer focus:outline-none focus:ring-4 focus:ring-brand-yellow/50 rounded-sm px-2 py-1"
             >
               {item.label}
             </a>
@@ -91,7 +89,7 @@ const Header: React.FC = () => {
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden text-deep-black hover:text-brand-yellow transition-colors focus:outline-none focus:ring-4 focus:ring-brand-yellow/50 rounded-sm p-2"
+          className="md:hidden text-deep-black hover:text-brand-amber transition-colors focus:outline-none focus:ring-4 focus:ring-brand-yellow/50 rounded-sm p-2"
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? "Chiudi menu" : "Apri menu"}
           aria-expanded={isOpen}
@@ -123,7 +121,7 @@ const Header: React.FC = () => {
             key={item.label}
             href={`#${item.id}`}
             onClick={(e) => handleScroll(e, item.id)}
-            className="text-4xl font-display font-bold uppercase text-deep-black hover:text-brand-yellow transition-all duration-300 hover:translate-x-2 focus:outline-none focus:ring-4 focus:ring-brand-yellow/50 rounded-sm"
+            className="text-4xl font-display font-bold uppercase text-deep-black hover:text-brand-amber transition-all duration-300 hover:translate-x-2 focus:outline-none focus:ring-4 focus:ring-brand-yellow/50 rounded-sm"
             style={{
               opacity: isOpen ? 1 : 0,
               transform: isOpen ? 'translateY(0)' : 'translateY(20px)',

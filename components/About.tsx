@@ -46,7 +46,7 @@ const About: React.FC = () => {
               </p>
               <dl className="mt-8 pl-6 space-y-5">
                 <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[120px_1fr] gap-x-4 gap-y-1 items-baseline">
-                  <dt className="text-xs font-bold uppercase tracking-widest text-brand-terracotta">Approccio</dt>
+                  <dt className="text-xs font-bold uppercase tracking-widest text-brand-terracotta">Come lavoro</dt>
                   <dd className="text-base font-medium text-stone-700 leading-snug">
                     Marketing come <span className="font-bold text-deep-black">funzione strategica integrata</span>, non canali da ottimizzare uno per uno.
                   </dd>
@@ -58,13 +58,13 @@ const About: React.FC = () => {
                   </dd>
                 </div>
                 <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[120px_1fr] gap-x-4 gap-y-1 items-baseline">
-                  <dt className="text-xs font-bold uppercase tracking-widest text-brand-terracotta">Livello</dt>
+                  <dt className="text-xs font-bold uppercase tracking-widest text-brand-terracotta">Cosa gestisco</dt>
                   <dd className="text-base font-medium text-stone-700 leading-snug">
                     Priorità, risorse, partner, team — <span className="font-bold text-deep-black">allineati su obiettivi misurabili</span>.
                   </dd>
                 </div>
                 <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[120px_1fr] gap-x-4 gap-y-1 items-baseline">
-                  <dt className="text-xs font-bold uppercase tracking-widest text-brand-terracotta">Track record</dt>
+                  <dt className="text-xs font-bold uppercase tracking-widest text-brand-terracotta">Esperienze chiave</dt>
                   <dd className="text-base font-medium text-stone-700 leading-snug">
                     <span className="font-bold text-deep-black">Salone del Mobile</span>, <span className="font-bold text-deep-black">Maison&Objet</span>, scaling su mercati EMEA.
                   </dd>
@@ -89,7 +89,7 @@ const About: React.FC = () => {
 
             {/* Tool Stack */}
             <div className="pt-10 pl-6 border-t border-stone-100 mt-10">
-              <p className="text-xs font-bold uppercase tracking-widest text-stone-400 mb-4">Ecosistema tecnologico supervisionato</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-stone-600 mb-4">Ecosistema tecnologico supervisionato</p>
               <div className="flex flex-wrap gap-2">
                 {[
                   'Performance Marketing', 'Marketing Automation', 'CRM & Lead Management',

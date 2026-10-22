@@ -5,11 +5,15 @@
       "destination": "/portfolio/:slug/index.html"
     },
     {
+      "source": "/lab",
+      "destination": "/lab/index.html"
+    },
+    {
       "source": "/privacy-policy",
       "destination": "/privacy-policy/index.html"
     },
     {
-      "source": "/((?!portfolio|privacy-policy|assets|.*\\..*).*)",
+      "source": "/((?!portfolio|lab|privacy-policy|assets|.*\\..*).*)",
       "destination": "/index.html"
     }
   ],

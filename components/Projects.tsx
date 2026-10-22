@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useInView } from '../hooks/useInView';
@@ -19,30 +19,8 @@ const brands = [
 
 const Projects: React.FC = () => {
   const navigate = useNavigate();
-  const [tiltEnabled, setTiltEnabled] = useState(false);
   const experienceView = useInView({ threshold: 0.15 });
   const portfolioView = useInView({ threshold: 0.1 });
-
-  useEffect(() => {
-    const finePointer = window.matchMedia('(pointer: fine)').matches;
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    setTiltEnabled(finePointer && !reducedMotion);
-  }, []);
-
-  const handleTilt = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!tiltEnabled) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    const px = (e.clientX - rect.left) / rect.width - 0.5;
-    const py = (e.clientY - rect.top) / rect.height - 0.5;
-    e.currentTarget.style.transition = 'transform 0.1s ease-out';
-    e.currentTarget.style.transform = `perspective(800px) rotateX(${py * -8}deg) rotateY(${px * 8}deg)`;
-  };
-
-  const resetTilt = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!tiltEnabled) return;
-    e.currentTarget.style.transition = 'transform 0.4s ease-out';
-    e.currentTarget.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg)';
-  };
 
   return (
     <>
@@ -59,8 +37,8 @@ const Projects: React.FC = () => {
           transition: 'opacity 0.8s ease-out, transform 0.8s ease-out'
         }}
       >
-        <div className="overflow-hidden">
-          <div className="max-w-7xl mx-auto px-6 mb-12 md:mb-16">
+        <div>
+          <div className="max-w-7xl mx-auto px-6 mb-10 md:mb-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8">
               <div className="lg:col-span-4">
                 <h3 className="text-5xl md:text-6xl font-display font-black uppercase leading-[0.85]">
@@ -78,19 +56,17 @@ const Projects: React.FC = () => {
             </div>
           </div>
 
-          {/* Infinite scrolling brands */}
-          <div className="relative py-6 md:py-8">
-            <div className="flex animate-marquee whitespace-nowrap">
-              {[...brands, ...brands].map((brand, i) => (
-                <div
-                  key={i}
-                  className="mx-8 md:mx-12 text-3xl md:text-6xl font-display font-black text-stone-300 hover:text-brand-yellow transition-colors duration-300"
-                >
-                  {brand}
-                </div>
-              ))}
-            </div>
-          </div>
+          {/* Brand con cui ho lavorato */}
+          <ul className="max-w-7xl mx-auto px-6 flex flex-wrap gap-x-10 gap-y-4 md:gap-x-14">
+            {brands.map((brand) => (
+              <li
+                key={brand}
+                className="text-2xl md:text-4xl font-display font-black uppercase text-stone-500"
+              >
+                {brand}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
@@ -144,9 +120,6 @@ const Projects: React.FC = () => {
               >
                 <div
                   className="relative overflow-hidden bg-gray-100 aspect-[4/3] mb-4 rounded-sm"
-                  style={{ transformStyle: 'preserve-3d', willChange: tiltEnabled ? 'transform' : undefined }}
-                  onMouseMove={handleTilt}
-                  onMouseLeave={resetTilt}
                 >
                   <ImageWithSkeleton
                     src={project.imageUrl}
@@ -178,13 +151,19 @@ const Projects: React.FC = () => {
                       {project.number}
                     </span>
                   </div>
-                  <p className="text-stone-500 text-sm leading-relaxed line-clamp-2 mt-2">
+                  {project.kpis?.[0] && (
+                    <p className="mt-3 text-base font-bold text-deep-black flex gap-2">
+                      <span aria-hidden="true" className="text-brand-amber">◆</span>
+                      {project.kpis[0]}
+                    </p>
+                  )}
+                  <p className="text-stone-600 text-sm leading-relaxed line-clamp-2 mt-2">
                     {project.description}
                   </p>
                   <Link
                     to={`/portfolio/${(project as any).slug}`}
                     onClick={(e) => e.stopPropagation()}
-                    className="inline-flex items-center gap-1 mt-3 text-xs font-bold uppercase tracking-wider text-stone-400 hover:text-brand-yellow transition-colors"
+                    className="inline-flex items-center gap-1 mt-3 text-xs font-bold uppercase tracking-wider text-stone-600 hover:text-brand-amber transition-colors"
                     aria-label={`Vedi caso studio completo di ${project.title}`}
                   >
                     Caso studio completo <ArrowUpRight size={12} />

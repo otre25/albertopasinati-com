@@ -2,7 +2,6 @@ import React, { Suspense, lazy } from 'react';
 import Hero from '../components/Hero';
 import About from '../components/About';
 import KpiStats from '../components/KpiStats';
-import SkillsMarquee from '../components/SkillsMarquee';
 import SEO from '../components/SEO';
 import StructuredData from '../components/StructuredData';
 import { useConversionTracking } from '../hooks/useConversionTracking';
@@ -11,7 +10,6 @@ import { useConversionTracking } from '../hooks/useConversionTracking';
 const Services = lazy(() => import('../components/Services'));
 const Method = lazy(() => import('../components/Method'));
 const Projects = lazy(() => import('../components/Projects'));
-const PersonalProjects = lazy(() => import('../components/AIArchitecture'));
 const Faq = lazy(() => import('../components/Faq'));
 
 // Skeleton loader minimale per Suspense fallback
@@ -45,11 +43,10 @@ const HomePage: React.FC = () => {
         <section id="home">
           <Hero />
         </section>
-        <section id="chi-sono">
-          <About />
-        </section>
         <KpiStats />
-        <SkillsMarquee />
+        <Suspense fallback={<SectionSkeleton />}>
+          <Projects />
+        </Suspense>
         <Suspense fallback={<SectionSkeleton />}>
           <section id="cosa-faccio">
             <Services />
@@ -58,14 +55,9 @@ const HomePage: React.FC = () => {
         <Suspense fallback={<SectionSkeleton />}>
           <Method />
         </Suspense>
-        <Suspense fallback={<SectionSkeleton />}>
-          <Projects />
-        </Suspense>
-        <Suspense fallback={<SectionSkeleton />}>
-          <section id="personal">
-            <PersonalProjects />
-          </section>
-        </Suspense>
+        <section id="chi-sono">
+          <About />
+        </section>
         <Suspense fallback={<SectionSkeleton />}>
           <Faq />
         </Suspense>

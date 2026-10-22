@@ -23,6 +23,7 @@ const routes = [
   { path: '/portfolio/wave-murano-glass',         changefreq: 'monthly', priority: '0.8', lastmod: today },
   { path: '/portfolio/il-fanale-group',           changefreq: 'monthly', priority: '0.8', lastmod: today },
   { path: '/portfolio/atelier-alessandra',        changefreq: 'monthly', priority: '0.8', lastmod: today },
+  { path: '/lab',                                 changefreq: 'monthly', priority: '0.5', lastmod: today },
   { path: '/privacy-policy',                      changefreq: 'monthly', priority: '0.3', lastmod: today },
 ];
 

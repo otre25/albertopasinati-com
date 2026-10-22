@@ -202,7 +202,7 @@ const Hero: React.FC = () => {
               href="https://www.linkedin.com/in/albertopasinati/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group text-sm font-bold text-stone-500 hover:text-brand-yellow transition-colors duration-300 flex items-center gap-1.5 focus:outline-none focus:ring-4 focus:ring-brand-yellow/50 rounded-sm"
+              className="group text-sm font-bold text-stone-600 hover:text-brand-amber transition-colors duration-300 flex items-center gap-1.5 focus:outline-none focus:ring-4 focus:ring-brand-yellow/50 rounded-sm"
             >
               <span>LinkedIn Profile</span>
               <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5" />
@@ -233,9 +233,9 @@ const Hero: React.FC = () => {
               </div>
 
               {/* Badge Outside Circle - Top Left (hidden on mobile, visible sm+) */}
-              <div className="hidden sm:block absolute top-8 left-0 bg-white p-4 shadow-lg z-20 max-w-[120px]">
+              <div className="hidden sm:block absolute top-8 left-0 bg-white p-4 shadow-lg z-20 max-w-[140px]">
                 <p className="font-display font-bold text-3xl md:text-4xl text-deep-black leading-none">10+</p>
-                <p className="text-[9px] md:text-[10px] text-deep-black uppercase tracking-wider font-bold mt-1">Anni di esperienza</p>
+                <p className="text-xs text-deep-black uppercase tracking-wider font-bold mt-1">Anni di esperienza</p>
               </div>
 
               {/* Main Image Container */}
