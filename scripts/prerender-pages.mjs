@@ -71,10 +71,20 @@ async function main() {
     await waitForServer(ORIGIN);
 
     // 2. Browser
-    const browser = await puppeteer.launch({
-      headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    });
+    // Su Vercel il Chrome di Puppeteer non parte (lib di sistema mancanti):
+    // usiamo il Chromium autoportante di @sparticuz/chromium. In locale resta
+    // il Chrome scaricato da Puppeteer.
+    const onVercel = Boolean(process.env.VERCEL);
+    const chromium = onVercel ? (await import('@sparticuz/chromium')).default : null;
+    const browser = await puppeteer.launch(
+      onVercel
+        ? {
+            headless: 'shell',
+            args: chromium.args,
+            executablePath: await chromium.executablePath(),
+          }
+        : { headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] },
+    );
 
     // 3. Cattura tutte le route in memoria (non scrivere mentre il server serve
     //    la stessa cartella, o le richieste successive prenderebbero il file
