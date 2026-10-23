@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import ContactModal from './ContactModal';
 import MobileStickyCTA from './MobileStickyCTA';
@@ -75,6 +76,12 @@ const Header: React.FC = () => {
               {item.label}
             </a>
           ))}
+          <Link
+            to="/lab"
+            className="text-sm font-bold tracking-wide transition-colors uppercase hover:text-brand-amber text-deep-black cursor-pointer focus:outline-none focus:ring-4 focus:ring-brand-yellow/50 rounded-sm px-2 py-1"
+          >
+            LAB
+          </Link>
           <EnhancedButton
             onClick={() => { trackCTAClick('Contattami', 'Header Desktop'); setIsContactModalOpen(true); }}
             icon={ArrowUpRight}
@@ -133,6 +140,18 @@ const Header: React.FC = () => {
             </span>
           </a>
         ))}
+        <Link
+          to="/lab"
+          onClick={() => setIsOpen(false)}
+          className="text-4xl font-display font-bold uppercase text-deep-black hover:text-brand-amber transition-all duration-300 hover:translate-x-2 focus:outline-none focus:ring-4 focus:ring-brand-yellow/50 rounded-sm"
+          style={{
+            opacity: isOpen ? 1 : 0,
+            transform: isOpen ? 'translateY(0)' : 'translateY(20px)',
+            transition: `opacity 0.5s ease-out ${navItems.length * 0.1}s, transform 0.5s ease-out ${navItems.length * 0.1}s`
+          }}
+        >
+          LAB
+        </Link>
         <div
           style={{
             opacity: isOpen ? 1 : 0,

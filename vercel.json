@@ -1,19 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/portfolio/:slug",
-      "destination": "/portfolio/:slug/index.html"
-    },
-    {
-      "source": "/lab",
-      "destination": "/lab/index.html"
-    },
-    {
-      "source": "/privacy-policy",
-      "destination": "/privacy-policy/index.html"
-    },
-    {
-      "source": "/((?!portfolio|lab|privacy-policy|assets|.*\\..*).*)",
+      "source": "/((?!assets|.*\\..*).*)",
       "destination": "/index.html"
     }
   ],
