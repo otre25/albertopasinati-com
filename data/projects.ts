@@ -12,7 +12,7 @@ export const projectsData: (Project & { slug: string; metaDescription: string })
     description: 'Direzione Marketing per Wave Murano Glass, brand dell\'artigianato vetrario veneziano con distribuzione internazionale. Sviluppo strategia di posizionamento luxury sui mercati EMEA, gestione eventi fieristici di alto profilo (Maison&Objet Parigi, Architect&Work) e campagne digital multi-lingua.',
     client: 'Wave Murano Glass',
     services: ['International Marketing Strategy', 'Event Marketing & Trade Shows', 'Digital Communication Multi-language', 'Brand Positioning Luxury', 'SEO Internazionale', 'Partnership Management'],
-    kpis: ['Posizionamento luxury su mercati EMEA', 'Campagne digital multi-lingua (IT, EN, FR)', 'Fiere: Maison&Objet Parigi, Architect&Work', 'SEO internazionale multi-mercato'],
+    kpis: ['Posizionamento luxury su mercati EMEA', 'Campagne digital multi-lingua (IT, EN)', 'Fiere: Maison&Objet Parigi, Architect&Work', 'SEO internazionale multi-mercato'],
     mockupUrl: '/murano-glass.webp',
     metaDescription: 'Marketing Manager per Wave Murano Glass, brand luxury veneziano. Strategia EMEA, Maison&Objet Parigi, campagne multi-lingua e SEO internazionale.',
   },

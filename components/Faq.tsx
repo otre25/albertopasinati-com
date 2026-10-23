@@ -29,8 +29,8 @@ const Faq: React.FC = () => {
           </div>
           <div className="lg:col-span-7 flex items-center">
             <p className="text-xl text-stone-700 leading-relaxed border-l-4 border-brand-yellow pl-6">
-              Cosa fa un Marketing Manager, come misuro il ROI, in che settori ho
-              lavorato e cosa cerco adesso.
+              Disponibilità, budget gestiti, come misuro i risultati e cosa farei
+              nei primi 90 giorni.
             </p>
           </div>
         </div>
