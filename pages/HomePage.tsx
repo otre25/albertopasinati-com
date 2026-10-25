@@ -1,4 +1,5 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Hero from '../components/Hero';
 import About from '../components/About';
 import KpiStats from '../components/KpiStats';
@@ -29,6 +30,29 @@ const SectionSkeleton = () => (
 const HomePage: React.FC = () => {
   // Initialize conversion tracking (scroll depth, time on page)
   useConversionTracking();
+
+  // Arrivo da un'altra pagina con una sezione da raggiungere (es. dal Lab).
+  // Le sezioni sotto il fold sono lazy: si riprova finché l'elemento esiste.
+  const { state, pathname } = useLocation();
+  const navigate = useNavigate();
+  const scrollTarget = (state as { scrollTo?: string } | null)?.scrollTo;
+  useEffect(() => {
+    if (!scrollTarget) return;
+    let frame = 0;
+    let attempts = 0;
+    const tryScroll = () => {
+      const el = document.getElementById(scrollTarget);
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.pageYOffset - 80;
+        window.scrollTo({ top, behavior: 'smooth' });
+        navigate(pathname, { replace: true, state: null });
+      } else if (attempts++ < 120) {
+        frame = requestAnimationFrame(tryScroll);
+      }
+    };
+    frame = requestAnimationFrame(tryScroll);
+    return () => cancelAnimationFrame(frame);
+  }, [scrollTarget, pathname, navigate]);
 
   return (
     <>

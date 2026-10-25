@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Linkedin, Github, ArrowUpRight, MapPin } from 'lucide-react';
 import ContactModal from './ContactModal';
 import { trackCTAClick } from './Analytics';
@@ -29,11 +30,17 @@ const footerNavSections = [
 const Manifesto: React.FC = () => {
   const currentYear = new Date().getFullYear();
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith('#')) {
       e.preventDefault();
       const id = href.slice(1);
+      if (pathname !== '/') {
+        navigate('/', { state: { scrollTo: id } });
+        return;
+      }
       const el = document.getElementById(id);
       if (el) {
         const offset = 80;

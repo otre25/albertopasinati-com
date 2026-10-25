@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import ContactModal from './ContactModal';
 import MobileStickyCTA from './MobileStickyCTA';
@@ -10,6 +10,8 @@ const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,6 +30,12 @@ const Header: React.FC = () => {
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, id: string) => {
     e.preventDefault();
+    // Fuori dalla home le sezioni non esistono: si torna in home e poi si scorre.
+    if (pathname !== '/') {
+      navigate('/', { state: { scrollTo: id } });
+      setIsOpen(false);
+      return;
+    }
     const element = document.getElementById(id);
     if (element) {
       const headerOffset = 80;
