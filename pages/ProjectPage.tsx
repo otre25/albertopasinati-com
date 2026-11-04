@@ -26,7 +26,7 @@ const ProjectPage: React.FC = () => {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://albertopasinati.com" },
-        { "@type": "ListItem", "position": 2, "name": "Casi studio", "item": "https://albertopasinati.com/#portfolio" },
+        { "@type": "ListItem", "position": 2, "name": "Esperienza", "item": "https://albertopasinati.com/#portfolio" },
         { "@type": "ListItem", "position": 3, "name": project.title, "item": `https://albertopasinati.com/portfolio/${project.slug}` },
       ],
     };
@@ -112,7 +112,7 @@ const ProjectPage: React.FC = () => {
                 className="inline-flex items-center gap-2 text-gray-400 hover:text-brand-yellow transition-colors text-sm font-bold uppercase tracking-wider"
               >
                 <ArrowLeft size={16} />
-                Casi studio
+                Esperienza
               </Link>
             </nav>
 
@@ -242,7 +242,7 @@ const ProjectPage: React.FC = () => {
                 className="group flex flex-col gap-1 p-4 hover:bg-paper rounded-sm transition-colors"
               >
                 <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-400 group-hover:text-brand-yellow transition-colors">
-                  <ArrowLeft size={14} /> Caso studio precedente
+                  <ArrowLeft size={14} /> Esperienza precedente
                 </span>
                 <span className="font-display font-bold text-xl text-deep-black group-hover:text-brand-yellow transition-colors">
                   {prevProject.title}
@@ -257,7 +257,7 @@ const ProjectPage: React.FC = () => {
                 className="group flex flex-col gap-1 p-4 hover:bg-paper rounded-sm transition-colors text-right ml-auto w-full"
               >
                 <span className="flex items-center justify-end gap-2 text-xs font-bold uppercase tracking-wider text-gray-400 group-hover:text-brand-yellow transition-colors">
-                  Caso studio successivo <ArrowRight size={14} />
+                  Esperienza successiva <ArrowRight size={14} />
                 </span>
                 <span className="font-display font-bold text-xl text-deep-black group-hover:text-brand-yellow transition-colors">
                   {nextProject.title}

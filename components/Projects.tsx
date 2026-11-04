@@ -9,19 +9,15 @@ import SectionTitle from './SectionTitle';
 
 interface Brand {
   name: string;
-  logo?: { src: string; width: number; height: number; className: string };
+  logo: { src: string; width: number; height: number; className: string };
 }
 
-// Loghi presi dai siti ufficiali delle aziende. Store Cucine: nessun logo reperibile online, resta il nome.
-const brands: Brand[] = [
-  { name: "Wave Murano Glass", logo: { src: "/logos/wave-murano-glass.png", width: 538, height: 136, className: "h-8 md:h-10" } },
-  { name: "Store Cucine" },
-  { name: "Il Fanale Group", logo: { src: "/logos/il-fanale.svg", width: 188, height: 24, className: "h-5 md:h-6" } },
+// Aziende con cui ho lavorato senza una scheda dedicata. Loghi presi dai siti ufficiali.
+const otherBrands: Brand[] = [
   { name: "Piovan", logo: { src: "/logos/piovan.svg", width: 406, height: 100, className: "h-14 md:h-20" } },
   { name: "Valcucine", logo: { src: "/logos/valcucine.png", width: 1130, height: 178, className: "h-6 md:h-8" } },
   { name: "Università Ca' Foscari Venezia", logo: { src: "/logos/ca-foscari.png", width: 121, height: 121, className: "h-14 md:h-[4.5rem]" } },
   { name: "Lago", logo: { src: "/logos/lago.png", width: 200, height: 54, className: "h-7 md:h-9" } },
-  { name: "Atelier Alessandra", logo: { src: "/logos/atelier-alessandra.png", width: 386, height: 347, className: "h-14 md:h-[4.5rem]" } },
 ];
 
 const Projects: React.FC = () => {
@@ -30,62 +26,19 @@ const Projects: React.FC = () => {
       {/* Structured Data for Projects */}
       <ProjectsStructuredData projects={projectsData} />
 
-      {/* La Mia Esperienza */}
-      <section className="py-16 md:py-20 bg-paper">
-        <div>
-          <div className="reveal max-w-7xl mx-auto px-6 mb-10 md:mb-12">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8">
-              <div className="lg:col-span-4">
-                <SectionTitle top="La Mia" accent="Esperienza" size="md" />
-              </div>
-              <div className="lg:col-span-8 flex items-center">
-                <p className="text-lg text-stone-700 leading-relaxed border-t border-stone-300 pt-5">
-                  Ho lavorato con aziende del lusso, retail e artigianato veneziano, gestendo strategie di marketing integrate
-                  e progetti di comunicazione a 360°.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Brand con cui ho lavorato */}
-          {/* Griglia a celle uguali: 4×2 su desktop, 2×4 su mobile, un logo per cella a peso ottico simile */}
-          <div className="reveal max-w-7xl mx-auto px-6">
-            <ul className="grid grid-cols-2 md:grid-cols-4 border-t border-l border-deep-black/15">
-              {brands.map((brand) => (
-                <li
-                  key={brand.name}
-                  className="h-24 md:h-32 px-5 md:px-8 flex items-center justify-center border-r border-b border-deep-black/15"
-                >
-                  {brand.logo ? (
-                    <img
-                      src={brand.logo.src}
-                      alt={brand.name}
-                      width={brand.logo.width}
-                      height={brand.logo.height}
-                      loading="lazy"
-                      decoding="async"
-                      className={`${brand.logo.className} w-auto max-w-full object-contain grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition-[filter,opacity] duration-300`}
-                    />
-                  ) : (
-                    <span className="font-display font-black uppercase text-lg md:text-2xl tracking-tight text-deep-black/75 text-center leading-tight">
-                      {brand.name}
-                    </span>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Casi studio: indice editoriale */}
+      {/* Esperienza: indice editoriale delle aziende */}
       <section id="portfolio" className="py-16 md:py-24 bg-off-white">
         <div className="px-6">
-          <div className="reveal max-w-7xl mx-auto mb-10 md:mb-14 flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
-            <SectionTitle top="Casi" accent="Studio" />
-            <p className="font-mono text-sm text-stone-600 md:text-right">
-              AZIENDE, RUOLO <br className="hidden md:block" /> E RISULTATI
-            </p>
+          <div className="reveal max-w-7xl mx-auto mb-10 md:mb-14 grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-12">
+            <div className="lg:col-span-5">
+              <SectionTitle top="La Mia" accent="Esperienza" />
+            </div>
+            <div className="lg:col-span-7 flex items-center">
+              <p className="text-lg md:text-xl text-stone-700 leading-relaxed border-t border-stone-300 pt-5">
+                Ho lavorato con aziende del lusso, retail e artigianato veneziano, gestendo strategie di marketing integrate
+                e progetti di comunicazione a 360°.
+              </p>
+            </div>
           </div>
 
           <ol className="max-w-7xl mx-auto border-b border-deep-black/20">
@@ -138,6 +91,28 @@ const Projects: React.FC = () => {
               </li>
             ))}
           </ol>
+
+          {/* Altre aziende, senza pagina di dettaglio: stesso elenco, solo logo */}
+          <div className="reveal max-w-7xl mx-auto mt-10 md:mt-14">
+            <ul aria-label="Altre aziende con cui ho lavorato" className="grid grid-cols-2 md:grid-cols-4 border-t border-l border-deep-black/15">
+              {otherBrands.map((brand) => (
+                <li
+                  key={brand.name}
+                  className="h-24 md:h-28 px-5 md:px-8 flex items-center justify-center border-r border-b border-deep-black/15"
+                >
+                  <img
+                    src={brand.logo.src}
+                    alt={brand.name}
+                    width={brand.logo.width}
+                    height={brand.logo.height}
+                    loading="lazy"
+                    decoding="async"
+                    className={`${brand.logo.className} w-auto max-w-full object-contain grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition-[filter,opacity] duration-300`}
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
     </>

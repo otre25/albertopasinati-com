@@ -66,7 +66,7 @@ const Hero: React.FC = () => {
                   }}
                 />
               ))}
-              <span className="relative z-10">Vedi i casi studio</span>
+              <span className="relative z-10">Vedi la mia esperienza</span>
               <ArrowRight
                 size={20}
                 className="relative z-10 transition-transform duration-300 group-hover:translate-x-1"

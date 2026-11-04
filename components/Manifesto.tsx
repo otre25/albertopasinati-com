@@ -9,9 +9,9 @@ const footerNavSections = [
     title: 'Navigazione',
     links: [
       { label: 'Home', href: '#home' },
+      { label: 'Esperienza', href: '#portfolio' },
       { label: 'Chi Sono', href: '#chi-sono' },
-      { label: 'Servizi', href: '#cosa-faccio' },
-      { label: 'Casi Studio', href: '#portfolio' },
+      { label: 'Come Lavoro', href: '#cosa-faccio' },
       { label: 'Side Lab', href: '/lab' },
     ],
   },

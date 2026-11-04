@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useInView } from '../hooks/useInView';
 
 interface Kpi {
@@ -40,11 +40,20 @@ const kpis: Kpi[] = [
 ];
 
 const useCounter = (target: number, isActive: boolean, duration = 1800) => {
-  const [count, setCount] = useState(0);
+  // Parte dal valore finale: crawler, prerender e chi ha JS disattivato leggono il numero vero.
+  const [count, setCount] = useState(target);
   const raf = useRef<number | null>(null);
+
+  // Prima del paint, così non si vede il valore finale lampeggiare prima del conteggio da 0.
+  useLayoutEffect(() => {
+    if (!isActive) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    setCount(0);
+  }, [isActive]);
 
   useEffect(() => {
     if (!isActive) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const start = performance.now();
     const step = (now: number) => {

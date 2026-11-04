@@ -5,7 +5,7 @@ import SectionTitle from './SectionTitle';
 
 const profileRows = [
   {
-    label: 'Come lavoro',
+    label: 'Approccio',
     text: <>Marketing come <strong className="font-bold text-deep-black">funzione strategica integrata</strong>, non canali da ottimizzare uno per uno.</>,
   },
   {
@@ -45,7 +45,7 @@ const About: React.FC = () => {
 
         <div className="lg:col-span-8">
           <p className="reveal about-speakable text-2xl md:text-4xl font-semibold leading-tight tracking-tight text-deep-black max-w-3xl">
-            Ho guidato la funzione marketing di brand del lusso, retail e manifattura italiana — con responsabilità diretta su strategia, team e budget superiori a €1M/anno — portando crescita misurabile su mercati italiani ed europei.
+            Ho guidato la funzione marketing di brand del lusso, retail e manifattura italiana — con responsabilità diretta su strategia, team e budget — portando crescita misurabile su mercati italiani ed europei.
           </p>
 
           <dl className="reveal mt-10 md:mt-14 border-b border-deep-black/20">

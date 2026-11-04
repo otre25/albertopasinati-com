@@ -36,9 +36,9 @@ const Header: React.FC = () => {
   }, []);
 
   const navItems = [
-    { label: 'CASI STUDIO', id: 'portfolio' },
-    { label: 'SERVIZI', id: 'cosa-faccio' },
+    { label: 'ESPERIENZA', id: 'portfolio' },
     { label: 'CHI SONO', id: 'chi-sono' },
+    { label: 'COME LAVORO', id: 'cosa-faccio' },
   ];
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, id: string) => {
