@@ -1,46 +1,40 @@
 import React, { lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { createBrowserRouter, createRoutesFromElements, RouterProvider, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import NotFoundPage from './pages/NotFoundPage';
-import PageTransition from './components/PageTransition';
 
 const ProjectPage = lazy(() => import('./pages/ProjectPage'));
 const PersonalPage = lazy(() => import('./pages/PersonalPage'));
 
-const App: React.FC = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<PageTransition><HomePage /></PageTransition>} />
-          <Route path="privacy-policy" element={<PageTransition><PrivacyPolicyPage /></PageTransition>} />
-          <Route
-            path="portfolio/:slug"
-            element={
-              <Suspense fallback={<div className="min-h-screen bg-deep-black" />}>
-                <PageTransition>
-                  <ProjectPage />
-                </PageTransition>
-              </Suspense>
-            }
-          />
-          <Route
-            path="lab"
-            element={
-              <Suspense fallback={<div className="min-h-screen bg-off-white" />}>
-                <PageTransition>
-                  <PersonalPage />
-                </PageTransition>
-              </Suspense>
-            }
-          />
-          <Route path="*" element={<PageTransition><NotFoundPage /></PageTransition>} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
-};
+// Data router: serve per le View Transitions native (prop unstable_viewTransition sui Link).
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
+      <Route index element={<HomePage />} />
+      <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
+      <Route
+        path="portfolio/:slug"
+        element={
+          <Suspense fallback={<div className="min-h-screen bg-deep-black" />}>
+            <ProjectPage />
+          </Suspense>
+        }
+      />
+      <Route
+        path="lab"
+        element={
+          <Suspense fallback={<div className="min-h-screen bg-off-white" />}>
+            <PersonalPage />
+          </Suspense>
+        }
+      />
+      <Route path="*" element={<NotFoundPage />} />
+    </Route>
+  )
+);
+
+const App: React.FC = () => <RouterProvider router={router} />;
 
 export default App;

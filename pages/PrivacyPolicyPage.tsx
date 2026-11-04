@@ -11,7 +11,7 @@ const PrivacyPolicyPage: React.FC = () => {
         description="Informativa sulla privacy e trattamento dei dati personali per il sito albertopasinati.com. Scopri come raccogliamo, utilizziamo e proteggiamo i tuoi dati."
         noindex={true}
       />
-      <div className="min-h-screen bg-white pt-32 pb-24 px-6">
+      <div className="min-h-screen bg-paper pt-32 pb-24 px-6">
       <div className="max-w-4xl mx-auto">
         {/* Back Button */}
         <Link

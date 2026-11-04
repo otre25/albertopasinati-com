@@ -1,54 +1,48 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useInView } from '../hooks/useInView';
+import { Link } from 'react-router-dom';
 import ImageWithSkeleton from './ImageWithSkeleton';
 import ProjectsStructuredData from './ProjectsStructuredData';
 import { projectsData } from '../data/projects';
 import { trackCTAClick } from './Analytics';
 
-const brands = [
-  "Wave Murano Glass",
-  "Store Cucine",
-  "Il Fanale Group",
-  "Piovan",
-  "Valcucine",
-  "Università Cà Foscari",
-  "Lago"
+interface Brand {
+  name: string;
+  logo?: { src: string; width: number; height: number; className: string };
+}
+
+// Loghi presi dai siti ufficiali delle aziende. Store Cucine: nessun logo reperibile online, resta il nome.
+const brands: Brand[] = [
+  { name: "Wave Murano Glass", logo: { src: "/logos/wave-murano-glass.png", width: 538, height: 136, className: "h-8 md:h-10" } },
+  { name: "Store Cucine" },
+  { name: "Il Fanale Group", logo: { src: "/logos/il-fanale.svg", width: 188, height: 24, className: "h-5 md:h-6" } },
+  { name: "Piovan", logo: { src: "/logos/piovan.svg", width: 406, height: 100, className: "h-12 md:h-16" } },
+  { name: "Valcucine", logo: { src: "/logos/valcucine.png", width: 1130, height: 178, className: "h-6 md:h-8" } },
+  { name: "Università Ca' Foscari Venezia", logo: { src: "/logos/ca-foscari.png", width: 121, height: 121, className: "h-12 md:h-16" } },
+  { name: "Lago", logo: { src: "/logos/lago.png", width: 200, height: 54, className: "h-7 md:h-9" } },
+  { name: "Atelier Alessandra", logo: { src: "/logos/atelier-alessandra.png", width: 386, height: 347, className: "h-12 md:h-16" } },
 ];
 
 const Projects: React.FC = () => {
-  const navigate = useNavigate();
-  const experienceView = useInView({ threshold: 0.15 });
-  const portfolioView = useInView({ threshold: 0.1 });
-
   return (
     <>
       {/* Structured Data for Projects */}
       <ProjectsStructuredData projects={projectsData} />
 
-      {/* La Mia Esperienza Section - White Background */}
-      <section
-        ref={experienceView.ref as React.RefObject<HTMLElement>}
-        className="py-16 md:py-20 bg-white"
-        style={{
-          opacity: experienceView.isInView ? 1 : 0,
-          transform: experienceView.isInView ? 'translateY(0)' : 'translateY(30px)',
-          transition: 'opacity 0.8s ease-out, transform 0.8s ease-out'
-        }}
-      >
+      {/* La Mia Esperienza */}
+      <section className="py-16 md:py-20 bg-paper">
         <div>
-          <div className="max-w-7xl mx-auto px-6 mb-10 md:mb-12">
+          <div className="reveal max-w-7xl mx-auto px-6 mb-10 md:mb-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8">
               <div className="lg:col-span-4">
-                <h3 className="text-5xl md:text-6xl font-display font-black uppercase leading-[0.85]">
+                <h2 className="text-5xl md:text-6xl font-display font-black uppercase leading-[0.85]">
                   La Mia<br />
                   <span className="text-brand-yellow">Esperienza</span>
-                </h3>
+                </h2>
                 <div className="h-2 w-20 bg-brand-yellow mt-4 md:mt-6"></div>
               </div>
               <div className="lg:col-span-8 flex items-center">
-                <p className="text-lg text-stone-700 leading-relaxed border-l-4 border-brand-yellow pl-6">
+                <p className="text-lg text-stone-700 leading-relaxed border-t border-stone-300 pt-5">
                   Ho lavorato con aziende del lusso, retail e artigianato veneziano, gestendo strategie di marketing integrate
                   e progetti di comunicazione a 360°.
                 </p>
@@ -57,121 +51,92 @@ const Projects: React.FC = () => {
           </div>
 
           {/* Brand con cui ho lavorato */}
-          <ul className="max-w-7xl mx-auto px-6 flex flex-wrap gap-x-10 gap-y-4 md:gap-x-14">
+          <ul className="reveal max-w-7xl mx-auto px-6 flex flex-wrap items-center gap-x-10 gap-y-7 md:gap-x-16 md:gap-y-10">
             {brands.map((brand) => (
-              <li
-                key={brand}
-                className="text-2xl md:text-4xl font-display font-black uppercase text-stone-500"
-              >
-                {brand}
+              <li key={brand.name} className="flex items-center">
+                {brand.logo ? (
+                  <img
+                    src={brand.logo.src}
+                    alt={brand.name}
+                    width={brand.logo.width}
+                    height={brand.logo.height}
+                    loading="lazy"
+                    decoding="async"
+                    className={`${brand.logo.className} w-auto grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition-[filter,opacity] duration-300`}
+                  />
+                ) : (
+                  <span className="font-display font-black uppercase text-xl md:text-2xl tracking-tight text-deep-black/75">
+                    {brand.name}
+                  </span>
+                )}
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      {/* Archivio Progetti Section - Off-White Background */}
-      <section
-        id="portfolio"
-        ref={portfolioView.ref as React.RefObject<HTMLElement>}
-        className="py-16 md:py-20 bg-off-white min-h-screen"
-        style={{
-          opacity: portfolioView.isInView ? 1 : 0,
-          transform: portfolioView.isInView ? 'translateY(0)' : 'translateY(30px)',
-          transition: 'opacity 0.8s ease-out, transform 0.8s ease-out'
-        }}
-      >
+      {/* Casi studio: indice editoriale */}
+      <section id="portfolio" className="py-16 md:py-24 bg-off-white">
         <div className="px-6">
-          <div className="max-w-7xl mx-auto mb-10 md:mb-12 flex flex-col md:flex-row items-start md:items-end justify-between">
-            <div>
-              <h2
-                aria-label="Archivio Progetti: casi studio di Marketing Management B2C, B2B e Brand Identity — Store Cucine, Wave Murano Glass, Il Fanale Group, Atelier Alessandra"
-                className="text-6xl md:text-8xl font-display font-black uppercase leading-[0.9] text-deep-black"
-              >
-                Archivio <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-brand-terracotta">Progetti</span>
-              </h2>
-            </div>
-            <div className="text-right mt-6 md:mt-0 font-mono text-sm text-gray-500">
-              STRATEGIA & <br /> CREATIVITÀ APPLICATA
-            </div>
+          <div className="reveal max-w-7xl mx-auto mb-10 md:mb-14 flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
+            <h2 className="text-6xl md:text-8xl font-display font-black uppercase leading-[0.9] text-deep-black">
+              Casi <br /> <span className="text-brand-amber">Studio</span>
+            </h2>
+            <p className="font-mono text-sm text-stone-600 md:text-right">
+              AZIENDE, RUOLO <br className="hidden md:block" /> E RISULTATI
+            </p>
           </div>
 
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-6 md:gap-x-8 gap-y-10 md:gap-y-16">
-            {projectsData.map((project, index) => (
-              <div
-                key={project.id}
-                role="button"
-                tabIndex={0}
-                className="group cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:ring-offset-4 rounded-sm"
-                style={{
-                  opacity: portfolioView.isInView ? 1 : 0,
-                  transform: portfolioView.isInView ? 'translateY(0)' : 'translateY(24px)',
-                  transition: `opacity 0.6s ease-out ${index * 0.1}s, transform 0.6s ease-out ${index * 0.1}s`,
-                }}
-                onClick={() => { trackCTAClick(project.title, 'Projects Grid'); navigate(`/portfolio/${(project as any).slug}`); }}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    trackCTAClick(project.title, 'Projects Grid');
-                    navigate(`/portfolio/${(project as any).slug}`);
-                  }
-                }}
-                aria-label={`Vai al caso studio di ${project.title}`}
-              >
-                <div
-                  className="relative overflow-hidden bg-gray-100 aspect-[4/3] mb-4 rounded-sm"
+          <ol className="max-w-7xl mx-auto border-b border-deep-black/20">
+            {projectsData.map((project) => (
+              <li key={project.id} className="reveal border-t border-deep-black/20">
+                <Link
+                  to={`/portfolio/${project.slug}`}
+                  unstable_viewTransition
+                  onClick={() => trackCTAClick(project.title, 'Projects Grid')}
+                  className="group grid grid-cols-[2.25rem_1fr_4.5rem] sm:grid-cols-[4rem_1fr_9rem] lg:grid-cols-[6rem_1fr_17rem_5rem] gap-x-4 md:gap-x-8 items-start py-6 md:py-8 transition-colors duration-300 hover:bg-paper focus-visible:bg-paper focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-amber focus-visible:ring-inset"
                 >
-                  <ImageWithSkeleton
-                    src={project.imageUrl}
-                    alt={`${project.title} - ${project.category}`}
-                    width={800}
-                    height={600}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-brand-dark/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <span className="font-display font-black text-2xl md:text-5xl text-stone-500 group-hover:text-brand-amber transition-colors tabular-nums">
+                    {project.number}
+                  </span>
 
-                  {/* Year badge */}
-                  <div className="absolute top-4 left-4 bg-deep-black/80 text-white text-xs font-mono font-bold px-3 py-1 rounded-sm backdrop-blur-sm">
-                    {project.year}
-                  </div>
-
-                  {/* Overlay Icon */}
-                  <div className="absolute bottom-6 right-6 bg-brand-yellow text-black p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0 shadow-lg">
-                    <ArrowUpRight size={24} />
-                  </div>
-                </div>
-
-                <div className="border-t-2 border-transparent group-hover:border-brand-yellow pt-4 transition-colors">
-                  <div className="flex justify-between items-start mb-2">
-                    <div>
-                      <h3 className="text-3xl font-display font-bold uppercase mb-1">{project.title}</h3>
-                      <p className="font-mono text-xs text-gray-500 uppercase tracking-wider">{project.category}</p>
-                    </div>
-                    <span className="font-display font-bold text-gray-300 text-2xl group-hover:text-brand-terracotta transition-colors shrink-0 ml-4">
-                      {project.number}
-                    </span>
-                  </div>
-                  {project.kpis?.[0] && (
-                    <p className="mt-3 text-base font-bold text-deep-black flex gap-2">
-                      <span aria-hidden="true" className="text-brand-amber">◆</span>
-                      {project.kpis[0]}
+                  <div className="min-w-0">
+                    <h3 className="text-2xl sm:text-4xl lg:text-6xl font-display font-black uppercase leading-[0.95] transition-transform duration-500 ease-out group-hover:translate-x-2">
+                      {project.title}
+                    </h3>
+                    <p className="font-mono text-xs text-stone-600 uppercase tracking-wider mt-2">
+                      {project.category} · {project.year}
                     </p>
-                  )}
-                  <p className="text-stone-600 text-sm leading-relaxed line-clamp-2 mt-2">
-                    {project.description}
-                  </p>
-                  <Link
-                    to={`/portfolio/${(project as any).slug}`}
-                    onClick={(e) => e.stopPropagation()}
-                    className="inline-flex items-center gap-1 mt-3 text-xs font-bold uppercase tracking-wider text-stone-600 hover:text-brand-amber transition-colors"
-                    aria-label={`Vedi caso studio completo di ${project.title}`}
+                    {project.kpis?.[0] && (
+                      <p className="mt-3 text-sm md:text-base font-bold text-deep-black">
+                        {project.kpis[0]}
+                      </p>
+                    )}
+                  </div>
+
+                  <div
+                    className="aspect-[4/3] overflow-hidden rounded-sm bg-stone-200"
+                    style={{ viewTransitionName: `project-${project.slug}` }}
                   >
-                    Caso studio completo <ArrowUpRight size={12} />
-                  </Link>
-                </div>
-              </div>
+                    <ImageWithSkeleton
+                      src={project.imageUrl}
+                      alt={`${project.title} - ${project.category}`}
+                      width={800}
+                      height={600}
+                      className="w-full h-full object-cover saturate-[.6] sepia-[.15] transition-[filter,transform] duration-700 group-hover:saturate-100 group-hover:sepia-0 group-hover:scale-105"
+                    />
+                  </div>
+
+                  <span
+                    aria-hidden="true"
+                    className="hidden lg:flex self-center justify-end text-deep-black group-hover:text-brand-amber transition-colors"
+                  >
+                    <ArrowUpRight size={32} strokeWidth={1.5} />
+                  </span>
+                </Link>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
     </>

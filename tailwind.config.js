@@ -10,8 +10,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        'off-white': '#f8f8f8',
-        'deep-black': '#1a1a1a',
+        'off-white': '#F4EDE0', // carta calda: fondo base
+        'paper': '#FAF6EE', // carta chiara: sezioni alternate, card
+        'deep-black': '#1D1A16', // inchiostro caldo
+        stone: {
+          50: '#FAF6EE',
+          100: '#F0E8D9',
+          200: '#E3D8C4',
+          300: '#D1C4AB',
+          500: '#6B6560', // 5:1 su carta (lo stone-500 standard stava sotto 4.5:1)
+        },
         'brand-yellow': '#FDBA3C',
         'brand-amber': '#8A5A00', // yellow leggibile su sfondo chiaro (contrasto ~5.8:1)
         'brand-terracotta': '#C1440E',

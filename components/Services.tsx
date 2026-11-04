@@ -1,7 +1,6 @@
 import React from 'react';
 import { LayoutDashboard, Coins, Megaphone, PieChart, Monitor, Calendar, Users, Handshake } from 'lucide-react';
 import { Service } from '../types';
-import { useInView } from '../hooks/useInView';
 
 interface ServiceGroup {
   area: string;
@@ -80,18 +79,10 @@ const serviceGroups: ServiceGroup[] = [
 
 const ServiceCard: React.FC<{
   service: Service;
-  globalIndex: number;
-  isInView: boolean;
-}> = ({ service, globalIndex, isInView }) => {
+}> = ({ service }) => {
   return (
-    <div
-      style={{
-        opacity: isInView ? 1 : 0,
-        transform: isInView ? 'translateY(0)' : 'translateY(20px)',
-        transition: `opacity 0.5s ease-out ${globalIndex * 0.06}s, transform 0.5s ease-out ${globalIndex * 0.06}s`,
-      }}
-    >
-      <div className="group h-full bg-white border border-stone-200 hover:border-brand-yellow rounded-sm p-6 md:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+    <div className="reveal">
+      <div className="group h-full bg-paper border border-stone-200 hover:border-brand-yellow rounded-sm p-6 md:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
         <div className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 mb-5 bg-stone-100 group-hover:bg-brand-yellow">
           <service.icon
             size={20}
@@ -111,25 +102,14 @@ const ServiceCard: React.FC<{
 };
 
 const Services: React.FC = () => {
-  const { ref, isInView } = useInView({ threshold: 0.05 });
-  let globalIndex = 0;
-
   return (
-    <section
-      ref={ref as React.RefObject<HTMLElement>}
-      className="py-16 md:py-20 px-6 bg-off-white w-full"
-      style={{
-        opacity: isInView ? 1 : 0,
-        transition: 'opacity 0.6s ease-out',
-      }}
-    >
+    <section className="py-16 md:py-20 px-6 bg-off-white w-full">
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 mb-14 md:mb-20">
+        <div className="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 mb-14 md:mb-20">
           <div className="lg:col-span-5">
             <h2
-              aria-label="Di cosa mi occupo: Marketing Strategy, Performance Marketing Multi-Canale, Web Analytics, Event Marketing e Team Leadership"
               className="text-6xl md:text-8xl font-display font-black uppercase leading-[0.85]"
             >
               Di Cosa<br />
@@ -138,7 +118,7 @@ const Services: React.FC = () => {
             <div className="h-2 w-24 bg-brand-yellow mt-6"></div>
           </div>
           <div className="lg:col-span-7 flex items-center">
-            <p className="text-xl text-stone-700 leading-relaxed border-l-4 border-brand-yellow pl-6">
+            <p className="text-xl text-stone-700 leading-relaxed border-t border-stone-300 pt-5">
               Dalla definizione della strategia alla gestione operativa: un approccio a 360° che unisce visione di business, esecuzione data-driven e leadership di team.
             </p>
           </div>
@@ -157,17 +137,9 @@ const Services: React.FC = () => {
 
               {/* Service cards — bento grid */}
               <div className="lg:col-span-9 grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-                {group.items.map((service) => {
-                  const idx = globalIndex++;
-                  return (
-                    <ServiceCard
-                      key={service.title}
-                      service={service}
-                      globalIndex={idx}
-                      isInView={isInView}
-                    />
-                  );
-                })}
+                {group.items.map((service) => (
+                  <ServiceCard key={service.title} service={service} />
+                ))}
               </div>
             </div>
           ))}

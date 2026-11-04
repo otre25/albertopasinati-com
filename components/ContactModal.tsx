@@ -281,7 +281,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                 onChange={handleChange}
                 className={`w-full px-4 py-3 bg-white/10 border-2 ${
                   errors.name ? 'border-red-500' : 'border-white/20'
-                } rounded-sm text-white placeholder-gray-500 focus:outline-none focus:border-brand-yellow transition-colors`}
+                } rounded-sm text-white placeholder-gray-500 focus:outline-none focus:border-brand-yellow focus-visible:ring-2 focus-visible:ring-brand-yellow transition-colors`}
                 placeholder="Il tuo nome"
                 disabled={isSubmitting}
                 aria-invalid={!!errors.name}
@@ -310,7 +310,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                 onChange={handleChange}
                 className={`w-full px-4 py-3 bg-white/10 border-2 ${
                   errors.email ? 'border-red-500' : 'border-white/20'
-                } rounded-sm text-white placeholder-gray-500 focus:outline-none focus:border-brand-yellow transition-colors`}
+                } rounded-sm text-white placeholder-gray-500 focus:outline-none focus:border-brand-yellow focus-visible:ring-2 focus-visible:ring-brand-yellow transition-colors`}
                 placeholder="tuaemail@esempio.com"
                 disabled={isSubmitting}
                 aria-invalid={!!errors.email}
@@ -339,7 +339,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                 rows={5}
                 className={`w-full px-4 py-3 bg-white/10 border-2 ${
                   errors.message ? 'border-red-500' : 'border-white/20'
-                } rounded-sm text-white placeholder-gray-500 focus:outline-none focus:border-brand-yellow transition-colors resize-none`}
+                } rounded-sm text-white placeholder-gray-500 focus:outline-none focus:border-brand-yellow focus-visible:ring-2 focus-visible:ring-brand-yellow transition-colors resize-none`}
                 placeholder="Scrivimi il tuo messaggio..."
                 disabled={isSubmitting}
                 aria-invalid={!!errors.message}

@@ -58,7 +58,7 @@ export const projectsData: (Project & { slug: string; metaDescription: string })
     description: 'Marketing Management per Il Fanale Group, azienda nel settore illuminazione di design e forniture contract. Pianificazione strategica annuale, coordinamento partecipazione Salone del Mobile Milano e gestione campagne marketing B2B per network dealer nazionali e internazionali.',
     client: 'Il Fanale Group',
     services: ['Marketing Strategy B2B', 'Trade Fair Management (Salone del Mobile)', 'CRM Implementation & Automation', 'Dealer Network Communication', 'Content Marketing & Video Production', 'Budget Management'],
-    kpis: ['Salone del Mobile Milano — coordinamento stand', 'CRM implementato e integrato da zero', 'Network dealer nazionale e internazionale', 'Pianificazione strategica annuale B2B'],
+    kpis: ['Strategia B2B annuale e CRM costruito da zero', 'Network dealer nazionale e internazionale', 'Salone del Mobile Milano — coordinamento stand', 'Campagne, contenuti e video per i dealer'],
     mockupUrl: '/lighting-design.webp',
     metaDescription: 'Marketing Manager per Il Fanale Group, illuminazione di design. Salone del Mobile Milano, CRM implementato da zero, dealer network B2B nazionale e internazionale.',
   },

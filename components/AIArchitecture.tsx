@@ -1,6 +1,5 @@
 import React from 'react';
 import { BookOpen, BarChart3 } from 'lucide-react';
-import { useInView } from '../hooks/useInView';
 
 interface PersonalProject {
   title: string;
@@ -37,18 +36,8 @@ const personalProjectsData: PersonalProject[] = [
 ];
 
 const PersonalProjects: React.FC = () => {
-  const { ref, isInView } = useInView({ threshold: 0.2 });
-
   return (
-    <section
-      ref={ref as React.RefObject<HTMLElement>}
-      className="py-16 px-6 w-full bg-white"
-      style={{
-        opacity: isInView ? 1 : 0,
-        transform: isInView ? 'translateY(0)' : 'translateY(30px)',
-        transition: 'opacity 0.8s ease-out, transform 0.8s ease-out'
-      }}
-    >
+    <section className="py-16 px-6 w-full bg-paper">
        <div className="max-w-7xl mx-auto mb-12 md:mb-16">
          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
            <div className="lg:col-span-5">
@@ -59,7 +48,7 @@ const PersonalProjects: React.FC = () => {
              <div className="h-2 w-24 bg-brand-yellow mt-6"></div>
            </div>
            <div className="lg:col-span-7 flex items-center">
-             <p className="text-xl text-stone-700 leading-relaxed border-l-4 border-brand-yellow pl-6">
+             <p className="text-xl text-stone-700 leading-relaxed border-t border-stone-300 pt-5">
                Progetti personali nati dalla curiosità: dal podcast alla Business Intelligence. Ogni progetto è l'applicazione concreta di un metodo.
              </p>
            </div>
@@ -70,12 +59,7 @@ const PersonalProjects: React.FC = () => {
          {personalProjectsData.map((project, index) => (
            <div
              key={index}
-             className="bg-white shadow-xl rounded-sm overflow-hidden flex flex-col md:flex-row"
-             style={{
-               opacity: isInView ? 1 : 0,
-               transform: isInView ? 'translateY(0)' : 'translateY(20px)',
-               transition: `opacity 0.6s ease-out ${index * 0.2}s, transform 0.6s ease-out ${index * 0.2}s`
-             }}
+             className="reveal bg-paper shadow-xl rounded-sm overflow-hidden flex flex-col md:flex-row"
            >
               {/* Visual Side */}
               <div className="w-full md:w-1/2 bg-brand-yellow flex items-center justify-center relative overflow-hidden aspect-video md:aspect-auto md:min-h-[400px]">

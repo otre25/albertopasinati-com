@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import ContactModal from './ContactModal';
@@ -12,6 +12,19 @@ const Header: React.FC = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const menuToggleRef = useRef<HTMLButtonElement>(null);
+
+  // Escape chiude il menu mobile e riporta il focus sul pulsante
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+      setIsOpen(false);
+      menuToggleRef.current?.focus();
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [isOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,7 +36,7 @@ const Header: React.FC = () => {
   }, []);
 
   const navItems = [
-    { label: 'PROGETTI', id: 'portfolio' },
+    { label: 'CASI STUDIO', id: 'portfolio' },
     { label: 'SERVIZI', id: 'cosa-faccio' },
     { label: 'CHI SONO', id: 'chi-sono' },
   ];
@@ -51,6 +64,7 @@ const Header: React.FC = () => {
   };
 
   return (
+    <>
     <nav className={`fixed top-0 left-0 right-0 z-50 h-20 transition-all duration-300 ${
       isScrolled
         ? 'bg-off-white/70 backdrop-blur-lg border-b border-gray-200/50 shadow-sm'
@@ -86,6 +100,7 @@ const Header: React.FC = () => {
           ))}
           <Link
             to="/lab"
+            unstable_viewTransition
             className="text-sm font-bold tracking-wide transition-colors uppercase hover:text-brand-amber text-deep-black cursor-pointer focus:outline-none focus:ring-4 focus:ring-brand-yellow/50 rounded-sm px-2 py-1"
           >
             LAB
@@ -104,10 +119,12 @@ const Header: React.FC = () => {
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden text-deep-black hover:text-brand-amber transition-colors focus:outline-none focus:ring-4 focus:ring-brand-yellow/50 rounded-sm p-2"
+          ref={menuToggleRef}
+          className="md:hidden text-deep-black hover:text-brand-amber transition-colors focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-yellow/50 rounded-sm p-2"
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? "Chiudi menu" : "Apri menu"}
           aria-expanded={isOpen}
+          aria-controls="mobile-menu"
         >
           {isOpen ? <X size={28} aria-hidden="true" /> : <Menu size={28} aria-hidden="true" />}
         </button>
@@ -127,9 +144,8 @@ const Header: React.FC = () => {
         className={`md:hidden fixed top-20 left-0 w-full bg-gradient-to-b from-off-white to-white border-b border-gray-200 p-8 flex flex-col space-y-8 shadow-2xl h-[calc(100vh-80px)] overflow-y-auto transition-transform duration-500 ease-out ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Menu di navigazione mobile"
+        id="mobile-menu"
+        inert={!isOpen}
       >
         {navItems.map((item, index) => (
           <a
@@ -150,6 +166,7 @@ const Header: React.FC = () => {
         ))}
         <Link
           to="/lab"
+          unstable_viewTransition
           onClick={() => setIsOpen(false)}
           className="text-4xl font-display font-bold uppercase text-deep-black hover:text-brand-amber transition-all duration-300 hover:translate-x-2 focus:outline-none focus:ring-4 focus:ring-brand-yellow/50 rounded-sm"
           style={{
@@ -185,15 +202,15 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Contact Modal */}
-      <ContactModal
-        isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
-      />
-
-      {/* Mobile Sticky CTA */}
-      <MobileStickyCTA onOpenContact={() => setIsContactModalOpen(true)} />
     </nav>
+
+    {/* Fuori dal nav: con backdrop-blur attivo il nav diventa il contenitore dei figli fixed */}
+    <ContactModal
+      isOpen={isContactModalOpen}
+      onClose={() => setIsContactModalOpen(false)}
+    />
+    <MobileStickyCTA onOpenContact={() => setIsContactModalOpen(true)} />
+    </>
   );
 };
 

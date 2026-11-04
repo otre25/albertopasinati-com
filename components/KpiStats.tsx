@@ -74,11 +74,6 @@ const KpiItem: React.FC<{ kpi: Kpi; isActive: boolean; index: number }> = ({ kpi
   return (
     <div
       className="flex flex-col items-center text-center px-6 py-10 bg-deep-black"
-      style={{
-        opacity: isActive ? 1 : 0,
-        transform: isActive ? 'translateY(0)' : 'translateY(24px)',
-        transition: `opacity 0.7s ease-out ${index * 0.12}s, transform 0.7s ease-out ${index * 0.12}s`,
-      }}
     >
       <div className="font-display font-black text-brand-yellow leading-none mb-3 tabular-nums flex items-end justify-center gap-1">
         <span className="text-5xl md:text-7xl">{kpi.prefix ?? ''}{count}{kpi.suffix}</span>
@@ -108,7 +103,6 @@ const KpiStats: React.FC = () => {
             I numeri parlano
           </p>
           <h2
-            aria-label="Risultati misurabili come Marketing Manager: oltre 10 anni di esperienza, €1M+ di budget gestito annuo, 15.000 lead qualificati generati"
             className="text-4xl md:text-6xl font-display font-black uppercase text-white leading-tight"
           >
             Risultati <span className="text-brand-yellow">Misurabili</span>

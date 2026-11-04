@@ -1,28 +1,18 @@
 import React from 'react';
 import { Linkedin } from 'lucide-react';
-import { useInView } from '../hooks/useInView';
 import { useSectionTracking } from '../hooks/useConversionTracking';
 
 const About: React.FC = () => {
-  const { ref, isInView } = useInView({ threshold: 0.2 });
   const sectionRef = useSectionTracking('chi_sono', 0.5);
 
   return (
     <section
-      ref={(node) => {
-        (ref as React.MutableRefObject<HTMLElement | null>).current = node;
-        (sectionRef as React.MutableRefObject<HTMLElement | null>).current = node;
-      }}
-      className="py-16 md:py-20 px-6 bg-white w-full"
-      style={{
-        opacity: isInView ? 1 : 0,
-        transform: isInView ? 'translateY(0)' : 'translateY(30px)',
-        transition: 'opacity 0.8s ease-out, transform 0.8s ease-out'
-      }}
+      ref={sectionRef as React.RefObject<HTMLElement>}
+      className="py-16 md:py-20 px-6 bg-paper w-full"
     >
       <div className="max-w-7xl mx-auto">
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+        <div className="reveal grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
 
           {/* Left Column - Title */}
           <div className="lg:col-span-4">
@@ -41,7 +31,7 @@ const About: React.FC = () => {
           {/* Right Column - Content */}
           <div className="lg:col-span-8">
             <div className="text-lg text-stone-700 leading-relaxed">
-              <p className="about-speakable text-deep-black text-xl border-l-4 border-brand-yellow pl-6">
+              <p className="about-speakable text-deep-black text-xl border-t border-stone-300 pt-5">
                 Ho guidato la funzione marketing di brand del lusso, retail e manifattura italiana — con responsabilità diretta su strategia, team e budget superiori a €1M/anno — portando crescita misurabile su mercati italiani ed europei.
               </p>
               <dl className="mt-8 pl-6 space-y-5">

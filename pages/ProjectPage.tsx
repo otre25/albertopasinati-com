@@ -26,7 +26,7 @@ const ProjectPage: React.FC = () => {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://albertopasinati.com" },
-        { "@type": "ListItem", "position": 2, "name": "Portfolio", "item": "https://albertopasinati.com/#portfolio" },
+        { "@type": "ListItem", "position": 2, "name": "Casi studio", "item": "https://albertopasinati.com/#portfolio" },
         { "@type": "ListItem", "position": 3, "name": project.title, "item": `https://albertopasinati.com/portfolio/${project.slug}` },
       ],
     };
@@ -98,7 +98,7 @@ const ProjectPage: React.FC = () => {
         ogType="article"
       />
 
-      <article className="min-h-screen bg-white">
+      <article className="min-h-screen bg-paper">
 
         {/* Hero */}
         <div className="bg-deep-black text-white">
@@ -108,10 +108,11 @@ const ProjectPage: React.FC = () => {
             <nav className="mb-10" aria-label="Breadcrumb">
               <Link
                 to="/#portfolio"
+                unstable_viewTransition
                 className="inline-flex items-center gap-2 text-gray-400 hover:text-brand-yellow transition-colors text-sm font-bold uppercase tracking-wider"
               >
                 <ArrowLeft size={16} />
-                Portfolio
+                Casi studio
               </Link>
             </nav>
 
@@ -158,7 +159,10 @@ const ProjectPage: React.FC = () => {
         </div>
 
         {/* Image */}
-        <div className="bg-stone-100 w-full aspect-[16/7] overflow-hidden">
+        <div
+          className="bg-stone-100 w-full aspect-[16/7] overflow-hidden"
+          style={{ viewTransitionName: `project-${project.slug}` }}
+        >
           <ImageWithSkeleton
             src={project.imageUrl}
             alt={`${project.title} — ${project.category} | Alberto Pasinati Marketing Manager`}
@@ -217,7 +221,7 @@ const ProjectPage: React.FC = () => {
               {/* Attribution */}
               <div className="border-t border-stone-200 pt-8 mt-4">
                 <p className="text-sm text-stone-400">
-                  Progetto gestito da{' '}
+                  Marketing gestito da{' '}
                   <Link to="/" className="text-brand-yellow font-bold hover:underline">
                     Alberto Pasinati
                   </Link>
@@ -234,10 +238,11 @@ const ProjectPage: React.FC = () => {
             {prevProject ? (
               <Link
                 to={`/portfolio/${prevProject.slug}`}
-                className="group flex flex-col gap-1 p-4 hover:bg-white rounded-sm transition-colors"
+                unstable_viewTransition
+                className="group flex flex-col gap-1 p-4 hover:bg-paper rounded-sm transition-colors"
               >
                 <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-400 group-hover:text-brand-yellow transition-colors">
-                  <ArrowLeft size={14} /> Progetto precedente
+                  <ArrowLeft size={14} /> Caso studio precedente
                 </span>
                 <span className="font-display font-bold text-xl text-deep-black group-hover:text-brand-yellow transition-colors">
                   {prevProject.title}
@@ -248,10 +253,11 @@ const ProjectPage: React.FC = () => {
             {nextProject && (
               <Link
                 to={`/portfolio/${nextProject.slug}`}
-                className="group flex flex-col gap-1 p-4 hover:bg-white rounded-sm transition-colors text-right ml-auto w-full"
+                unstable_viewTransition
+                className="group flex flex-col gap-1 p-4 hover:bg-paper rounded-sm transition-colors text-right ml-auto w-full"
               >
                 <span className="flex items-center justify-end gap-2 text-xs font-bold uppercase tracking-wider text-gray-400 group-hover:text-brand-yellow transition-colors">
-                  Progetto successivo <ArrowRight size={14} />
+                  Caso studio successivo <ArrowRight size={14} />
                 </span>
                 <span className="font-display font-bold text-xl text-deep-black group-hover:text-brand-yellow transition-colors">
                   {nextProject.title}

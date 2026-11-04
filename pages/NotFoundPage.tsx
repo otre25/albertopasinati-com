@@ -50,7 +50,7 @@ const NotFoundPage: React.FC = () => {
                 to="/#portfolio"
                 className="inline-flex items-center gap-2 px-8 py-4 border border-white/20 text-white font-bold uppercase text-sm hover:border-brand-yellow hover:text-brand-yellow transition-colors duration-300"
               >
-                Vedi il Portfolio <ArrowUpRight size={18} />
+                Vedi i casi studio <ArrowUpRight size={18} />
               </Link>
             </div>
           </div>

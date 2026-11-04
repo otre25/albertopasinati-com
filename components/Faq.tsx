@@ -1,25 +1,14 @@
 import React from 'react';
 import { Plus } from 'lucide-react';
 import { faqItems } from '../data/faq';
-import { useInView } from '../hooks/useInView';
 
 const Faq: React.FC = () => {
-  const { ref, isInView } = useInView({ threshold: 0.05 });
-
   return (
-    <section
-      id="faq"
-      ref={ref as React.RefObject<HTMLElement>}
-      className="py-16 md:py-20 px-6 bg-white w-full"
-      style={{
-        opacity: isInView ? 1 : 0,
-        transition: 'opacity 0.6s ease-out',
-      }}
-    >
+    <section id="faq" className="py-16 md:py-20 px-6 bg-paper w-full">
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 mb-12 md:mb-16">
+        <div className="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 mb-12 md:mb-16">
           <div className="lg:col-span-5">
             <h2 className="text-6xl md:text-8xl font-display font-black uppercase leading-[0.85]">
               Domande<br />
@@ -28,7 +17,7 @@ const Faq: React.FC = () => {
             <div className="h-2 w-24 bg-brand-yellow mt-6"></div>
           </div>
           <div className="lg:col-span-7 flex items-center">
-            <p className="text-xl text-stone-700 leading-relaxed border-l-4 border-brand-yellow pl-6">
+            <p className="text-xl text-stone-700 leading-relaxed border-t border-stone-300 pt-5">
               Disponibilità, budget gestiti, come misuro i risultati e cosa farei
               nei primi 90 giorni.
             </p>
