@@ -27,9 +27,9 @@ export const projectsData: (Project & { slug: string; metaDescription: string })
     description: 'Marketing Manager per Store Cucine, retailer nel settore cucine componibili e arredamento contract con 20 negozi in Italia. Gestione strategia marketing omnicanale con focus su digital advertising e lead generation B2C su scala nazionale.',
     client: 'Store Cucine',
     services: ['Marketing Strategy & Planning', 'Digital Advertising (Google Ads, Meta)', 'Lead Generation & CRM', 'Event Marketing', 'Team Coordination'],
-    kpis: ['20 negozi coordinati su scala nazionale', 'Budget advertising superiore a €500K/anno', 'Lead generation B2C omnicanale', '5 anni di gestione marketing continuativa'],
+    kpis: ['20 negozi coordinati su scala nazionale', 'Budget marketing gestito superiore a €1M/anno', 'Lead generation B2C omnicanale', '5 anni di gestione marketing continuativa'],
     mockupUrl: '/kitchen.webp',
-    metaDescription: 'Marketing Manager per Store Cucine: 20 negozi in Italia, €500K+/anno su Google Ads e Meta, lead generation B2C omnicanale. 5 anni di gestione continuativa.',
+    metaDescription: 'Marketing Manager per Store Cucine: 20 negozi in Italia, oltre €1M/anno di budget marketing gestito, Google Ads e Meta, lead generation B2C omnicanale. 5 anni di gestione continuativa.',
   },
   {
     id: '4',
