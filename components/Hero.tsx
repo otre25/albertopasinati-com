@@ -86,13 +86,13 @@ const Hero: React.FC = () => {
 
         {/* Ritratto editoriale: cornice sfalsata, francobollo "10+ anni" */}
         <div className="relative lg:col-span-5 flex justify-center lg:justify-end">
-          <figure className="w-full max-w-[320px] sm:max-w-sm lg:max-w-md">
+          <figure className="w-full max-w-[260px] sm:max-w-[300px] lg:max-w-[340px]">
             <div className="relative">
               <div
                 aria-hidden="true"
-                className="absolute inset-0 translate-x-4 translate-y-4 md:translate-x-5 md:translate-y-5 border border-deep-black/40 rounded-sm"
+                className="absolute inset-0 translate-x-3 translate-y-3 md:translate-x-4 md:translate-y-4 border border-deep-black/40 rounded-full"
               />
-              <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-stone-200">
+              <div className="relative aspect-square overflow-hidden rounded-full bg-stone-200 border-4 border-paper shadow-xl">
                 <ImageWithSkeleton
                   src="/alberto-hero-v2.webp"
                   alt="Alberto Pasinati - Marketing Manager e Full Stack Marketer"
@@ -102,12 +102,12 @@ const Hero: React.FC = () => {
                   priority
                 />
               </div>
-              <div className="absolute -top-5 -left-3 sm:-left-6 bg-brand-yellow text-deep-black px-4 py-3 z-10">
+              <div className="absolute bottom-2 -left-4 sm:-left-8 bg-brand-yellow text-deep-black px-4 py-3 z-10">
                 <p className="font-display font-black text-4xl leading-none">10+</p>
                 <p className="text-xs uppercase tracking-wider font-bold mt-1">Anni di esperienza</p>
               </div>
             </div>
-            <figcaption className="mt-10 text-sm text-stone-600">
+            <figcaption className="mt-8 text-sm text-stone-600 text-center lg:text-left">
               Alberto Pasinati · Marketing Manager · Venezia
             </figcaption>
           </figure>
