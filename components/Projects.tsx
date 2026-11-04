@@ -17,11 +17,11 @@ const brands: Brand[] = [
   { name: "Wave Murano Glass", logo: { src: "/logos/wave-murano-glass.png", width: 538, height: 136, className: "h-8 md:h-10" } },
   { name: "Store Cucine" },
   { name: "Il Fanale Group", logo: { src: "/logos/il-fanale.svg", width: 188, height: 24, className: "h-5 md:h-6" } },
-  { name: "Piovan", logo: { src: "/logos/piovan.svg", width: 406, height: 100, className: "h-12 md:h-16" } },
+  { name: "Piovan", logo: { src: "/logos/piovan.svg", width: 406, height: 100, className: "h-14 md:h-20" } },
   { name: "Valcucine", logo: { src: "/logos/valcucine.png", width: 1130, height: 178, className: "h-6 md:h-8" } },
-  { name: "Università Ca' Foscari Venezia", logo: { src: "/logos/ca-foscari.png", width: 121, height: 121, className: "h-12 md:h-16" } },
+  { name: "Università Ca' Foscari Venezia", logo: { src: "/logos/ca-foscari.png", width: 121, height: 121, className: "h-14 md:h-[4.5rem]" } },
   { name: "Lago", logo: { src: "/logos/lago.png", width: 200, height: 54, className: "h-7 md:h-9" } },
-  { name: "Atelier Alessandra", logo: { src: "/logos/atelier-alessandra.png", width: 386, height: 347, className: "h-12 md:h-16" } },
+  { name: "Atelier Alessandra", logo: { src: "/logos/atelier-alessandra.png", width: 386, height: 347, className: "h-14 md:h-[4.5rem]" } },
 ];
 
 const Projects: React.FC = () => {
@@ -48,27 +48,33 @@ const Projects: React.FC = () => {
           </div>
 
           {/* Brand con cui ho lavorato */}
-          <ul className="reveal max-w-7xl mx-auto px-6 flex flex-wrap items-center gap-x-10 gap-y-7 md:gap-x-16 md:gap-y-10">
-            {brands.map((brand) => (
-              <li key={brand.name} className="flex items-center">
-                {brand.logo ? (
-                  <img
-                    src={brand.logo.src}
-                    alt={brand.name}
-                    width={brand.logo.width}
-                    height={brand.logo.height}
-                    loading="lazy"
-                    decoding="async"
-                    className={`${brand.logo.className} w-auto grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition-[filter,opacity] duration-300`}
-                  />
-                ) : (
-                  <span className="font-display font-black uppercase text-xl md:text-2xl tracking-tight text-deep-black/75">
-                    {brand.name}
-                  </span>
-                )}
-              </li>
-            ))}
-          </ul>
+          {/* Griglia a celle uguali: 4×2 su desktop, 2×4 su mobile, un logo per cella a peso ottico simile */}
+          <div className="reveal max-w-7xl mx-auto px-6">
+            <ul className="grid grid-cols-2 md:grid-cols-4 border-t border-l border-deep-black/15">
+              {brands.map((brand) => (
+                <li
+                  key={brand.name}
+                  className="h-24 md:h-32 px-5 md:px-8 flex items-center justify-center border-r border-b border-deep-black/15"
+                >
+                  {brand.logo ? (
+                    <img
+                      src={brand.logo.src}
+                      alt={brand.name}
+                      width={brand.logo.width}
+                      height={brand.logo.height}
+                      loading="lazy"
+                      decoding="async"
+                      className={`${brand.logo.className} w-auto max-w-full object-contain grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition-[filter,opacity] duration-300`}
+                    />
+                  ) : (
+                    <span className="font-display font-black uppercase text-lg md:text-2xl tracking-tight text-deep-black/75 text-center leading-tight">
+                      {brand.name}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
