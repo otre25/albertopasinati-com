@@ -132,14 +132,14 @@ const CookieBanner: React.FC = () => {
         role="banner"
         aria-label="Cookie consent banner"
       >
-        <div className="bg-white border-t-2 border-brand-yellow shadow-2xl">
+        <div className="bg-paper border-t-2 border-brand-yellow shadow-2xl">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 justify-between">
 
               {/* Icona + Testo compatto */}
               <div className="flex items-start gap-3 flex-1">
                 <div className="w-10 h-10 bg-brand-yellow/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Shield className="text-brand-yellow" size={20} />
+                  <Shield className="text-brand-amber" size={20} />
                 </div>
                 <div className="flex-1">
                   <p className="text-sm text-stone-700 leading-relaxed">
@@ -147,7 +147,7 @@ const CookieBanner: React.FC = () => {
                     <Link
                       to="/privacy-policy"
                       onClick={closeBanner}
-                      className="text-brand-yellow hover:text-brand-dark font-bold underline focus:outline-none focus:ring-2 focus:ring-brand-yellow/50 rounded"
+                      className="text-brand-amber hover:text-brand-dark font-bold underline focus:outline-none focus:ring-2 focus:ring-brand-yellow/50 rounded"
                     >
                       Privacy Policy
                     </Link>
@@ -159,7 +159,7 @@ const CookieBanner: React.FC = () => {
               <div className="flex items-center gap-2 flex-shrink-0 w-full sm:w-auto">
                 <button
                   onClick={openPreferences}
-                  className="text-sm px-4 py-2 text-stone-600 hover:text-brand-yellow transition-colors font-bold focus:outline-none focus:ring-2 focus:ring-brand-yellow/50 rounded-sm flex items-center gap-1"
+                  className="text-sm px-4 py-2 text-stone-600 hover:text-brand-amber transition-colors font-bold focus:outline-none focus:ring-2 focus:ring-brand-yellow/50 rounded-sm flex items-center gap-1"
                   aria-label="Gestisci preferenze cookie"
                 >
                   <Settings size={16} />
@@ -167,7 +167,7 @@ const CookieBanner: React.FC = () => {
                 </button>
                 <button
                   onClick={handleRejectAll}
-                  className="text-sm px-4 py-2 bg-gray-100 text-stone-600 rounded-sm font-bold hover:bg-gray-200 transition-all focus:outline-none focus:ring-2 focus:ring-gray-300 active:scale-95"
+                  className="text-sm px-4 py-2 bg-stone-100 text-stone-600 rounded-sm font-bold hover:bg-stone-200 transition-all focus:outline-none focus:ring-2 focus:ring-stone-300 active:scale-95"
                 >
                   Rifiuta
                 </button>
@@ -192,7 +192,7 @@ const CookieBanner: React.FC = () => {
 
       {/* Drawer laterale per preferenze */}
       <div
-        className={`fixed top-0 right-0 bottom-0 w-full sm:w-96 bg-white z-[70] shadow-2xl transition-transform duration-500 ease-out overflow-y-auto ${
+        className={`fixed top-0 right-0 bottom-0 w-full sm:w-96 bg-paper z-[70] shadow-2xl transition-transform duration-500 ease-out overflow-y-auto ${
           showPreferences ? 'translate-x-0' : 'translate-x-full'
         }`}
         role="dialog"
@@ -260,12 +260,12 @@ const CookieBanner: React.FC = () => {
           </div>
 
           {/* Info aggiuntiva */}
-          <div className="mt-6 p-4 bg-gray-50 rounded-sm border border-gray-200">
+          <div className="mt-6 p-4 bg-stone-100 rounded-sm border border-stone-200">
             <p className="text-xs text-stone-500 leading-relaxed">
               Puoi modificare queste preferenze in qualsiasi momento. Per maggiori informazioni consulta la nostra{' '}
               <Link
                 to="/privacy-policy"
-                className="text-brand-yellow hover:text-brand-dark font-bold underline"
+                className="text-brand-amber hover:text-brand-dark font-bold underline"
               >
                 Privacy Policy
               </Link>
@@ -274,7 +274,7 @@ const CookieBanner: React.FC = () => {
           </div>
 
           {/* Buttons */}
-          <div className="sticky bottom-0 bg-white pt-4 pb-2 border-t border-gray-100 space-y-2">
+          <div className="sticky bottom-0 bg-paper pt-4 pb-2 border-t border-stone-200 space-y-2">
             <button
               onClick={handleSavePreferences}
               className="w-full bg-brand-yellow text-deep-black px-6 py-3 rounded-sm font-bold hover:bg-deep-black hover:text-brand-yellow transition-all duration-300 shadow-md focus:outline-none focus:ring-4 focus:ring-brand-yellow/50 active:scale-95 flex items-center justify-center gap-2"
@@ -284,7 +284,7 @@ const CookieBanner: React.FC = () => {
             </button>
             <button
               onClick={closePreferences}
-              className="w-full bg-gray-100 text-stone-600 px-6 py-3 rounded-sm font-bold hover:bg-gray-200 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-gray-300 active:scale-95"
+              className="w-full bg-stone-100 text-stone-600 px-6 py-3 rounded-sm font-bold hover:bg-stone-200 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-stone-300 active:scale-95"
             >
               Annulla
             </button>
@@ -306,13 +306,13 @@ interface CookieToggleProps {
 
 const CookieToggle: React.FC<CookieToggleProps> = ({ title, description, enabled, locked, onToggle }) => {
   return (
-    <div className="bg-gray-50 p-4 rounded-sm border border-gray-200 hover:border-brand-yellow/30 transition-colors">
+    <div className="bg-stone-100 p-4 rounded-sm border border-stone-200 hover:border-brand-yellow/30 transition-colors">
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1">
           <div className="flex items-center gap-2 mb-1">
             <h4 className="font-bold text-stone-800 text-sm">{title}</h4>
             {locked && (
-              <span className="text-xs bg-brand-yellow/20 text-brand-yellow px-2 py-0.5 rounded-full font-bold">
+              <span className="text-xs bg-brand-yellow/20 text-brand-amber px-2 py-0.5 rounded-full font-bold">
                 Sempre attivo
               </span>
             )}
@@ -323,7 +323,7 @@ const CookieToggle: React.FC<CookieToggleProps> = ({ title, description, enabled
           onClick={onToggle}
           disabled={locked}
           className={`relative inline-flex h-7 w-12 items-center rounded-full transition-colors focus:outline-none focus:ring-4 focus:ring-brand-yellow/50 flex-shrink-0 p-0.5 min-h-[44px] ${
-            enabled ? 'bg-brand-yellow' : 'bg-gray-300'
+            enabled ? 'bg-brand-yellow' : 'bg-stone-300'
           } ${locked ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:opacity-90'}`}
           role="switch"
           aria-checked={enabled}
