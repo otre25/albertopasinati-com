@@ -5,6 +5,7 @@ import ImageWithSkeleton from './ImageWithSkeleton';
 import ProjectsStructuredData from './ProjectsStructuredData';
 import { projectsData } from '../data/projects';
 import { trackCTAClick } from './Analytics';
+import SectionTitle from './SectionTitle';
 
 interface Brand {
   name: string;
@@ -35,11 +36,7 @@ const Projects: React.FC = () => {
           <div className="reveal max-w-7xl mx-auto px-6 mb-10 md:mb-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8">
               <div className="lg:col-span-4">
-                <h2 className="text-5xl md:text-6xl font-display font-black uppercase leading-[0.85]">
-                  La Mia<br />
-                  <span className="text-brand-yellow">Esperienza</span>
-                </h2>
-                <div className="h-2 w-20 bg-brand-yellow mt-4 md:mt-6"></div>
+                <SectionTitle top="La Mia" accent="Esperienza" size="md" />
               </div>
               <div className="lg:col-span-8 flex items-center">
                 <p className="text-lg text-stone-700 leading-relaxed border-t border-stone-300 pt-5">
@@ -79,9 +76,7 @@ const Projects: React.FC = () => {
       <section id="portfolio" className="py-16 md:py-24 bg-off-white">
         <div className="px-6">
           <div className="reveal max-w-7xl mx-auto mb-10 md:mb-14 flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
-            <h2 className="text-6xl md:text-8xl font-display font-black uppercase leading-[0.9] text-deep-black">
-              Casi <br /> <span className="text-brand-amber">Studio</span>
-            </h2>
+            <SectionTitle top="Casi" accent="Studio" />
             <p className="font-mono text-sm text-stone-600 md:text-right">
               AZIENDE, RUOLO <br className="hidden md:block" /> E RISULTATI
             </p>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { methodDescription, methodSteps } from '../data/method';
+import SectionTitle from './SectionTitle';
 
 const Method: React.FC = () => {
   return (
@@ -9,11 +10,7 @@ const Method: React.FC = () => {
         {/* Header */}
         <div className="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 mb-14 md:mb-20">
           <div className="lg:col-span-5">
-            <h2 className="text-6xl md:text-8xl font-display font-black uppercase leading-[0.85]">
-              Il<br />
-              <span className="text-brand-yellow">Metodo</span>
-            </h2>
-            <div className="h-2 w-24 bg-brand-yellow mt-6"></div>
+            <SectionTitle top="Il" accent="Metodo" />
           </div>
           <div className="lg:col-span-7 flex items-center">
             <p className="text-xl text-stone-700 leading-relaxed border-t border-stone-300 pt-5">
@@ -23,7 +20,7 @@ const Method: React.FC = () => {
         </div>
 
         {/* Steps */}
-        <ol className="reveal grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-stone-200 rounded-sm overflow-hidden">
+        <ol className="reveal grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-deep-black/20 border-y border-deep-black/20">
           {methodSteps.map((step, i) => (
             <li key={step.name} className="bg-off-white p-6 md:p-8 flex flex-col">
               <span className="font-mono text-xs text-brand-terracotta uppercase tracking-widest mb-4">

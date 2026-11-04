@@ -1,6 +1,7 @@
 import React from 'react';
 import { Plus } from 'lucide-react';
 import { faqItems } from '../data/faq';
+import SectionTitle from './SectionTitle';
 
 const Faq: React.FC = () => {
   return (
@@ -10,11 +11,7 @@ const Faq: React.FC = () => {
         {/* Header */}
         <div className="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 mb-12 md:mb-16">
           <div className="lg:col-span-5">
-            <h2 className="text-6xl md:text-8xl font-display font-black uppercase leading-[0.85]">
-              Domande<br />
-              <span className="text-brand-yellow">Frequenti</span>
-            </h2>
-            <div className="h-2 w-24 bg-brand-yellow mt-6"></div>
+            <SectionTitle top="Domande" accent="Frequenti" size="md" />
           </div>
           <div className="lg:col-span-7 flex items-center">
             <p className="text-xl text-stone-700 leading-relaxed border-t border-stone-300 pt-5">
