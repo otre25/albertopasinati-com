@@ -59,6 +59,7 @@ export const projectsData: (Project & { slug: string; metaDescription: string })
     category: 'Brand Identity & E-Commerce',
     imageUrl: '/Alessandra-Atelier-original-Murano-glass-jewels.webp',
     year: '2022',
+    role: 'Consulente marketing',
     number: '04',
     description: 'Progetto completo di rebranding e lancio e-commerce per Atelier Alessandra, brand di gioielli da donna in vetro di Murano. Sviluppo brand identity completa (naming, visual identity, tone of voice), realizzazione e-commerce Shopify con focus UX/UI, strategia SEO on-page e performance marketing Meta + Google Shopping.',
     client: 'Atelier Alessandra',
