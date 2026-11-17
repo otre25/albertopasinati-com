@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react';
 import SEO from '../components/SEO';
-import { projectsData } from '../data/projects';
+import { projectsData, formatProjectRole } from '../data/projects';
 import ImageWithSkeleton from '../components/ImageWithSkeleton';
 
 const ProjectPage: React.FC = () => {
@@ -123,7 +123,9 @@ const ProjectPage: React.FC = () => {
                   <span className="px-3 py-1 bg-white/10 text-xs font-bold uppercase tracking-wider rounded-sm">
                     {project.category}
                   </span>
-                  <span className="font-mono text-xs text-gray-500">{project.year}</span>
+                  <span className="font-mono text-xs text-gray-400">
+                    {project.role ? `${formatProjectRole(project)} · ${project.year}` : project.year}
+                  </span>
                 </div>
 
                 {/* H1 */}

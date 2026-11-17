@@ -3,7 +3,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ImageWithSkeleton from './ImageWithSkeleton';
 import ProjectsStructuredData from './ProjectsStructuredData';
-import { projectsData } from '../data/projects';
+import { projectsData, formatProjectRole } from '../data/projects';
 import { trackCTAClick } from './Analytics';
 import SectionTitle from './SectionTitle';
 
@@ -59,7 +59,7 @@ const Projects: React.FC = () => {
                       {project.title}
                     </h3>
                     <p className="font-mono text-xs text-stone-600 uppercase tracking-wider mt-2">
-                      {project.category} · {project.year}
+                      {formatProjectRole(project)} · {project.year}
                     </p>
                     {project.kpis?.[0] && (
                       <p className="mt-3 text-sm md:text-base font-bold text-deep-black">

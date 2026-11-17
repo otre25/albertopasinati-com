@@ -8,6 +8,8 @@ export const projectsData: (Project & { slug: string; metaDescription: string })
     category: 'Marketing Management B2B2C',
     imageUrl: '/murano-glass.webp',
     year: '2023-2024',
+    role: 'Marketing Manager',
+    reportsTo: 'CEO',
     number: '01',
     description: 'Direzione Marketing per Wave Murano Glass, brand dell\'artigianato vetrario veneziano con distribuzione internazionale. Sviluppo strategia di posizionamento luxury sui mercati EMEA, gestione eventi fieristici di alto profilo (Maison&Objet Parigi, Architect&Work) e campagne digital multi-lingua.',
     client: 'Wave Murano Glass',
@@ -23,6 +25,8 @@ export const projectsData: (Project & { slug: string; metaDescription: string })
     category: 'Marketing Management B2C',
     imageUrl: '/kitchen.webp',
     year: '2018-2023',
+    role: 'Marketing Manager',
+    reportsTo: 'CEO',
     number: '02',
     description: 'Marketing Manager per Store Cucine, retailer nel settore cucine componibili e arredamento contract con 20 negozi in Italia. Gestione strategia marketing omnicanale con focus su digital advertising e lead generation B2C su scala nazionale.',
     client: 'Store Cucine',
@@ -38,6 +42,8 @@ export const projectsData: (Project & { slug: string; metaDescription: string })
     category: 'Marketing Management B2B',
     imageUrl: '/lighting-design.webp',
     year: '2015-2017',
+    role: 'Marketing Manager',
+    reportsTo: 'CEO',
     number: '03',
     description: 'Marketing Management per Il Fanale Group, azienda nel settore illuminazione di design e forniture contract. Pianificazione strategica annuale B2B, CRM implementato e integrato da zero, comunicazione e campagne per il network dealer nazionale e internazionale, contenuti e video, partecipazione alle fiere di settore tra cui il Salone del Mobile di Milano.',
     client: 'Il Fanale Group',
@@ -63,3 +69,9 @@ export const projectsData: (Project & { slug: string; metaDescription: string })
     metaDescription: 'Rebranding e e-commerce Shopify per Atelier Alessandra, gioielli in vetro di Murano. Brand identity completa, SEO on-page, Meta Ads e Google Shopping.',
   }
 ];
+
+// Ruolo e riporto in una riga ("Marketing Manager · riporto diretto al CEO"); senza ruolo ripiega sulla categoria.
+export const formatProjectRole = (project: Project): string =>
+  [project.role ?? project.category, project.reportsTo && `riporto diretto al ${project.reportsTo}`]
+    .filter(Boolean)
+    .join(' · ');

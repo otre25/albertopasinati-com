@@ -6,6 +6,8 @@ export interface Project {
   category: string;
   imageUrl: string;
   year: string;
+  role?: string;
+  reportsTo?: string;
   number: string;
   description?: string;
   client?: string;
